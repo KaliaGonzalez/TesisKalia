@@ -1,0 +1,527 @@
+[
+ {
+    "id": 1,
+    "pregunta": "¿Cuál es el lema que inspira la Fuerza Aérea Colombiana?",
+    "respuesta": "'Sic itur ad astra' o 'así se va a las estrellas' es el lema que inspira a la FAC, aunque tambien se trata de evolucionar de forma permanente, volando más alto, más lejos y más rápido en la protección de los colombianos y el Estado de Derecho, siempre volando, entrenando y combatiendo para vencer."
+  },
+  {
+    "id": 2,
+    "pregunta": "¿Cuál es el significado del lema de la Fuerza Aérea Colombiana?",
+    "respuesta": "El lema de la fuerza aerea colombiana trata de evolucionar de forma permanente, volando más alto, más lejos y más rápido en la protección de los colombianos y el Estado de Derecho, siempre volando, entrenando y combatiendo para vencer."
+  },
+  {
+    "id": 3,
+    "pregunta": "¿En qué se soporta la estrategia para el desarrollo aéreo y espacial de la Fuerza Aérea Colombiana 2042?",
+    "respuesta": "Se soporta en el espíritu de evolución, innovación y transformación permanente, teniendo como propósito la consolidación de una Fuerza polivalente e interoperable que cumpla los más altos estándares internacionales y se consolide como preferente y líder regional."
+  },
+  {
+    "id": 4,
+    "pregunta": "¿Qué es el marco estratégico de la Fuerza Aerea Colombiana?",
+    "respuesta": "El marco estratégico es la guía que orienta a la FAC, basada en su misión, visión, principios y estudios de prospectiva, para fortalecer capacidades y enfrentar retos futuros en defensa y seguridad nacional."
+  },
+  {
+    "id": 5,
+    "pregunta": "¿Cuáles son los valores de la Fuerza aerea Colombiana?",
+    "respuesta": "Los valores de la Fuerza aerea colombiana son aquellas cualidades que producen comportamientos beneficiando tanto a quienes los practican como a aquellos que los rerciben. Los valores que integran a la fuerza aerea Colombiana son: Honor, Rectitud, confianza, Sinceridad, confiabilidad, valor, fuerza, disciplina, compromiso, orgullo y lealtad."
+  },
+  {
+    "id": 6,
+    "pregunta": "¿Cuáles son las virtudes de la Fuerza Aerea Colombiana?",
+    "respuesta": "Para la Fuerza Aerea Colombiana na virtud es aquella fuerza interior o disposición constante para hacer lo que es éticamente correcto, resultado del ejercicio o el aprendizaje (Fuerza Aérea Colombiana, 2019). Serán virtudes de los miembros de la FAC las siguientes: Justicia, templanza, mística, fortaleza y prudencia."
+  },
+  {
+    "id": 7,
+    "pregunta": "¿Cuáles son los cuatro ámbitos fundamentales de las veinte políticas planteadas por la institución?",
+    "respuesta": "Los cuatro ámbitos fundamentales de las veinte políticas son: talento humano, misionalidad, soporte, e inspección y control. Cada uno orienta el accionar institucional para cumplir con su misión de forma efectiva."
+  },
+  {
+    "id": 8,
+    "pregunta": "¿Cómo esta conformado el nivel estratégico organizacional de la Fuerza Aerea Colombiana?",
+    "respuesta": "Segun los documentos, el nivel estratégico organizacional de la Fuerza Aérea Colombiana está conformado por el Comando de la Fuerza (COFAC), el Segundo Comando y Jefatura de Estado Mayor (JEMFA), la Inspección General FAC (IGEFA) y las dependencias del Estado Mayor."
+  },
+  {
+    "id": 9,
+    "pregunta": "¿Qué es el Estado Mayor?",
+    "respuesta": "El Estado Mayor es el grupo de personas con la función de asistir al Comandante en el ejercicio del mando y en la toma de decisiones. Hay dos clases de estado mayor, general y especial. El Estado Mayor General se divide en dos componentes orgánicos: el Estado Mayor Personal y el Estado Mayor de Planeación y Coordinación, los cuales asesoran al Comandante en temas de su interés directo. El Estado Mayor Especial está conformado por especialistas que apoyan al Comandante en áreas administrativas, técnicas, profesionales o específicas del conocimiento. No es permanente y se conforma según la necesidad para analizar y resolver situaciones particulares dentro de la institución."
+  },
+  {
+    "id": 10,
+    "pregunta": "¿Qué es el COAES (Comando de Operaciones Aéreas y Espaciales)?",
+    "respuesta": "Segun los documentos proporcionados, el COAES es el grupo donde se integran todos los esfuerzos operacionales bajo la misma estructura, optimizando la toma de decisiones y la asignación de recursos, así como el control centralizado y la ejecución descentralizada como principio del poder aéreo. El COAES cuenta con cuatro centros: Operaciones Aéreas y Espaciales, Nacional de Recuperación de Personal, Armas y Tácticas, y Acción Integral. Así mismo, tiene cinco jefaturas: Combate y Superioridad Aérea, Movilidad Aérea, Operaciones Especiales Aéreas, Inteligencia Aérea y Operaciones Espaciales."
+  },
+  {
+    "id": 11,
+    "pregunta": "¿Qué es el CODAF (Comando de Apoyo a la Fuerza)?",
+    "respuesta": "Segun los documentos proporcionados, el CODAF es la función doctrinaria que compila todas las actividades necesarias para que la FAC cuente con los recursos suficientes para cumplir con la misión constitucional. Tiene la misión de proporcionar el soporte y los servicios para las operaciones aéreas, unificar los procesos que trabajaban para el soporte funcional de la logística y proyectar una logística moderna, proactiva y eficiente."
+  },
+  {
+    "id": 12,
+    "pregunta": "¿Qué es el CODEH (Comando de Desarrollo Humano)?",
+    "respuesta": "Segun los documentos propocionados, el CODEH es el responsable de articular los componentes de la gestión humana y la administración de personal (tanto militar como civil), a través de sus Jefaturas de Potencial Humano, Educación Aeronáutica y Espacial, Familia y Bienestar Social, Relaciones Laborales y Salud, promoviendo un ambiente laboral favorable para el cumplimiento de la misión y la consecución de los objetivos institucionales."
+  },
+  {
+    "id": 13,
+    "pregunta": "¿Cuáles son las cinco áreas misionales propias de la Fuerza Pública?",
+    "respuesta": "Basandome en los documentos dados, puedo decir las cinco areas misionales son Defensa nacional, la cual protege la soberanía, integridad territorial, orden constitucional e intereses nacionales frente a amenazas internas o externas, en dominios como el terrestre, aéreo, marítimo, espacial y ciberespacial; convivencia y seguridad ciudadana, la cual busca garantizar derechos y libertades mediante acciones coordinadas con autoridades civiles, promoviendo el desarrollo social y el bienestar ciudadano; seguridad pública, la cual Asegura la presencia y acción de la Fuerza Pública para combatir y desarticular grupos armados y estructuras del crimen organizado que afecten el orden interno; cooperación internacional, la cual fortalece alianzas estratégicas mediante operaciones conjuntas, intercambios de tecnología, conocimientos y buenas prácticas con otros países en defensa y seguridad; y, gestión y apoyo institucional, la cual abarca la gestión estratégica, administrativa y jurídica que respalda el cumplimiento de la misión constitucional de la Fuerza Pública."
+  },
+  {
+    "id": 14,
+    "pregunta": "¿Cómo es la segmentación de los grupos de valor?",
+    "respuesta": "Segun los documentos que tengo, la segmentación de los grupos de valor está dada por la población, que incluye tanto a personal externo como interno. El externo se beneficia de las operaciones de la Fuerza, mientras que el interno (militares y civiles) participa directamente en su ejecución, contribuyendo al cumplimiento de la misión institucional; direccionamiento estratégico, compuesto por instituciones públicas y entes de control que supervisan la ejecución de recursos y emiten políticas que influyen en el rumbo estratégico de la FAC, asegurando un uso eficiente de sus capacidades; y, aeronáutica y otros, que agrupa a entidades y empresas interesadas en los servicios aeronáuticos que ofrece la Fuerza, colaborando en su fortalecimiento, así como a otros actores que solicitan información específica ocasionalmente."
+  },
+  {
+    "id": 15,
+    "pregunta": "¿Qué objetivos contempla la Fuerza Aérea Colombiana en la perspectiva de “Procesos Internos” para garantizar el cumplimiento de su misión en los dominios aéreo, espacial y ciberespacial?",
+    "respuesta": "De acuerdo con los documentos proporcionados, La Fuerza Aérea Colombiana (FAC) ha definido objetivos estratégicos clave dentro de la perspectiva de 'Procesos Internos', orientados al fortalecimiento institucional y operacional. Entre ellos, se destaca ejercer el dominio en el aire, el espacio y el ciberespacio, asegurando que estos entornos estén libres de amenazas y puedan ser operados con autonomía y sin interferencias. También busca contribuir al control institucional del territorio y la protección de los recursos naturales, promoviendo la presencia segura del Estado y la gestión de riesgos. Otro objetivo es sostener y proteger el poder aéreo, espacial y ciberespacial, asegurando su funcionamiento frente a amenazas. Adicionalmente, se plantea fortalecer la gestión jurídica, con lineamientos que refuercen la legitimidad y anticipen riesgos en los tres dominios estratégicos. Por último, se trabaja en fortalecer las capacidades operativas, garantizando los medios necesarios para cumplir con la defensa de la soberanía, la integridad territorial y los fines del Estado."
+  },
+  {
+    "id": 16,
+    "pregunta": "¿Para la fuerza aerea colombiana que es el HONOR",
+    "respuesta": "Segun los documentos porporcionados, para la Fuerza Aérea Colombiana (FAC), el honor es una cualidad moral esencial que guía la conducta de sus miembros en todas las esferas de su vida, tanto pública como privada. Se manifiesta en el cumplimiento riguroso de los deberes personales e institucionales, con coherencia entre lo que se piensa, se dice y se hace. El honor en la FAC se fundamenta en dos valores clave: rectitud y confianza. La rectitud implica actuar con transparencia, integridad y compromiso con lo correcto, no por imposición externa, sino por convicción personal. Una persona recta asume con firmeza la responsabilidad de sus actos y actúa con honestidad hacia sí misma y hacia los demás. Por otro lado, la confianza es el eje de las relaciones dentro de la Institución. Esta se construye a través de la coherencia entre lo que se dice y lo que se hace, y se sustenta en tres pilares fundamentales: Cercanía, entendida como la disposición a escuchar con atención y empatía; Sinceridad, como expresión de verdad y autenticidad; Confiabilidad, que permite a los demás tener la certeza de que se cumplirá con lo prometido. En conjunto, el honor fortalece la legitimidad, cohesión y prestigio de la Fuerza Aérea."
+  },
+  {
+    "id": 17,
+    "pregunta": "¿Qué significa el lema 'Sic itur ad astra'?",
+    "respuesta": "Según los documentos proporcionados, el lema 'Sic itur ad astra', que acompaña a la Fuerza Aérea Colombiana, significa literalmente 'así se va a las estrellas'. Esta expresión no solo tiene un sentido poético, sino que refleja una filosofía institucional centrada en la superación constante. Aunque algunas interpretaciones lo traducen como 'así se va a las alturas', el mensaje principal es mucho más ambicioso: alcanzar lo más alto posible en todas las dimensiones del quehacer aéreo y espacial. Para la Fuerza Aérea Colombiana, este lema representa su compromiso de evolucionar de manera permanente, volando más alto, más lejos y más rápido con el fin de proteger a los colombianos y defender el Estado de Derecho. Se trata de una inspiración que impulsa a sus miembros a entrenar rigurosamente, a combatir con decisión y a estar preparados ante cualquier reto, siempre con el objetivo de vencer. El lema también se conecta con la visión estratégica a futuro, en la que la Fuerza Aérea Colombiana busca consolidarse como una fuerza polivalente e interoperable, capaz de liderar en el ámbito regional e incluso proyectarse en el espacio, como ya lo ha comenzado a hacer con iniciativas como el FACSAT-1 y el desarrollo de tecnologías satelitales. En resumen, 'Sic itur ad astra' no es solo un lema, sino una declaración de principios y aspiraciones."
+  },
+  {
+    "id": 18,
+    "pregunta": "¿Cuál es la misión de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, la misión de la Fuerza Aérea Colombiana está claramente definida dentro de su direccionamiento estratégico y forma parte fundamental de su marco institucional. Esta misión guía todas las acciones de la organización y es el punto de partida para el cumplimiento de sus responsabilidades. Aunque el texto no expone la misión de forma literal, deja claro que todo el actuar de la Fuerza Aérea Colombiana se enmarca en su propósito de defender la soberanía nacional y garantizar la seguridad del país, actuando dentro de las áreas misionales del sector defensa y seguridad. Además, se destaca que la misión se fortalece a través de principios, valores y virtudes definidos en el reglamento de ética institucional, los cuales motivan a sus integrantes a cumplir su labor con compromiso, honor y responsabilidad. La institución también se apoya en estudios de prospectiva que le permiten anticiparse a los desafíos del futuro y desarrollar las capacidades necesarias para mantenerse como una fuerza exitosa y estratégica. En conjunto, la misión de la Fuerza Aérea Colombiana no solo se limita a sus operaciones aéreas, sino que también se proyecta como un actor articulador dentro de la Fuerza Pública, promoviendo una acción unificada en beneficio de la nación."
+  },
+  {
+    "id": 19,
+    "pregunta": "¿Cuál es la misión de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, la misión de la Fuerza Aérea Colombiana es 'volar, entrenar y combatir para vencer y dominar en el aire, el espacio y el ciberespacio en defensa de la soberanía, la independencia, la integridad territorial, el orden constitucional y contribuir a los fines del Estado'. Esta declaración resume la esencia de lo que significa ser parte de esta institución, integrando acciones clave que permiten cumplir su propósito estratégico. Volar representa la actividad permanente y fundamental, permitiendo a los soldados del aire observar y actuar desde una perspectiva privilegiada, explotando las ventajas propias del dominio aéreo. Entrenar, por su parte, asegura que el poder aéreo y espacial esté preparado para operar en entornos complejos y exigentes, siendo una labor constante en tiempos de paz o de guerra. Finalmente, combatir es la razón de ser de cualquier fuerza militar, y en el caso de la Fuerza Aérea Colombiana, implica emplear todas sus capacidades para asegurar la superioridad y el dominio en el aire, el espacio y el ciberespacio. Estas tres acciones, cuando se ejecutan en conjunto con las demás fuerzas armadas del país —tierra y mar—, garantizan la protección de los valores fundamentales del Estado colombiano y reafirman el compromiso de la Fuerza Aérea Colombiana con su deber constitucional."
+  },
+  {
+    "id": 20,
+    "pregunta": "¿Cuál es la visión de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según el texto, la visión de la Fuerza Aérea Colombiana es 'ejercer el dominio en el aire, el espacio y el ciberespacio; ser una fuerza innovadora, polivalente, interoperable, líder y preferente regional, con alcance global y con capacidades disuasivas reales, permanentes y sostenibles'. Esta visión refleja el camino que la institución se ha trazado para enfrentar los retos de la seguridad nacional y hemisférica, apoyada en el profesionalismo de su talento humano. También destaca el papel del avance tecnológico, las capacidades espaciales y la incursión en el ciberespacio como elementos esenciales para responder a las nuevas demandas de la defensa nacional. La visión está orientada a consolidar una organización eficiente, íntegra y transparente, comprometida con el crecimiento del país y la defensa de su soberanía, integridad territorial e instituciones democráticas."
+  },
+  {
+    "id": 21,
+    "pregunta": "¿Cuáles son algunos de los principios institucionales que guían la conducta de los miembros de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según el texto, algunos de los principios institucionales que guían la conducta de los miembros de la Fuerza Aérea Colombiana son la integridad y la seguridad. La integridad implica actuar con transparencia, profesionalismo, honestidad y coherencia, asumiendo la investidura militar con honor y respeto. La seguridad se refiere a la preservación de la vida y los recursos de la institución, actuando con conciencia del riesgo y dentro de los lineamientos de la seguridad física, operacional y de salud en el trabajo. Además, se destaca la solidaridad como parte de la seguridad, promoviendo el cuidado personal y del grupo para el bienestar común."
+  },
+  {
+    "id": 22,
+    "pregunta": "¿Qué significa el valor el honor para los miembros de la Fuerza Aérea Colombiana?",
+    "respuesta": "El honor es una cualidad moral fundamental para los miembros de la Fuerza Aérea Colombiana, que implica cumplir con los deberes personales e institucionales de manera coherente tanto en público como en privado. Está vinculado con la rectitud, que es actuar con coherencia y honestidad por convicción, y con la confianza, que es la base de las relaciones laborales y se construye a partir de la autenticidad, la sinceridad y la coherencia entre lo que se dice y se hace."
+  },
+  {
+    "id": 23,
+    "pregunta": "¿Cómo se manifiesta el valor en la conducta de los miembros de la Fuerza Aérea Colombiana?",
+    "respuesta": "El valor se manifiesta como la cualidad del ánimo que lleva a los miembros de la Fuerza Aérea Colombiana a defender la dignidad personal, los intereses comunes y los de la nación, enfrentando situaciones críticas con fortaleza física y mental. Incluye la fuerza, entendida como persistencia y valentía para superar obstáculos, y la disciplina, que implica obediencia, subordinación y el cumplimiento riguroso de normas en el contexto militar."
+  },
+  {
+    "id": 24,
+    "pregunta": "¿Qué es el compromiso según los valores de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, el compromiso en la Fuerza Aérea Colombiana es prometer u obligarse moral o jurídicamente al cumplimiento de una obligación, generando responsabilidad. Este valor implica tener clara conciencia de nuestra responsabilidad, gran sentido de disponibilidad y actitud de liderazgo. Además, contribuye al mejoramiento continuo, base del crecimiento de la Fuerza Aérea Colombiana y la transformación positiva de nuestro entorno mediante el desarrollo personal y profesional, permitiendo generar y mantener las mejores prácticas organizacionales en búsqueda de resultados esperados."
+  },
+  {
+    "id": 25,
+    "pregunta": "¿Cuáles son los comportamientos vinculados al compromiso en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, los comportamientos vinculados con el compromiso en la Fuerza Aérea Colombiana son el orgullo y la lealtad. El orgullo se refiere al establecimiento de un vínculo afectivo hacia la institución en tres aspectos: orgullo por su trabajo, por su equipo de trabajo y por la institución misma. La lealtad es la forma de expresar respeto hacia sí mismo, los demás y la institución, implicando obediencia, fidelidad, gratitud y cumplimiento de promesas a pesar de los cambios en los contextos."
+  },
+  {
+    "id": 26,
+    "pregunta": "¿Qué significa el orgullo por la institución en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, el orgullo por la institución en la Fuerza Aérea Colombiana se refiere a la satisfacción de los funcionarios por pertenecer a la institución por lo que esta representa hacia afuera, al ser reconocida por el significado de sus acciones y su impacto en la sociedad. Este orgullo se ve representado en el obrar ético y moral de sus miembros y de sus líderes, siendo un componente fundamental del compromiso institucional."
+  },
+  {
+    "id": 27,
+    "pregunta": "¿Cómo se define la lealtad en los valores de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, en la Fuerza Aérea Colombiana la lealtad se define como la forma de expresar respeto hacia sí mismo, las demás personas y la institución. Implica obediencia, fidelidad, gratitud y dar cumplimiento a las promesas a pesar de los cambios en los contextos. La lealtad es considerada la base para la construcción de relaciones sociales perdurables en el tiempo y es uno de los comportamientos fundamentales vinculados al valor del compromiso institucional."
+  },
+  {
+    "id": 28,
+    "pregunta": "¿Qué aspectos comprende el orgullo institucional en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, el orgullo institucional en la Fuerza Aérea Colombiana comprende tres aspectos principales: 1) Orgullo por su trabajo, que es la satisfacción del funcionario por su contribución individual; 2) Orgullo por su equipo de trabajo, que es la satisfacción por pertenecer a un equipo reconocido por sus éxitos; y 3) Orgullo por la institución, que es la satisfacción de pertenecer a la Fuerza Aérea Colombiana por su reconocimiento social y el impacto de sus acciones. Estos aspectos son fundamentales para el compromiso institucional."
+  },
+  {
+    "id": 29,
+    "pregunta": "¿Qué es una virtud según el marco estratégico de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, en la Fuerza Aérea Colombiana una virtud se define como aquella fuerza interior o disposición constante para hacer lo que es éticamente correcto, resultado del ejercicio o el aprendizaje. Estas virtudes representan los principios fundamentales que guían el comportamiento y las acciones de todos los miembros de la institución."
+  },
+  {
+    "id": 30,
+    "pregunta": "¿Qué es la virtud de la justicia para la Fuerza Aerea Colombiana?",
+    "respuesta": "Según la información recibida, para la Fuerza Aérea Colombiana la justicia es la constante y firme voluntad de dar a cada quien lo que le corresponde. Esta virtud fundamental orienta el comportamiento ético de los miembros de la institución, asegurando equidad y rectitud en todas sus acciones y decisiones."
+  },
+  {
+    "id": 31,
+    "pregunta": "¿Qué es la templanza como virtud en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, en la Fuerza Aérea Colombiana la templanza es la cualidad que modera la atracción de los placeres y procura el equilibrio en el uso de los bienes. Esta virtud asegura el dominio de la voluntad sobre los instintos, mantiene los deseos en los límites de la honestidad, implica moderación en el actuar y da como resultado el dominio propio, siendo esencial para el comportamiento ético institucional."
+  },
+  {
+    "id": 32,
+    "pregunta": "¿Qué es la la mística en las virtudes de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, para la Fuerza Aérea Colombiana la mística representa el grado máximo de perfección y conocimiento, que se traduce como el amor que se tiene por la institución y la pasión con la que se sirve a ella. Esta virtud refleja el compromiso profundo y el sentido de pertenencia que caracteriza a los miembros de la Fuerza Aérea Colombiana."
+  },
+  {
+    "id": 33,
+    "pregunta": "¿Qué es la fortaleza como virtud en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, en la Fuerza Aérea Colombiana la fortaleza es la capacidad mental de soportar factores adversos, persistir, acometer retos y perseverar en la práctica de principios, valores y virtudes. Esta cualidad es fundamental para el desempeño institucional, permitiendo a los miembros superar dificultades y mantener su compromiso ético en todas las circunstancias."
+  },
+  {
+    "id": 34,
+    "pregunta": "¿Que es la prudencia para la Fuerza Aerea Colombiana?",
+    "respuesta": "Según la información recibida, para la Fuerza Aérea Colombiana la prudencia es la sensatez y buen juicio en el actuar, considerada como la virtud de la rectitud moral y de la recta razón en el obrar. La institución ha desarrollado políticas que proporcionan un marco de acción lógico y consistente para la toma de decisiones en todos los niveles, fundamentadas en esta virtud esencial."
+  },
+  {
+    "id": 35,
+    "pregunta": "¿En qué ámbitos ha planteado políticas la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana ha planteado veinte políticas institucionales en el marco de cuatro ámbitos fundamentales: Talento Humano, Misionalidad, Soporte, e Inspección y Control. Estas políticas proporcionan guías para los miembros de la institución, ofreciendo un marco de acción lógico y consistente para la toma de decisiones en todos los niveles organizacionales."
+  },
+  {
+    "id": 36,
+    "pregunta": "¿Cuales son las políticas institionales de la Fuerza Aérea Colombiana y en qué ámbitos se enmarcan?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana ha planteado veinte políticas institucionales que se enmarcan en cuatro ámbitos fundamentales: Talento Humano, Misionalidad, Soporte, e Inspección y Control. Estas políticas contienen guías para los miembros de la institución y proporcionan un marco de acción lógico y consistente para la toma de decisiones en todos los niveles."
+  } ,
+  {
+    "id": 37,
+    "pregunta": "¿Cómo se construye la legitimidad institucional en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, en la Fuerza Aérea Colombiana la legitimidad institucional se construye con resultados y transparencia, enmarcando todas sus actuaciones en la Constitución y la ley, observando el respeto por los derechos humanos y el derecho internacional humanitario. Este principio es fundamental dentro de las políticas de Talento Humano de la institución."
+  },
+  {
+    "id": 38,
+    "pregunta": "¿Como es el actuar de los miembros de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, el actuar de los miembros de la Fuerza Aérea Colombiana debe enmarcarse en el ordenamiento jurídico colombiano e institucional, integrando los principios, valores y virtudes que forjan una cultura para la legitimidad y la seguridad jurídica de la institución. Esto forma parte fundamental de las políticas de Talento Humano de la FAC."
+  },
+  {
+    "id": 39,
+    "pregunta": "¿Como se define el liderazgo en la Fuerza Aerea Colombiana?",
+    "respuesta": "Según la información recibida, los miembros de la Fuerza Aérea Colombiana deben ser líderes inspiradores, innovadores y transformadores, utilizando el ejemplo y el respeto como base para enseñar y dirigir. Además, deben preservar siempre la disciplina, la autoridad y la jerarquía militar, según establecen las políticas de Talento Humano de la institución."
+  },
+  {
+    "id": 40,
+    "pregunta": "¿Cómo aborda la Fuerza Aérea Colombiana la gestión del conocimiento y la formación?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana basa el desarrollo personal y la transferencia de conocimientos en la formación moral, física, intelectual, humanística, técnica y profesional. Busca formar mujeres y hombres visionarios que fortalezcan las capacidades institucionales y obedezcan a necesidades de la FAC, dentro del marco de las políticas de Talento Humano."
+  },
+  {
+    "id": 41,
+    "pregunta": "¿Cómo promueve la Fuerza Aérea Colombiana el respeto y servicio al ciudadano?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana establece que el buen trato, la disposición al diálogo, y el respeto a las personas, sus costumbres, diferencias y credos deben ser prácticas permanentes de sus integrantes. Esto fortalece la autoestima, el trabajo en equipo, la participación, el sentido de pertenencia y la cultura del servicio al ciudadano, según sus políticas de Talento Humano."
+  },
+  {
+    "id": 42,
+    "pregunta": "¿Quién es responsable del bienestar del personal en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, en la Fuerza Aérea Colombiana el bienestar del personal es responsabilidad de los comandantes en cada uno de sus niveles. Este bienestar está orientado a brindar las mejores condiciones para estimular la moral combativa, como parte de las políticas institucionales en el ámbito de Talento Humano."
+  },
+  {
+    "id": 43,
+    "pregunta": "¿Cómo aplica la Fuerza Aérea Colombiana la justicia y equidad entre sus miembros?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana aplica la justicia y equidad en el marco de la estrategia 'cultura justa', donde cada miembro responde por su actuación. Los reconocimientos y estímulos se otorgan de manera objetiva, transparente, imparcial y oportuna, mientras que las acciones correctivas y sancionatorias se aplican respetando el debido proceso, según sus políticas de Talento Humano."
+  },
+  {
+    "id": 44,
+    "pregunta": "¿Qué caracteriza el liderazgo operacional en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, en la Fuerza Aérea Colombiana el liderazgo operacional se caracteriza porque todas las decisiones y acciones deben aportar valor en el cumplimiento de la misión y en la consolidación de la visión institucional. Esto forma parte de las políticas misionales de la FAC, orientadas al cumplimiento efectivo de sus objetivos estratégicos."
+  },
+  {
+    "id": 45,
+    "pregunta": "¿Qué papel ejerce la Fuerza Aérea Colombiana como autoridad aeronáutica?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana ejerce el liderazgo como autoridad aeronáutica para la aviación de Estado en Colombia. Esta función implica normalizar y regular los métodos y procedimientos para estandarizar las actividades aeronáuticas y fortalecer la seguridad operacional, como parte de sus políticas misionales."
+  },
+  {
+    "id": 46,
+    "pregunta": "¿Qué importancia tiene la inteligencia para la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, para la Fuerza Aérea Colombiana la inteligencia y contrainteligencia son procesos fundamentales que sirven de soporte para el planeamiento operacional, el cumplimiento de la misión, y la protección y supervivencia de la fuerza. Estos procesos se desarrollan con información oportuna, precisa y confiable, según establecen las políticas misionales de la institución."
+  },
+  {
+    "id": 47,
+    "pregunta": "¿Cuál es el objetivo de la proyección espacial de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana tiene como objetivo liderar las capacidades espaciales nacionales para garantizar la autonomía o libertad de acción que contribuya a la protección de los intereses del país. Esta proyección espacial forma parte fundamental de sus políticas misionales."
+  },
+  {
+    "id": 48,
+    "pregunta": "¿En qué se basa el modelo integrado de gestión de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, el modelo integrado de gestión de la Fuerza Aérea Colombiana se soporta en una planeación estratégica que consolida una cultura institucional basada en principios, valores, cumplimiento de la norma, mejoramiento continuo y la búsqueda permanente de la excelencia. Este modelo forma parte de las políticas de soporte de la institución."
+  },
+  {
+    "id": 49,
+    "pregunta": "¿Cómo aborda la Fuerza Aérea Colombiana la gestión de ciencia, tecnología e innovación?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana impulsa proyectos de investigación, ciencia, tecnología e innovación con el fin de satisfacer necesidades institucionales, cumplir la misión y avanzar tecnológicamente. Este enfoque permite el fortalecimiento y la sostenibilidad de las capacidades operativas, enmarcado dentro de sus políticas de soporte."
+  },
+  {
+    "id": 50,
+    "pregunta": "¿Cómo gestiona la Fuerza Aérea Colombiana los riesgos institucionales?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana capacita a su personal en todos los niveles para identificar y administrar riesgos de procesos y de corrupción. Esta gestión del riesgo genera estrategias de mitigación que fortalecen la legitimidad institucional, como parte de sus políticas de soporte."
+  },
+  {
+    "id": 51,
+    "pregunta": "¿Qué principios rigen la gestión presupuestal en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana enmarca su gestión presupuestal en principios de austeridad, eficiencia del gasto público, y uso responsable y razonable de los recursos. La planeación, programación y ejecución de recursos sigue estos lineamientos dentro de sus políticas de soporte institucional."
+  },
+  {
+    "id": 52,
+    "pregunta": "¿Cómo busca la Fuerza Aérea Colombiana mejorar sus procesos organizacionales?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana busca simplificar, hacer más prácticos y efectivos todos sus procesos, apoyándose en tecnologías de la información y automatización. Esto se realiza con apego a las normas legales vigentes, aplicando principios de racionalidad y proporcionalidad, como parte de sus políticas de soporte."
+  },
+  {
+    "id": 53,
+    "pregunta": "¿Qué importancia tienen las relaciones institucionales para la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana fortalece la diplomacia para la defensa mediante la construcción de alianzas estratégicas. Estas relaciones institucionales contribuyen al cumplimiento de la misión y al logro de la visión institucional, enmarcadas dentro de sus políticas de soporte."
+  },
+  {
+    "id": 54,
+    "pregunta": "¿Cómo contribuye la Fuerza Aérea Colombiana a la protección del medio ambiente?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana apoya la preservación y defensa del agua, la biodiversidad y el medio ambiente, considerados activos de interés estratégico nacional. Esta contribución se realiza a través de la construcción de capacidades y el desarrollo de operaciones, como parte de sus políticas de soporte institucional."
+  },
+  {
+    "id": 55,
+    "pregunta": "¿Cómo contribuye la Fuerza Aérea Colombiana a la protección del medio ambiente?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana apoya la preservación y defensa del agua, la biodiversidad y el medio ambiente, considerados activos de interés estratégico nacional. Esta contribución se realiza a través de la construcción de capacidades y el desarrollo de operaciones, como parte de sus políticas de soporte institucional."
+  },
+  {
+    "id": 56,
+    "pregunta": "¿Cómo define la Fuerza Aérea Colombiana sus capacidades institucionales?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana comprende sus capacidades institucionales como la habilidad para realizar tareas bajo ciertos estándares, combinando componentes como doctrina, organización, material, equipo, personal e infraestructura. Estas capacidades permiten responder eficientemente a fenómenos y amenazas contra la defensa y seguridad nacional, siendo el eje de la planeación estratégica del sector defensa."
+  },
+  {
+    "id": 57,
+    "pregunta": "¿Cuál es el enfoque de la Fuerza Aérea Colombiana en inteligencia aérea?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana desarrolla misiones de inteligencia aérea persistente mediante vigilancia y reconocimiento aéreo en zonas rurales, urbanas, de frontera, de riqueza y biodiversidad, recursos naturales e infraestructura crítica. Este enfoque busca lograr superioridad de información como parte fundamental de sus capacidades institucionales."
+  },
+  {
+    "id": 58,
+    "pregunta": "¿Cómo contribuye la Fuerza Aérea Colombiana a la seguridad pública?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana actúa como parte de un sistema modular y flexible de la fuerza pública para contrarrestar amenazas internas y transnacionales. Conduce operaciones en los ámbitos aéreo, espacial y ciberespacial en coordinación con otras fuerzas armadas, para prevenir y restaurar cualquier acción que afecte la seguridad pública."
+  },
+  {
+    "id": 59,
+    "pregunta": "¿Qué significa la capacidad de 'Protección' en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, en la Fuerza Aérea Colombiana la 'Protección' se define como el conjunto de habilidades que preservan la fuerza, la población civil y los activos estratégicos. Esta capacidad forma parte fundamental del portafolio institucional para garantizar la seguridad y defensa nacional."
+  },
+  {
+    "id": 60,
+    "pregunta": "¿Cómo define la Fuerza Aérea Colombiana la capacidad de 'Fuegos'?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana entiende los 'Fuegos' como el conjunto de habilidades que permiten el uso de sistemas de armas para cumplir la misión y mantener la superioridad operacional. Esta capacidad es esencial para el ejercicio del poder aéreo en defensa de los intereses nacionales."
+  },
+  {
+    "id": 61,
+    "pregunta": "¿Qué comprende la capacidad de 'Movimiento y Maniobra' en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, en la Fuerza Aérea Colombiana el 'Movimiento y Maniobra' comprende habilidades relacionadas con el despliegue y empleo táctico de unidades frente al enemigo, para aplicar el poder de combate y mantener ventaja militar. Esta capacidad es vital para la efectividad operacional de la institución."
+  },
+  {
+    "id": 62,
+    "pregunta": "¿Cómo ejerce la Fuerza Aérea Colombiana el 'Mando y Control'?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana ejerce el 'Mando y Control' mediante habilidades que permiten a los comandantes ejercer autoridad y dirección para el cumplimiento de la misión. Esta capacidad institucional garantiza la coordinación efectiva de las operaciones aéreas y conjuntas."
+  },
+  {
+    "id": 63,
+    "pregunta": "¿Qué papel juega la 'Inteligencia' en las capacidades de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, para la Fuerza Aérea Colombiana la 'Inteligencia' consiste en habilidades para recolectar, procesar, analizar y difundir información sobre amenazas internas y externas. Esta capacidad reduce la incertidumbre operacional y apoya la toma de decisiones estratégicas y tácticas."
+  },
+  {
+    "id": 64,
+    "pregunta": "¿Cómo garantiza la Fuerza Aérea Colombiana el 'Sostenimiento' operacional?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana mantiene capacidades de 'Sostenimiento' que permiten proveer personal, bienes y servicios para asegurar, mantener y prolongar las operaciones. Esta capacidad es esencial para cumplir la misión y soportar la estructura de fuerza requerida en diferentes escenarios."
+  },
+  {
+    "id": 65,
+    "pregunta": "¿Qué comprende la capacidad de 'Soporte' en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, en la Fuerza Aérea Colombiana el 'Soporte' comprende habilidades para proveer servicios comunes de dirección, bienestar, desarrollo tecnológico y asesoría jurídica necesaria para el cumplimiento de la misión. Esta capacidad institucional apoya todas las áreas funcionales de la fuerza pública."
+  },
+  {
+    "id": 66,
+    "pregunta": "¿Qué es la oferta de valor de la Fuerza Aérea Colombiana y cómo se define?",
+    "respuesta": "Según los documentos proporcionados, la oferta de valor de la Fuerza Aérea Colombiana es el conjunto de características de desempeño de los servicios que pueden ser ofrecidos a los grupos de valor. Se define mediante el análisis de capacidades distintivas de la institución, respondiendo a dos preguntas clave: '¿Qué nos caracteriza?' y '¿Qué hacemos diferente?'. Esta oferta de valor sirve como herramienta para la asignación de recursos y fortalecimiento de competencias centrales en las áreas misionales."
+  },
+  {
+    "id": 67,
+    "pregunta": "¿Cómo contribuye la Fuerza Aérea Colombiana a la defensa nacional y seguridad pública?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana contribuye a la defensa nacional mediante el dominio del aire, espacio y ciberespacio para mantener la soberanía e integridad territorial. Esta capacidad distintiva incluye operaciones de patrulla aérea, escolta aérea, interdicción y ataque estratégico, que han sido decisivas en los éxitos operacionales del Estado contra amenazas internas y externas, neutralizando centros de gravedad del enemigo."
+  },
+  {
+    "id": 68,
+    "pregunta": "¿Qué papel juega la Fuerza Aérea Colombiana en la gestión del riesgo de desastres?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana aporta capacidades distintivas de oportunidad, alcance y velocidad en apoyo al Sistema Nacional de Gestión del Riesgo de Desastres. Esto incluye transporte de ayuda humanitaria, extinción de incendios, acceso a regiones apartadas, búsqueda y rescate, evacuaciones aeromédicas y apoyo en emergencias, demostrando un compromiso más allá de sus funciones habituales de defensa."
+  },
+  {
+    "id": 69,
+    "pregunta": "¿Cómo participa la Fuerza Aérea Colombiana en la cooperación internacional?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana contribuye a la cooperación internacional mediante el intercambio de experiencia, conocimiento y capacidades aéreas, espaciales y ciberespaciales. Participa en operaciones combinadas, fortalece sistemas de defensa de otros países y establece acuerdos en áreas como seguridad operacional, defensa aérea, ayuda humanitaria, atención de desastres y lucha contra amenazas transnacionales."
+  },
+  {
+    "id": 70,
+    "pregunta": "¿Qué hace la Fuerza Aérea Colombiana para proteger los recursos naturales y el medio ambiente?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana contribuye a la defensa, vigilancia y protección del agua, biodiversidad y medio ambiente como activos estratégicos nacionales. Lidera proyectos de ahorro y uso eficiente de recursos, gestión de residuos y saneamiento básico, alineados con la política de defensa que califica estos aspectos como interés nacional principal y prevalente."
+  },
+  {
+    "id": 71,
+    "pregunta": "¿Cómo apoya la Fuerza Aérea Colombiana el desarrollo del país?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana aplica capacidades aéreas, espaciales y ciberespaciales para contribuir al desarrollo territorial y poblacional. Mediante la acción unificada, llega a poblaciones vulnerables con jornadas de apoyo al desarrollo y asistencias humanitarias, trabajando bajo doctrina de responsabilidad social para el crecimiento de comunidades en todo el territorio nacional."
+  },
+  {
+    "id": 72,
+    "pregunta": "¿Qué logros ha alcanzado la Fuerza Aérea Colombiana en gestión y apoyo institucional?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana ha desarrollado tecnologías como cascos para Arpía III, bombas MK82, simuladores de vuelo, bancos de prueba, el Centro de Medicina Aeroespacial y el FACSAT-1. Estos avances estratégicos aumentan su autonomía operativa y reducen dependencias logísticas, consolidando a la FAC como impulsora del sector aeroespacial colombiano y su desarrollo económico."
+  },
+  {
+    "id": 73,
+    "pregunta": "¿Qué son los grupos de valor para la Fuerza Aérea Colombiana y por qué son importantes?",
+    "respuesta": "Según los documentos proporcionados, los grupos de valor para la Fuerza Aérea Colombiana son ciudadanos, usuarios o grupos de interés identificados para mejorar la efectividad, colaboración y eficiencia institucional. Su caracterización permite atender oportunamente requerimientos con calidad, considerando expectativas y preferencias, garantizando acceso a información veraz y oportuna. Esto fortalece el planeamiento estratégico y cumple con el Modelo Integrado de Planeación y Gestión (MIPG) establecido por el gobierno nacional."
+  },
+  {
+    "id": 74,
+    "pregunta": "¿Cuántos grupos de valor ha identificado la Fuerza Aérea Colombiana y cuáles son los principales?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana identificó inicialmente 14 grupos de valor, priorizando 10 según su poder e influencia. Los principales incluyen: el personal de la fuerza (facilitador esencial), población civil (beneficiario primario), instituciones públicas nacionales, entes de control, fuerza pública, autoridades aeronáuticas, otros gobiernos, proveedores, organizaciones sociales y medios de comunicación. Estos grupos tienen mayor interés en la información generada por la institución."
+  },
+  {
+    "id": 75,
+    "pregunta": "¿Cómo segmenta la Fuerza Aérea Colombiana sus grupos de valor?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana segmenta sus grupos de valor en cuatro categorías principales: 1) Población (personal interno y externo relacionado directamente con la misión), 2) Direccionamiento estratégico (instituciones públicas y entes de control que influyen en políticas), 3) Aeronáutica (entidades con interés en servicios aeronáuticos), y 4) Otros (interesados en información específica). Esta segmentación se basa en características e intereses comunes sobre la oferta de valor institucional."
+  },
+  {
+    "id": 76,
+    "pregunta": "¿Qué comprende el segmento de 'Población' en los grupos de valor de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, en la Fuerza Aérea Colombiana el segmento de 'Población' agrupa al personal externo e interno con características particulares. Los externos se benefician de las operaciones, mientras los internos (funcionarios militares y civiles) intervienen directamente en su ejecución. Este segmento tiene relación directa con el cumplimiento de la misión institucional y el desarrollo de operaciones que contribuyen a los fines del Estado."
+  },
+  {
+    "id": 77,
+    "pregunta": "¿Qué instituciones conforman el segmento de 'Direccionamiento estratégico' en la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, en la Fuerza Aérea Colombiana el segmento de 'Direccionamiento estratégico' está integrado por instituciones públicas y entes de control que supervisan la ejecución de recursos y emiten lineamientos. Estas entidades impactan directamente en la estrategia institucional y en la identificación de controles para optimizar el aprovechamiento de recursos, cumpliendo con los estándares de gestión pública."
+  },
+  {
+    "id": 78,
+    "pregunta": "¿Cuál es el objetivo principal del Plan de Desarrollo de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, el Plan de Desarrollo de la Fuerza Aérea Colombiana tiene como objetivo guiar la transformación institucional para controlar el firmamento, proteger a los colombianos y garantizar la seguridad nacional. Este plan prospectivo define las características necesarias para los horizontes 2022, 2030 y 2042, buscando consolidar una Fuerza tecnológicamente avanzada, dominante en aire, espacio y ciberespacio, con personal altamente profesional que defienda la soberanía e intereses nacionales."
+  },
+  {
+    "id": 79,
+    "pregunta": "¿Qué metodología utilizó la Fuerza Aérea Colombiana para definir su plan de desarrollo?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana empleó la técnica de narración de escenarios mediante análisis morfológico, desarrollada en talleres especializados. Esta metodología permitió proyectar la evolución institucional a través de los componentes DOMPI (Doctrina, Organización, Material y equipo, Personal, Infraestructura) para los tres horizontes temporales (2022, 2030 y 2042), asegurando una transformación secuencial y armónica."
+  },
+  {
+    "id": 80,
+    "pregunta": "¿Cómo se proyecta la Fuerza Aérea Colombiana para el año 2022 según su plan de desarrollo?",
+    "respuesta": "Según los documentos proporcionados, para 2022 la Fuerza Aérea Colombiana se proyecta como referente regional, innovadora e interoperable en ejercicios multinacionales. Sus logros incluyen: actualización doctrinal (alineación con estándares OTAN), creación de la Jefatura de Operaciones Espaciales, adquisición del Escuadrón de Superioridad Aérea, sistema de defensa antiaérea, FACSAT-2, renovación de flota de instrucción, y construcción del Centro CUBO para desarrollo espacial, manteniendo altos estándares en todos sus componentes operativos."
+  },
+  {
+    "id": 81,
+    "pregunta": "¿Qué avances contempla la Fuerza Aérea Colombiana para el escenario 2030?",
+    "respuesta": "Según la información recibida, para 2030 la Fuerza Aérea Colombiana se proyecta como institución preferente regional con alcance continental, destacando: doctrina multidominio interiorizada, organización dinámica y eficiente, adquisición de activos espaciales propios, material moderno y polivalente, personal altamente capacitado (incluyendo el primer astronauta FAC), y consolidación del Centro CUBO. Será referente regional como autoridad aeronáutica, con capacidades disuasivas reales contra amenazas multidominio."
+  },
+  {
+    "id": 82,
+    "pregunta": "¿Cómo visualiza la Fuerza Aérea Colombiana su escenario ideal para 2042?",
+    "respuesta": "Según los documentos proporcionados, para 2042 la Fuerza Aérea Colombiana aspira a ser líder regional con alcance global, ejerciendo dominio total en aire, espacio y ciberespacio. Contará con doctrina multidominio consolidada, liderazgo en organizaciones multinacionales, constelación de satélites propios, inteligencia artificial avanzada, personal de élite, e infraestructura automatizada (incluyendo soporte a la Estación Antártica Colombiana). Será referente continental en tecnología espacial y autoridad aeronáutica, con capacidades disuasivas permanentes y sostenibles."
+  },
+  {
+    "id": 83,
+    "pregunta": "¿Qué componentes DOMPI destacan en la evolución proyectada de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, la evolución de la Fuerza Aérea Colombiana se basa en cinco componentes DOMPI: 1) Doctrina (de actualizada a multidominio generadora de cambios), 2) Organización (de fortalecida a líder multinacional), 3) Material (de sistemas aéreos a constelación satelital), 4) Personal (de capacitado a élite con astronautas), y 5) Infraestructura (de centros especializados a instalaciones automatizadas inteligentes). Esta evolución escalonada (2022-2030-2042) asegura una transformación integral y sostenible."
+  },
+  {
+    "id": 84,
+    "pregunta": "¿Qué capacidades espaciales desarrollará la Fuerza Aérea Colombiana según su plan?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana proyecta un ambicioso desarrollo espacial que incluye: FACSAT-2 (2022), activos espaciales propios con autonomía de observación (2030), y para 2042 una constelación de satélites en múltiples órbitas para comunicaciones e imágenes/radar. Complementa esto con el Centro CUBO de desarrollo espacial, cooperación con agencias internacionales, y participación en la Estación Antártica Colombiana, posicionando al país como actor relevante en tecnología espacial."
+  },
+  {
+    "id": 85,
+    "pregunta": "¿Cómo evolucionará el personal de la Fuerza Aérea Colombiana según su plan de desarrollo?",
+    "respuesta": "Según la información recibida, el personal de la Fuerza Aérea Colombiana evolucionará desde la fidelización y capacitación inicial (2022), pasando por competencias avanzadas y primer astronauta (2030), hasta convertirse en 2042 en un equipo altamente profesional con principios interiorizados, vocación de servicio y liderazgo. Se implementarán ciclos de gestión humana con condiciones laborales óptimas, manteniendo siempre el compromiso con la defensa y seguridad nacional en entornos multidominio cada vez más complejos."
+  },
+  {
+    "id": 86,
+    "pregunta": "¿Qué es el Plan Estratégico Institucional (PEI) de la Fuerza Aérea Colombiana y cuál es su propósito?",
+    "respuesta": "Según los documentos proporcionados, el Plan Estratégico Institucional (PEI) de la Fuerza Aérea Colombiana es un instrumento cuatrienal que operacionaliza objetivos, iniciativas e indicadores para alcanzar la visión institucional al 2022. Se elabora en cumplimiento de la Ley 152 de 1994, articulando las directrices estatales y sectoriales, permitiendo focalizar esfuerzos y brindando elementos de control para que el mando pueda monitorear el desempeño institucional en el cumplimiento de la misión."
+  },
+  {
+    "id": 87,
+    "pregunta": "¿Con qué instrumentos nacionales se alinea el PEI de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, el PEI de la Fuerza Aérea Colombiana se articula con: 1) El Plan Nacional de Desarrollo 2018-2022 'Pacto por Colombia, Pacto por la Equidad', 2) La Política de Defensa y Seguridad, 3) El Plan Estratégico Sectorial del Ministerio de Defensa, 4) El Plan Estratégico Militar 2030, y 5) Los Objetivos de Desarrollo Sostenible (ODS). Esta alineación garantiza coherencia con las políticas públicas nacionales y los compromisos internacionales."
+  },
+  {
+    "id": 88,
+    "pregunta": "¿Cómo se relacionan los objetivos del PEI de la Fuerza Aérea Colombiana con las áreas misionales del sector defensa?",
+    "respuesta": "Según los documentos proporcionados, los objetivos del PEI de la Fuerza Aérea Colombiana se estructuran en cuatro áreas misionales principales: 1) Defensa Nacional (dominio aéreo, espacial y ciberespacial), 2) Seguridad Pública (control territorial contra amenazas), 3) Gestión del Riesgo y Cooperación Internacional (asistencia humanitaria), y 4) Protección de Recursos Naturales (agua, biodiversidad). Cada objetivo se alinea verticalmente con los planes sectoriales superiores y horizontalmente con los ODS."
+  },
+  {
+    "id": 89,
+    "pregunta": "¿Qué objetivos estratégicos tiene la Fuerza Aérea Colombiana para ejercer el poder aéreo, espacial y ciberespacial?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana ha definido como objetivos estratégicos principales: 1) Ejercer y proteger el poder aéreo, espacial y ciberespacial, 2) Preservar y sostener capacidades operacionales, 3) Contribuir al control territorial y protección de recursos naturales, y 4) Fortalecer la seguridad hemisférica. Estos objetivos se alinean con el Plan Estratégico Militar para mantener superioridad operacional y capacidades disuasivas."
+  },
+  {
+    "id": 90,
+    "pregunta": "¿Cómo contribuye el PEI de la Fuerza Aérea Colombiana al desarrollo nacional según los pactos del PND?",
+    "respuesta": "Según los documentos proporcionados, el PEI contribuye al Plan Nacional de Desarrollo mediante: 1) El Pacto por la Legalidad (control territorial y seguridad ciudadana), 2) El Pacto por la Equidad (protección a comunidades vulnerables), y 3) El Pacto por la Construcción de Paz (estabilización de territorios). La FAC apoya estos pactos con capacidades de vigilancia aérea, inteligencia, transporte estratégico y protección de infraestructura crítica, alineándose con los ODS 16 (Paz) y 9 (Industria e Innovación)."
+  },
+  {
+    "id": 91,
+    "pregunta": "¿Qué aspectos de gestión institucional incluye el PEI de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, el PEI de la Fuerza Aérea Colombiana incluye objetivos transversales de gestión institucional como: 1) Consolidar la autoridad aeronáutica de Estado, 2) Fortalecer relaciones estratégicas nacionales, 3) Promover cultura de innovación tecnológica, 4) Fidelizar y desarrollar el talento humano, y 5) Fortalecer la gestión jurídica. Estos aspectos buscan mejorar la eficiencia, transparencia y legitimidad institucional, alineados con las políticas de buen gobierno."
+  },
+  {
+    "id": 92,
+    "pregunta": "¿Cómo implementa la Fuerza Aérea Colombiana el Modelo Integrado de Planeación y Gestión (MIPG)?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana implementa el MIPG mediante 17 planes específicos que cubren áreas como: gestión documental, adquisiciones, austeridad, tecnologías de información, seguridad digital, anticorrupción, bienestar del personal, capacitación y participación ciudadana. Estos planes están integrados en las iniciativas del Plan Estratégico Institucional y cumplen con los requerimientos de la Dimensión 2 del modelo, incluyendo administración de riesgos, programación presupuestal y ejecución del gasto."
+  },
+  {
+    "id": 93,
+    "pregunta": "¿Qué metodología utiliza la Fuerza Aérea Colombiana para su mapa estratégico?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana fundamenta su mapa estratégico en la metodología Balanced Scorecard (BSC), adaptando tres de sus cuatro perspectivas tradicionales. Este enfoque busca balancear crecimiento e innovación, procesos internos y recursos, permitiendo una visión integral de la institución mediante objetivos organizados en perspectivas estratégicas que facilitan el monitoreo del desempeño institucional hacia el cumplimiento de la visión 2022."
+  },
+  {
+    "id": 94,
+    "pregunta": "¿Cómo aborda la Fuerza Aérea Colombiana la perspectiva de partes interesadas en su mapa estratégico?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana enfoca la perspectiva de partes interesadas en satisfacer necesidades de grupos de valor internos y externos, alineado con su misión constitucional y contribución a la seguridad hemisférica. Los objetivos en esta perspectiva buscan responder a expectativas de beneficiarios como la población civil, instituciones públicas, entes de control y aliados internacionales, garantizando transparencia y servicio efectivo."
+  },
+  {
+    "id": 95,
+    "pregunta": "¿Qué importancia tienen los procesos internos en la estrategia de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, los procesos internos son fundamentales en la estrategia de la Fuerza Aérea Colombiana, ya que a través de esta perspectiva se plantean objetivos críticos que impactan directamente a las partes interesadas y permiten alcanzar la visión 2042. La FAC ha establecido cuatro líneas de esfuerzo en procesos internos: empleo y protección de la fuerza, integridad, gestión institucional y proyección, buscando mejora continua en todas sus operaciones."
+  },
+  {
+    "id": 96,
+    "pregunta": "¿Cómo enfoca la Fuerza Aérea Colombiana el aprendizaje y la innovación en su estrategia?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana enfoca el aprendizaje y la innovación desde tres ámbitos: 1) Tecnología y desarrollo, 2) Capacitación del talento humano, y 3) Ambiente laboral. Los objetivos en esta perspectiva proporcionan herramientas y capacidades para mejorar eficiencia en procesos internos, siendo la base para alcanzar la visión estratégica. Esto incluye formación especializada, desarrollo de tecnologías propias y fomento de cultura innovadora."
+  },
+  {
+    "id": 97,
+    "pregunta": "¿Cuáles son las líneas de esfuerzo estratégico de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana ha definido cuatro líneas de esfuerzo estratégico: 1) Empleo y protección de la fuerza (seguridad nacional y uso eficiente de recursos), 2) Integridad y transparencia (control institucional y rendición de cuentas), 3) Gestión y desempeño institucional (armonización de procesos y servicio al ciudadano), y 4) Proyección de la fuerza (preparación para desafíos futuros y fortalecimiento multidimensional). Estas líneas orientan todas las acciones estratégicas."
+  },
+  {
+    "id": 98,
+    "pregunta": "¿Qué compromisos refleja la línea de 'Integridad y transparencia' de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según los documentos proporcionados, la línea de 'Integridad y transparencia' refleja el compromiso de la Fuerza Aérea Colombiana con: 1) Publicidad de políticas y procedimientos, 2) Control institucional en el cumplimiento de normas, 3) Rendición de cuentas, y 4) Prevención de la corrupción. Esto se materializa mediante el Plan Anticorrupción y de Atención Ciudadana, alineado con los requerimientos del MIPG, garantizando ética institucional y confianza pública en sus actuaciones."
+  },
+  {
+    "id": 99,
+    "pregunta": "¿Cuáles son los objetivos estratégicos de la Fuerza Aérea Colombiana en la perspectiva de partes interesadas?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana tiene tres objetivos clave en la perspectiva de partes interesadas: 1) Contribuir a la seguridad y asistencia humanitaria hemisférica mediante cooperación con socios estratégicos contra amenazas transnacionales, 2) Garantizar la defensa y seguridad nacional mediante el poder aéreo, espacial y ciberespacial, protegiendo soberanía e integridad territorial, y 3) Mantener integridad y legitimidad institucional mediante transparencia, profesionalismo y cumplimiento estricto de la misión constitucional."
+  },
+  {
+    "id": 100,
+    "pregunta": "¿Qué objetivos estratégicos tiene la Fuerza Aérea Colombiana en procesos internos?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana establece siete objetivos en procesos internos: 1) Ejercer dominio en aire, espacio y ciberespacio, 2) Contribuir al control territorial y protección de recursos naturales, 3) Preservar el poder aéreo/espacial/ciberespacial, 4) Fortalecer gestión jurídica institucional, 5) Desarrollar capacidades estratégicas, 6) Posicionamiento regional y cooperación internacional, y 7) Consolidar autoridad aeronáutica estatal. Estos objetivos buscan eficiencia operativa y alineación con los fines del Estado."
+  },
+  {
+    "id": 101,
+    "pregunta": "¿Qué objetivos estratégicos tiene la Fuerza Aérea Colombiana en procesos internos?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana establece siete objetivos en procesos internos: 1) Ejercer dominio en aire, espacio y ciberespacio, 2) Contribuir al control territorial y protección de recursos naturales, 3) Preservar el poder aéreo/espacial/ciberespacial, 4) Fortalecer gestión jurídica institucional, 5) Desarrollar capacidades estratégicas, 6) Posicionamiento regional y cooperación internacional, y 7) Consolidar autoridad aeronáutica estatal. Estos objetivos buscan eficiencia operativa y alineación con los fines del Estado."
+  },
+  {
+    "id": 281,
+    "pregunta": "¿Cómo aborda la Fuerza Aérea Colombiana la integridad y transparencia como objetivos estratégicos?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana enfoca la integridad como atributo fundamental de sus miembros, exigiendo conducta moral ejemplar basada en principios militares. En transparencia, aplica el principio de publicidad de la información (Ley 1712 de 2014), facilitando acceso a datos públicos salvo restricciones legales. Estos objetivos se materializan en planes anticorrupción, rendición de cuentas y controles institucionales que validan procesos y decisiones."
+  },
+  {
+    "id": 282,
+    "pregunta": "¿Qué objetivos tiene la Fuerza Aérea Colombiana en aprendizaje e innovación?",
+    "respuesta": "Según la información recibida, la Fuerza Aérea Colombiana plantea tres objetivos en aprendizaje e innovación: 1) Consolidar sistema de ciencia/tecnología/innovación para eficiencia operativa, 2) Desarrollar talento humano competente y motivado como soporte institucional, y 3) Fortalecer doctrina y gestión del conocimiento como activo estratégico. Estos buscan mantener ventajas tecnológicas y capital humano calificado para enfrentar desafíos futuros."
+  },
+  {
+    "id": 283,
+    "pregunta": "¿Qué iniciativas estratégicas implementa la Fuerza Aérea Colombiana para cumplir sus objetivos?",
+    "respuesta": "Según los documentos proporcionados, la Fuerza Aérea Colombiana ejecuta 17 iniciativas estratégicas clave, entre ellas: 1) Planes de posicionamiento nacional e internacional, 2) Estudio prospectivo FAC 2042, 3) Fortalecimiento de investigación científica, 4) Actualización doctrinal, 5) Desarrollo espacial (incluyendo FACSAT), 6) Gestión del talento humano hasta 2025, y 7) Protección de recursos naturales. Estas iniciativas tienen responsables específicos y horizontes temporales definidos entre 1 año y 22 años (2042)."
+  },
+  {
+    "id": 284,
+    "pregunta": "¿Cómo se organizan las iniciativas estratégicas de la Fuerza Aérea Colombiana?",
+    "respuesta": "Según la información recibida, las iniciativas estratégicas de la Fuerza Aérea Colombiana se organizan en: 1) Relacionamiento estratégico (nacional e internacional), 2) Desarrollo capacidades (tecnológicas, espaciales, doctrinales), 3) Gestión institucional (logística, jurídica, talento humano), y 4) Apoyo a misiones estatales (gestión de riesgos, protección ambiental). Cada iniciativa tiene dependencia líder, fechas de inicio/finalización (entre 1-22 años), y se articulan en el Plan de Acción institucional para orientar recursos y esfuerzos."
+  }
+]

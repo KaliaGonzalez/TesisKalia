@@ -1,0 +1,27 @@
+[
+    {
+      "id": 51,
+      "pregunta": "¿Cuál es el objetivo del reglamento del cuerpo de profesionales oficiales de reserva de las fuerzas militares?",
+      "respuesta": "tiene por objeto establecer las normas que rigen para el personal que integra el cuerpo de los profesionales oficiales de reserva que forman parte de las reservas de las fuerzas militares"
+    },
+    {
+      "id": 52,
+      "pregunta": "¿Cuál es el perfil de los profesionales segun el reglamento del cuerpo de profesionales oficiales de reserva de las fuerzas militares?",
+      "respuesta": "son profesionales oficiales de reserva de las fuerzas militares los profesionales con título de formación universitaria completa conforme con los términos de la ley 30 de 1992 o a las normas de educación superior vigentes en todo tiempo"
+    },
+    {
+      "id": 53,
+      "pregunta": "¿Cómo se eligen a los candidatos a profesional oficial de reserva?",
+      "respuesta": "serán preseleccionados por los comandantes de fuerza o sus delegados en cada guarnición militar mediante comités integrados por oficiales superiores y profesionales oficiales de reserva de mayor antigüedad orgánicos de cada unidad"
+    },
+    {
+      "id": 54,
+      "pregunta": "¿Cómo se pueden realizar los cursos para formación y ascenso de los profesionales oficiales de reserva?",
+      "respuesta": "solo podrán realizarse con autorización expresa del comando general de las fuerzas militares y versarán sobre los programas de instrucción previamente preparados por los comandos de fuerza y aprobados por el comando general de las fuerzas militares"
+    },
+    {
+      "id": 55,
+      "pregunta": "¿Cómo preparan los programas para los profesionales oficiales de reserva?",
+      "respuesta": "diseñan los programas de instrucción capacitación y entrenamiento en áreas de preparación psicológica física técnica táctica y de administración logística"
+    }
+]

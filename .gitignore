@@ -1,0 +1,38 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Database and Vector Stores (Local generated data)
+*.sqlite3
+chroma_db/
+chroma_db_*/
+chroma.sqlite3
+test_historia_db/
+test_historia_storage/
+
+# Specific project paths users might want to ignore if they are generated
+# (Adjust if you want to keep some of these)
+RAG_benchmark/chroma_db/
+RAG_benchmark/chroma_db_4/
+RAG_benchmark/chroma_db_persistente_v3/
+RAG_benchmark/data/chroma_db/
+RAG_benchmark/pre_processing/data/chroma_db/
+RAG_benchmark/test_historia_db/
+RAG_benchmark/test_historia_storage/
+
+# System files
+.DS_Store
+Thumbs.db

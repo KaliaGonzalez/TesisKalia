@@ -1,0 +1,501 @@
+[
+  {
+    "id": 1,
+    "pregunta": "¿Cuál es el lema que inspira la Fuerza Aérea Colombiana?",
+    "respuesta": "\"Sic itur ad astra\" o \"así se va a las estrellas\"."
+  },
+  {
+    "id": 2,
+    "pregunta": "¿Cuál es el significado del lema?",
+    "respuesta": "Se trata de evolucionar de forma permanente, volando más alto, más lejos y más rápido en la protección de los colombianos y el Estado de Derecho, siempre volando, entrenando y combatiendo para vencer."
+  },
+  {
+    "id": 3,
+    "pregunta": "¿En qué se soporta la estrategia para el desarrollo aéreo y espacial de la Fuerza Aérea Colombiana 2042?",
+    "respuesta": "Se soporta en el espíritu de evolución, innovación y transformación permanente, teniendo como propósito la consolidación de una Fuerza polivalente e interoperable que cumpla los más altos estándares internacionales y se consolide como preferente y líder regional."
+  },
+  {
+    "id": 4,
+    "pregunta": "¿Qué es el marco estratégico?",
+    "respuesta": "Marco estratégico: que permite entender la naturaleza y alcance de la misión, visión, principios, valores, virtudes y políticas que fundamentan los esfuerzos institucionales."
+  },
+  {
+    "id": 5,
+    "pregunta": "¿Cuáles son los valores de la FAC?",
+    "respuesta": "Honor, Rectitud, confianza, Sinceridad, confiabilidad, valor, fuerza, disciplina, compromiso, orgullo y lealtad."
+  },
+  {
+    "id": 6,
+    "pregunta": "¿Cuáles son las virtudes de la FAC?",
+    "respuesta": "Justicia, templanza, mística, fortaleza y prudencia."
+  },
+  {
+    "id": 7,
+    "pregunta": "¿Cuáles son los cuatro ámbitos fundamentales de las veinte políticas planteadas por la institución?",
+    "respuesta": "Talento humano, misionalidad, soporte, e inspección y control."
+  },
+  {
+    "id": 8,
+    "pregunta": "¿Cómo es el nivel estratégico organizacional de la FAC?",
+    "respuesta": "Está conformado por el Comando de la Fuerza (COFAC), el Segundo Comando y Jefatura de Estado Mayor (JEMFA), la Inspección General FAC (IGEFA) y las dependencias del Estado Mayor."
+  },
+  {
+    "id": 9,
+    "pregunta": "¿Qué es el Estado Mayor?",
+    "respuesta": "El Estado Mayor es el grupo de personas con la función de asistir al Comandante en el ejercicio del mando y en la toma de decisiones. Hay dos clases de estado mayor, general y especial."
+  },
+  {
+    "id": 10,
+    "pregunta": "¿Qué es el COAES (Comando de Operaciones Aéreas y Espaciales)?",
+    "respuesta": "Grupo donde se integran todos los esfuerzos operacionales bajo la misma estructura, optimizando la toma de decisiones y la asignación de recursos, así como el control centralizado y la ejecución descentralizada como principio del poder aéreo."
+  },
+  {
+    "id": 11,
+    "pregunta": "¿Qué es el CODAF (Comando de Apoyo a la Fuerza)?",
+    "respuesta": "Es la función doctrinaria que compila todas las actividades necesarias para que la FAC cuente con los recursos suficientes para cumplir con la misión constitucional. Tiene la misión de proporcionar el soporte y los servicios para las operaciones aéreas, unificar los procesos que trabajaban para el soporte funcional de la logística y proyectar una logística moderna, proactiva y eficiente."
+  },
+  {
+    "id": 12,
+    "pregunta": "¿Qué es el CODEH (Comando de Desarrollo Humano)?",
+    "respuesta": "Es el responsable de articular los componentes de la gestión humana y la administración de personal (tanto militar como civil), a través de sus Jefaturas de Potencial Humano, Educación Aeronáutica y Espacial, Familia y Bienestar Social, Relaciones Laborales y Salud, promoviendo un ambiente laboral favorable para el cumplimiento de la misión y la consecución de los objetivos institucionales."
+  },
+  {
+    "id": 13,
+    "pregunta": "¿Cuáles son las cinco áreas misionales propias de la Fuerza Pública?",
+    "respuesta": "Defensa nacional, convivencia y seguridad ciudadana, seguridad pública, cooperación internacional y gestión y apoyo institucional."
+  },
+  {
+    "id": 14,
+    "pregunta": "¿Cómo es la segmentación de los grupos de valor?",
+    "respuesta": "La segmentación de los grupos de valor está dada por la población, direccionamiento estratégico y aeronáutica y otros."
+  },
+  {
+    "id": 15,
+    "pregunta": "¿Qué son las Tablas de Valoración Documental (TVD) de la Fuerza Aérea Colombiana?",
+    "respuesta": "Es un instrumento de soporte para recuperar la memoria institucional, mediante la aplicación de criterios archivísticos y que permitan realizar el plan de transferencias secundarias."
+  },
+  {
+    "id": 16,
+    "pregunta": "¿Cuáles son los deberes de los contratistas de la Fuerza Aérea Colombiana?",
+    "respuesta": "Brindar trato respetuoso, considerado y diligente a todas las personas sin distinción alguna, Garantizar atención presencial y/o virtual al público, como mínimo durante cuarenta (40) horas a la semana, Atender a todas las personas que hubieran ingresado a las oficinas, en el horario establecido para la atención al público, Garantizar el debido proceso en toda clase de actuaciones administrativas y Todos los demás que señalen la Constitución Política de Colombia y la normatividad vigente."
+  },
+  {
+    "id": 17,
+    "pregunta": "¿Qué es la Air Traffic Management (ATM)?",
+    "respuesta": "Tiene como finalidad obtener un movimiento seguro, ordenado y rápido del tránsito aéreo tomando como base el empleo eficaz del espacio aéreo."
+  },
+  {
+    "id": 18,
+    "pregunta": "¿Qué es el ciberespacio?",
+    "respuesta": "Es un ambiente artificial, diferente de los ambientes naturales como el aire, la tierra, el agua y el espacio. Está caracterizado por permitir el alcance global y por la interdependencia de la infraestructura tecnológica de redes de información."
+  },
+  {
+    "id": 19,
+    "pregunta": "¿Qué significa OODA?",
+    "respuesta": "Traduce Observar, Orientar, Decidir y Actuar."
+  },
+  {
+    "id": 20,
+    "pregunta": "¿Qué es la Joint STARS?",
+    "respuesta": "Es un jet con capacidad de encontrar blancos muy pequeños a grandes distancias, incluyendo vehículos blindados, y ver a través de cualquier condición climática, cubriendo un área extensa durante misiones prolongadas."
+  },
+  {
+    "id": 21,
+    "pregunta": "¿Qué es el Estado Mayor General?",
+    "respuesta": "Conformado a su vez por dos Estados Mayores Orgánicos: el Estado Mayor Personal y el Estado Mayor de Planeación y Coordinación, con el propósito de asesorar al Comandante de la FAC en aquellos temas de su directa injerencia o interés."
+  },
+  {
+    "id": 22,
+    "pregunta": "¿Qué es el Estado Mayor Especial?",
+    "respuesta": "Corresponde a un grupo de especialistas que asesoran al Comandante en asuntos administrativos, técnicos, profesionales y en áreas específicas del conocimiento, cuando la situación así lo requiera, para el estudio, análisis y solución de problemas institucionales."
+  },
+  {
+    "id": 23,
+    "pregunta": "¿Para las FAC cuál es la razón de combatir?",
+    "respuesta": "Es la razón de ser de una fuerza militar para defender la nación, y la FAC combate con todas sus capacidades para vencer y dominar en el aire, espacio y ciberespacio."
+  },
+  {
+    "id": 24,
+    "pregunta": "¿Qué ha fortalecido los esfuerzos institucionales desarrollados en el último siglo?",
+    "respuesta": "Han permitido fortalecer la Fuerza Aérea y salvaguardar la estrategia nacional hacia un futuro que demanda una Fuerza innovadora, polivalente, interoperable con alcance global y capacidades disuasivas reales, permanentes y sostenibles."
+  },
+  {
+    "id": 25,
+    "pregunta": "¿Qué es un principio?",
+    "respuesta": "Es una norma e idea incuestionable que rige el pensamiento y la conducta; es una verdad fundamental que inspira y motiva la actuación humana."
+  },
+  {
+    "id": 26,
+    "pregunta": "¿Qué son los valores?",
+    "respuesta": "Son aquellas cualidades que producen comportamientos beneficiando tanto a quienes los practican como a aquellos que los reciben."
+  },
+  {
+    "id": 27,
+    "pregunta": "¿Qué es el honor según las FAC?",
+    "respuesta": "Es la cualidad moral que lleva al sujeto a cumplir con los deberes propios respecto al prójimo y a sí mismo."
+  },
+  {
+    "id": 28,
+    "pregunta": "¿Qué es la lealtad según las FAC?",
+    "respuesta": "Es la forma de expresar respeto hacia sí mismo, las demás personas y la Institución."
+  },
+  {
+    "id": 29,
+    "pregunta": "¿Qué es la virtud según las FAC?",
+    "respuesta": "Una virtud es aquella fuerza interior o disposición constante para hacer lo que es éticamente correcto, resultado del ejercicio o el aprendizaje."
+  },
+  {
+    "id": 30,
+    "pregunta": "¿Qué contienen las políticas institucionales de las FAC?",
+    "respuesta": "Contienen una serie de guías para sus miembros, las cuales proporcionan un marco de acción lógico y consistente para la toma de decisiones a todo nivel."
+  },
+  {
+    "id": 31,
+    "pregunta": "¿En qué están enmarcadas las acciones de la Fuerza Aérea?",
+    "respuesta": "Están enmarcadas en la Constitución y la Ley."
+  },
+  {
+    "id": 32,
+    "pregunta": "¿En qué se basará el desarrollo personal y la transferencia de conocimientos?",
+    "respuesta": "Formación moral, física, intelectual, humanística, técnica y profesional de mujeres y hombres visionarios, que fortalezcan el sostenimiento de las capacidades y obedezcan a necesidades institucionales."
+  },
+  {
+    "id": 33,
+    "pregunta": "¿En qué ejercerá liderazgo la Fuerza Aérea?",
+    "respuesta": "Autoridad Aeronáutica para la Aviación de Estado en Colombia, normalizando y regulando los métodos y procedimientos, encaminados a estandarizar las actividades aeronáuticas y fortalecer la seguridad operacional."
+  },
+  {
+    "id": 34,
+    "pregunta": "¿En qué se soportará la planeación estratégica de la Fuerza Aérea Colombiana?",
+    "respuesta": "Se soportará en su propio Modelo de Gestión, consolidando una cultura institucional basada en principios, valores, cumplimiento de la norma, mejoramiento continuo y la búsqueda permanente de la excelencia."
+  },
+  {
+    "id": 35,
+    "pregunta": "¿Cuál es el fin de impulsar proyectos de investigación, ciencia, innovación y tecnología?",
+    "respuesta": "Se desarrollará con el fin de satisfacer necesidades de la Fuerza, cumplir la misión y avanzar tecnológicamente, permitiendo el fortalecimiento y la sostenibilidad de las capacidades."
+  },
+  {
+    "id": 36,
+    "pregunta": "¿En qué se enmarca la ejecución de los recursos públicos de las FAC?",
+    "respuesta": "En la política de austeridad."
+  },
+  {
+    "id": 37,
+    "pregunta": "¿Cuál es el objetivo de tener en cuenta la política de austeridad?",
+    "respuesta": "El objetivo es lograr eficiencia del gasto, así como el uso responsable y razonable de los mismos."
+  },
+  {
+    "id": 38,
+    "pregunta": "¿Qué se construirá para fortalecer la diplomacia de la defensa?",
+    "respuesta": "Se construirán alianzas estratégicas, que contribuyan al cumplimiento de la misión y al logro de la visión institucional."
+  },
+  {
+    "id": 39,
+    "pregunta": "¿Qué es la seguridad para las FAC?",
+    "respuesta": "La seguridad en la Fuerza Aérea Colombiana es un principio institucional. Es responsabilidad de todos los miembros y deberá estar presente en todas las actividades y procesos diarios."
+  },
+  {
+    "id": 40,
+    "pregunta": "¿Qué significan las siglas AAAES?",
+    "respuesta": "Autoridad Aeronáutica de la Aviación del Estado."
+  },
+  {
+    "id": 41,
+    "pregunta": "¿Cuál es la misión del Comando de la Fuerza?",
+    "respuesta": "Comandar, instruir y liderar para el empleo de la Fuerza Aérea Colombiana."
+  },
+  {
+    "id": 42,
+    "pregunta": "¿Quiénes hacen parte del Estado Mayor Personal?",
+    "respuesta": "La Ayudantía Personal y las Oficinas de Autoridad Aeronáutica Aviación de Estado, Asuntos Internacionales, Comunicaciones Estratégicas e Investigaciones Disciplinarias y Administrativas del Comandante."
+  },
+  {
+    "id": 43,
+    "pregunta": "¿Cuál es la misión de la Inspección General Fuerza Aérea - IGEFA?",
+    "respuesta": "Verificar la eficacia, eficiencia y efectividad de la Fuerza Aérea Colombiana y garantizar la seguridad operacional para el mejoramiento continuo de la Institución."
+  },
+  {
+    "id": 44,
+    "pregunta": "¿Qué permiten las áreas misionales en las FAC?",
+    "respuesta": "Permiten que los estudios de contexto y prospectiva identifiquen puntualmente los retos y amenazas que podrían afectar la defensa y seguridad de la nación."
+  },
+  {
+    "id": 45,
+    "pregunta": "¿En qué se enmarca el valor de la FAC?",
+    "respuesta": "En la identificación, el sostenimiento y el desarrollo de las capacidades requeridas para enfrentar los retos actuales y potenciales en cada una de las áreas misionales."
+  },
+  {
+    "id": 46,
+    "pregunta": "¿Qué es la protección?",
+    "respuesta": "Es el conjunto de habilidades que preservan la fuerza, la población civil y los activos estratégicos."
+  },
+  {
+    "id": 47,
+    "pregunta": "¿Qué se entiende por 'fuegos' en la FAC?",
+    "respuesta": "Es el conjunto de habilidades que permiten el uso de sistemas de armas, para cumplir la misión y mantener la superioridad."
+  },
+  {
+    "pregunta": "¿En qué aporta la Fuerza Aérea al Estado?",
+    "respuesta": "Mediante una oferta de servicios diferenciada y enmarcada en Defensa de la Nación, respondiendo a las necesidades de los grupos de valor mediante capacidades distintivas de la Institución."
+  },
+  {
+    "id": 49,
+    "pregunta": "¿Qué significan las siglas SNGRD?",
+    "respuesta": "Sistema Nacional de Gestión del Riesgo de Desastres."
+  },
+  {
+    "id": 50,
+    "pregunta": "¿En el año 2022, cómo se distingue la Fuerza Aérea Colombiana?",
+    "respuesta": "Se distingue como referente regional, siendo innovadora, interoperable en ejercicios multinacionales, con alcance regional, capacidades defensivas y de operaciones multidominio, gracias a un trabajo institucional orientado a la transformación."
+  },
+  {
+    "id": 51,
+    "pregunta": "¿Cuál es el objetivo del reglamento del cuerpo de profesionales oficiales de reserva de las fuerzas militares?",
+    "respuesta": "Tiene por objeto establecer las normas que rigen para el personal que integra el cuerpo de los Profesionales Oficiales de Reserva que forman parte de las reservas de las Fuerzas Militares."
+  },
+  {
+    "id": 52,
+    "pregunta": "¿Cuál es el perfil de los profesionales según el reglamento del cuerpo de profesionales oficiales de reserva de las fuerzas militares?",
+    "respuesta": "Son Profesionales Oficiales de Reserva de las Fuerzas Militares, los profesionales con título de formación universitaria completa conforme con los términos de la Ley 30 de 1992 o a las normas de educación superior vigentes en todo tiempo."
+  },
+  {
+    "id": 53,
+    "pregunta": "¿Cómo se eligen a los candidatos a Profesional Oficial de Reserva?",
+    "respuesta": "Serán preseleccionados por los Comandantes de Fuerza o sus delegados en cada Guarnición Militar, mediante comités integrados por Oficiales Superiores y Profesionales Oficiales de Reserva de mayor antigüedad orgánicos de cada Unidad"
+  },
+  {
+    "id": 54,
+    "pregunta": "¿Cómo se pueden realizar los cursos para formación y ascenso de los profesionales oficiales de reserva?",
+    "respuesta": "Sólo podrán realizarse con autorización expresa del Comando General de las Fuerzas Militares y versarán sobre los programas de instrucción previamente preparados por los Comandos de Fuerza y aprobados por el Comando General de las Fuerzas Militares."
+  },
+  {
+    "id": 55,
+    "pregunta": "¿Cómo preparan los programas para los profesionales oficiales de reserva?",
+    "respuesta": "Diseñan los programas de instrucción, capacitación y entrenamiento, en áreas de preparación sicológica, física, técnica, táctica y de administración logística."
+  },
+  {
+    "id": 56,
+    "pregunta": "¿Cuándo es el día de los profecionales oficiales de reserva?",
+    "respuesta": "Se establece como Día de los Profesionales Oficiales de Reserva el 15 de mayo y su celebración será el segundo fin de semana del mismo mes de cada año."
+  },
+  {
+    "id": 57,
+    "pregunta": "¿Cuál es el lema que se encuentra en el escudo de los profesionales oficiales de reserva?",
+    "respuesta": "\"Todo por la Patria\""
+  },
+  {
+    "id": 58,
+    "pregunta": "¿De qué color son las 3 cabrías del escudo?",
+    "respuesta": "La superior izquierda tiene fondo en gules, o sea el rojo del Ejército; la superior derecha tiene color azul oscuro o sea el color de la Armada; y la cabría inferior tiene fondo azul claro, color de la Fuerza Aérea."
+  },
+  {
+    "id": 59,
+    "pregunta": "¿Cuáles son los tres tipos de escudos?",
+    "respuesta": "Escudo por tiempo de servicio, Escudo Honorario, Escudo al Merito Academico."
+  },
+  {
+    "id": 60,
+    "pregunta": "¿Cuáles son las insignias y distintivos de los profesionales oficiales de reserva?",
+    "respuesta": "Insignias de grado,Distintivo de profesión y Clases de alas de piloto."
+  },
+  {
+    "id": 61,
+    "pregunta": "¿Qué es la insignia de grado?",
+    "respuesta": "Las insignias de grado para el Ejército y la Fuerza Aérea son las mismas de los oficiales en actividad."
+  },
+  {
+    "id": 62,
+    "pregunta": "¿Cuál es la edad maxima para utilizar el uniforme?",
+    "respuesta": "75 años"
+  },
+  {
+    "id": 63,
+    "pregunta": "¿Qué elemento no pueden usar los Profesionales Oficiales de Reserva?",
+    "respuesta": "Los Profesionales Oficiales de Reserva no podrán hacer uso de sables y/o espadas ni utilizar el anillo de la Fuerza a la que pertenecen."
+  },
+  {
+    "id": 64,
+    "pregunta": "¿Qué deben portar obligatoriamente los profesionales oficiales e reserva?",
+    "respuesta": "Están obligados a portar dentro de las instalaciones militares, el fichero de identificación militar que establezca la respectiva unidad"
+  },
+  {
+    "id": 65,
+    "pregunta": "¿Qué documento tienen como identificacion los profesionales oficiales de reserva?",
+    "respuesta": "Tendrán como identificación el documento denominado Cédula Militar"
+  },
+  {
+    "id": 66,
+    "pregunta": "¿Qué entidad puede expedir la cedula militar?",
+    "respuesta": "Dirección de Reclutamiento y Movilización de la respectiva Fuerza"
+  },
+  {
+    "id": 67,
+    "pregunta": "¿A cuáles grados los profesionales oficiales de reserva pueden solicitar reingreso?",
+    "respuesta": "A partir del grado de Capitán o Teniente de Navío."
+  },
+  {
+    "id": 68,
+    "pregunta": "¿Quién recibe y analiza las solicitudes de reingreso de los profesionales oficiales de reserva?",
+    "respuesta": "Al Comandante General de las Fuerzas Militares"
+  },
+  {
+    "id": 69,
+    "pregunta": "¿Cuál es la causa de desvincular a profecionales oficiales de reserva?",
+    "respuesta": "Presenten antecedentes penales, excluidos los delitos culposos, o disciplinarios."
+  },
+  {
+    "id": 70,
+    "pregunta": "¿Qué pasa si un oficial no apruebe un curso de ascenso?",
+    "respuesta": "Se realiza la desvinculacion del Cuerpo de Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 71,
+    "pregunta": "¿Qué es la desvinculacion?",
+    "respuesta": "La desvinculación de Profesionales Oficiales de Reserva es la situación en la que los Profesionales Oficiales de Reserva, sin perder su grado militar, por disposición de autoridad competente, cesan en la obligación de seguir prestando sus servicios en forma voluntaria a la Fuerza."
+  },
+  {
+    "id": 72,
+    "pregunta": "¿Cuáles son los distintos tipos de listas de clasificacion?",
+    "respuesta": "Lista numero uno ,lista numero dos, lista numero tres, lista numero cuatro y lista numero cinco."
+  },
+  {
+    "id": 73,
+    "pregunta": "¿Qué es la accion negativa?",
+    "respuesta": "La Acción Negativa es el registro consignado de carácter negativo, a causa de una acción u omisión y que se refiere a un hecho, actitud o conducta perjudicial, desfavorable, ineficaz y digna de censura."
+  },
+  {
+    "id": 74,
+    "pregunta": "¿Qué es la accion positiva?",
+    "respuesta": "La Acción Positiva es el registro en el folio de vida de carácter positivo que se refiere a un hecho, desempeño, actitud, estímulo o habilidad, benéfica, favorable, eficaz y digna de realce por el esfuerzo realizado para lograr el objetivo propuesto."
+  },
+  {
+    "id": 75,
+    "pregunta": "¿Cuáles son los niveles de calidad?",
+    "respuesta": "Excelente, Muy Bueno, Bueno, Regular y Deficiente"
+  },
+  {
+    "id": 76,
+    "pregunta": "¿Qué es le Folio de Vida?",
+    "respuesta": "Es un instrumento que sirve para registrar de manera oportuna, ordenada, clara y concreta las actuaciones y desempeños significativos de carácter positivo o negativo del personal evaluado"
+  },
+  {
+    "id": 77,
+    "pregunta": "¿Qué es la evaluacion y clasificacion de profesionales oficiales de reserva?",
+    "respuesta": "Es un instrumento del proceso para evaluación y clasificación anual, es diligenciada por las autoridades evaluadora y revisora. Concreta y define el desempeño profesional"
+  },
+  {
+    "id": 78,
+    "pregunta": "¿Cuáles son los documentos del proceso de evaluacion?",
+    "respuesta": "Folio de Vida y Evaluación del Profesional Oficial de Reserva."
+  },
+  {
+    "id": 79,
+    "pregunta": "¿Cuál es el objetivo de los documentos de evaluacion?",
+    "respuesta": "Tienen el propósito de suministrar elementos de juicio para sustentar las decisiones en la administración de personal y contribuir a la formación y superación profesional del evaluado"
+  },
+  {
+    "id": 80,
+    "pregunta": "¿A quiénes se les denomina \"Autoridad Revisora\"?",
+    "respuesta": "Los jefes de las Direcciones de Acción Integral de las Fuerzas, los jefes de Estado Mayor, Subdirectores, Ejecutivos y Segundos Comandantes y sus equivalentes en las demás Fuerzas en servicio activo o de línea"
+  },
+  {
+    "id": 81,
+    "pregunta": "¿A qué se le denomina \"Autoridad Evaluadora\"?",
+    "respuesta": "Al oficial en servicio activo y/o Profesional Oficial de Reserva que dentro de la estructura orgánica de la unidad, dependencia o repartición, sea el inmediato superior del evaluado, responsable de su dirección, control y progreso"
+  },
+  {
+    "id": 82,
+    "pregunta": "¿Cuáles son las dos autoridades que intervienen en el proceso de evaluacion?",
+    "respuesta": "Evaluadoras y revisoras"
+  },
+  {
+    "id": 83,
+    "pregunta": "¿Cómo es el periodo de evaluacion?",
+    "respuesta": "El período de evaluación es anual y se establece del 1° de octubre al 30 de septiembre del año siguiente"
+  },
+  {
+    "id": 84,
+    "pregunta": "¿Qué es la disciplina segun los profesionales oficiales de reserva?",
+    "respuesta": "Consiste en mandar y obedecer dentro de las atribuciones del superior y las obligaciones y deberes del subalterno, en un criterio profesional. Implica la observancia de las normas y órdenes que consagren el deber profesional y legal"
+  },
+  {
+    "id": 85,
+    "pregunta": "¿Cuáles son los tipos de obligaciones que deben cumplir los",
+    "respuesta": "Generales, subordinacion, obediencia, servicio, academica, reserva militar y profesional, cortesia militar y responsabilidad administrativa."
+  },
+  {
+    "id": 86,
+    "pregunta": "¿Cuáles son los estimulos para los oficiales?",
+    "respuesta": "Felicitacion privada, felicitacion publica escrita, mencion honorifica, escudo de la reserva, medalla militar, condecoraciones y premios especiales."
+  },
+  {
+    "id": 87,
+    "pregunta": "¿Qué son las condecoraciones?",
+    "respuesta": "Las condecoraciones se constituyen en la más alta distinción y se otorgan a los Profesionales Oficiales de Reserva de acuerdo con las disposiciones vigentes."
+  },
+  {
+    "id": 88,
+    "pregunta": "¿Qué es el Honor militar?",
+    "respuesta": "Se entiende por Honor Militar el conjunto de cualidades morales y profesionales que sustentan los valores y virtudes militares."
+  },
+  {
+    "id": 89,
+    "pregunta": "¿Qué es el comando de los profesionales de reserva?",
+    "respuesta": "Es el organismo rector de la organización, capacitación, manejo y asignación de los Profesionales Oficiales de Reserva"
+  },
+  {
+    "id": 90,
+    "pregunta": "¿Cómo se puede realizar un cambio de unidad?",
+    "respuesta": "Podrán ser autorizados por necesidades del servicio, mediante Orden Administrativa de Personal OAP y deben ser autorizados por el Comando General de las Fuerzas Militares"
+  },
+  {
+    "id": 91,
+    "pregunta": "¿Qué es el Back Side?",
+    "respuesta": "Nombre dado al piloto ubicado en la silla trasera de la cabina"
+  },
+  {
+    "id": 92,
+    "pregunta": "¿Qué es BRIEFING?",
+    "respuesta": "Procedimiento estandarizado de planeamiento de la misión previo al vuelo"
+  },
+  {
+    "id": 93,
+    "pregunta": "¿Qué es FLIR?",
+    "respuesta": "Equipo de tecnología avanzada, el cual posee el sistema de detectar y ubicar una concentración de calor generada por los cuerpos"
+  },
+  {
+    "id": 94,
+    "pregunta": "¿Qué es la TVD de la FAC?",
+    "respuesta": "Instrumentos de soporte para recuperar la memoria institucional mediante criterios archivísticos y facilitar el plan de transferencias secundarias"
+  },
+  {
+    "id": 95,
+    "pregunta": "¿Qué es ATM de la FAC?",
+    "respuesta": "Sistema que busca un movimiento seguro, ordenado y rápido del tránsito aéreo, optimizando el uso del espacio aéreo disponible basado en tecnología para aumentar el número de operaciones"
+  },
+  {
+    "id": 96,
+    "pregunta": "¿Qué significa las siglas COAMI?",
+    "respuesta": "Comandos de Apoyo a la Misión"
+  },
+  {
+    "id": 97,
+    "pregunta": "¿Cuál es el tiempo minimo de permanencia en el grado Teniente de Navio Mayor?",
+    "respuesta": "5 años."
+  },
+  {
+    "id": 98,
+    "pregunta": "¿Cuál es el tiempo minimo de permanencia en el grado Capitan de Navio?",
+    "respuesta": "6 años"
+  },
+  {
+    "id": 99,
+    "pregunta": "¿Cuál es el tiempo minimo de permanencia en el grado Capitan de Corbeta?",
+    "respuesta": "5 años"
+  },
+  {
+    "id": 100,
+    "pregunta": "¿Cuál es el tiempo minimo de permanencia en el grado Capitan de Fragata?",
+    "respuesta": "6 años"
+  }
+]

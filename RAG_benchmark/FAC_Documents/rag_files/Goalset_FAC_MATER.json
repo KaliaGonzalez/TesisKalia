@@ -1,0 +1,302 @@
+[
+ {
+    "id": 221,
+    "pregunta": "¿Qué es abogar?",
+    "respuesta": "Abogar es una técnica diseñada para elevar la conciencia situacional de otras personas en la cabina. Se utiliza para garantizar que todos los miembros de la tripulación estén al tanto de los eventos, condiciones o riesgos relevantes durante la operación, promoviendo la seguridad y la coordinación en todo momento."
+  },
+  {
+    "id": 222,
+    "pregunta": "¿Qué es acción integral?",
+    "respuesta": "La acción integral es la coordinación permanente entre acciones políticas, económicas, sociales y militares. Su propósito es fortalecer las estructuras básicas del Estado y proteger los derechos y libertades de los ciudadanos, promoviendo así una paz duradera que permita el desarrollo humano dentro del marco constitucional."
+  },
+  {
+    "id": 223,
+    "pregunta": "¿Qué es un ataque a la unidad?",
+    "respuesta": "Un ataque a la unidad se refiere a cualquier acción que ponga en peligro la seguridad física de una unidad militar. Este tipo de ataque se identifica por señales como el sonido continuo de una sirena, disparos de advertencia o alertas a viva voz, activando los protocolos defensivos correspondientes."
+  },
+  {
+    "id": 224,
+    "pregunta": "¿Qué es un ataque aéreo cercano?",
+    "respuesta": "El ataque aéreo cercano es una operación que implica el uso de medios aéreos con capacidad de fuego para atacar objetivos militares específicos. Puede ser planeado o ejecutado de manera inmediata, y tiene como objetivo apoyar directamente a las fuerzas terrestres o a otras unidades en combate cercano."
+  },
+  {
+    "id": 225,
+    "pregunta": "¿Qué es un ataque estratégico?",
+    "respuesta": "Un ataque estratégico es una operación que emplea el poder aéreo y espacial contra los centros vitales del enemigo. Su efecto es de gran magnitud, ya que busca afectar la voluntad de lucha, la capacidad operativa o la libertad de acción del adversario a un nivel estratégico."
+  },
+  {
+    "id": 226,
+    "pregunta": "¿Qué es un briefing meteorológico?",
+    "respuesta": "Un briefing meteorológico es la presentación detallada de las condiciones del tiempo pasadas, actuales y esperadas. Esta exposición puede variar en su alcance dependiendo del tipo de personal y del lugar donde se realice, siendo crucial para la planificación segura de operaciones aéreas."
+  },
+  {
+    "id": 227,
+    "pregunta": "¿Qué es búsqueda y rescate en combate?",
+    "respuesta": "La búsqueda y rescate en combate consiste en operaciones destinadas a localizar y recuperar a tripulaciones de aeronaves o motonaves que han sido accidentadas o derribadas por el enemigo en territorio hostil. Estas acciones son fundamentales para salvaguardar la vida del personal y mantener la moral operativa."
+  },
+  {
+    "id": 228,
+    "pregunta": "¿Qué es un call out?",
+    "respuesta": "Call out es una fraseología estandarizada utilizada en cabina para la ejecución de procedimientos. Su propósito es asegurar que todos los miembros de la tripulación estén sincronizados y al tanto de cada paso durante el vuelo, mejorando la coordinación y reduciendo el riesgo de errores."
+  },
+  {
+    "id": 229,
+    "pregunta": "¿Qué es campo conflicto armado?",
+    "respuesta": "Campo conflicto armado hace referencia al uso de la fuerza por parte de los Estados o a una violencia armada prolongada entre el gobierno y grupos organizados, o entre dichos grupos dentro de un Estado. Es un concepto fundamental en el derecho internacional humanitario para definir escenarios de guerra o insurgencia."
+  },
+  {
+    "id": 230,
+    "pregunta": "¿Qué es captura?",
+    "respuesta": "La captura es la restricción del derecho a la libertad mediante la aprehensión física de una persona implicada en una investigación penal. Esta acción debe seguir los procedimientos legales y ser puesta a disposición de la autoridad judicial competente de forma inmediata, conforme a la Constitución y la ley."
+  },
+  {
+    "id": 231,
+    "pregunta": "¿Qué es la credibilidad de la información de inteligencia no puede ser juzgada?",
+    "respuesta": "Se refiere a situaciones donde no es posible evaluar la confiabilidad de una fuente o agencia de inteligencia debido a la falta de información sobre su experiencia, lealtad o imparcialidad. En estos casos, no se puede emitir un juicio claro sobre la veracidad de los datos proporcionados."
+  },
+  {
+    "id": 232,
+    "pregunta": "¿Qué es la credibilidad de la información de inteligencia regular?",
+    "respuesta": "La credibilidad regular se asigna cuando una fuente o agencia tiene un nivel moderado de confianza, experiencia y lealtad. Aunque sus informes suelen ser útiles, generalmente requieren verificación adicional antes de ser considerados concluyentes en los procesos de análisis de inteligencia."
+  },
+  {
+    "id": 233,
+    "pregunta": "¿Qué es criterio?",
+    "respuesta": "El criterio es la capacidad de tomar decisiones acertadas utilizando los métodos más apropiados según la situación. Se desarrolla a través del proceso de aprendizaje y se basa en un juicio justo y objetivo que permite alcanzar metas y objetivos conforme al contexto y la formación recibida."
+  },
+  {
+    "id": 234,
+    "pregunta": "¿Qué es flexibilidad y versatilidad?",
+    "respuesta": "Flexibilidad y versatilidad son cualidades esenciales del poder aéreo. La flexibilidad permite concentrar fuerza en cualquier lugar y atacar diversas facetas del poder enemigo, mientras que la versatilidad permite el empleo de la fuerza aérea en niveles estratégico, operacional o táctico, adaptándose a diferentes escenarios de combate."
+  },
+  {
+    "id": 235,
+    "pregunta": "¿Qué es FLIR?",
+    "respuesta": "FLIR es un sistema tecnológico avanzado que permite detectar y localizar concentraciones de calor emitidas por cuerpos. Se usa principalmente para observación y adquisición de objetivos en operaciones militares, facilitando la identificación precisa en condiciones de baja visibilidad."
+  },
+  {
+    "id": 236,
+    "pregunta": "¿Qué es guerra?",
+    "respuesta": "La guerra es un fenómeno humano que ocurre dentro de las sociedades y representa un acto de fuerza cuyo objetivo es imponer la voluntad propia sobre un adversario. Más allá de lo meramente militar, la guerra es también un instrumento político utilizado para alcanzar objetivos estratégicos, siendo una expresión de conflicto que puede impactar profundamente en todos los niveles sociales."
+  },
+  {
+    "id": 237,
+    "pregunta": "¿Qué es guerra electrónica?",
+    "respuesta": "La guerra electrónica comprende cualquier acción militar que emplea energía electromagnética con el propósito de neutralizar, reducir o impedir el uso hostil del espectro electromagnético por parte del enemigo. Simultáneamente, busca asegurar el uso efectivo del mismo espectro para las fuerzas propias, afectando no solo radiofrecuencias sino también bandas infrarrojas y electro-ópticas. Tiene dos objetivos principales: desarticular los sistemas de comando y control enemigos, y proteger los sistemas electrónicos propios."
+  },
+  {
+    "id": 238,
+    "pregunta": "¿Qué es grupo armado organizado?",
+    "respuesta": "Un grupo armado organizado es una entidad no estatal involucrada en un conflicto armado. Incluye tanto fuerzas armadas disidentes —que alguna vez fueron parte del aparato estatal y se han rebelado contra el gobierno— como otros grupos armados estructurados. El término se refiere específicamente a su ala militar o armada, y se aplica dentro del marco del derecho internacional humanitario para distinguir entre actores estatales y no estatales en conflicto."
+  },
+  {
+    "id": 239,
+    "pregunta": "¿Qué es instrucción y entrenamiento nocturno?",
+    "respuesta": "La instrucción y entrenamiento nocturno es una práctica de vuelo desarrollada por tripulaciones de la Fuerza Aérea durante las horas comprendidas entre la puesta y la salida del sol. Su objetivo es mantener un alto nivel de eficiencia y preparación profesional, particularmente en operaciones que brindan servicio a la Presidencia de la República, fortaleciendo la capacidad operativa en condiciones de baja visibilidad."
+  },
+  {
+    "id": 240,
+    "pregunta": "¿Qué es inteligencia?",
+    "respuesta": "La inteligencia es el resultado de un proceso de recolección, evaluación e interpretación de información que genera conocimiento útil para la planificación y ejecución de operaciones militares. Este conocimiento abarca las capacidades enemigas y las condiciones del entorno operacional, proporcionando una base confiable para la toma de decisiones estratégicas, tácticas u operacionales."
+  },
+  {
+    "id": 241,
+    "pregunta": "¿Qué es inteligencia de comunicaciones?",
+    "respuesta": "La inteligencia de comunicaciones, también conocida como COMINT, es una disciplina que se basa en la interceptación de emisiones electromagnéticas que contienen contenido comunicacional. Esta inteligencia se utiliza para extraer información clave del enemigo, facilitando la comprensión de sus planes, intenciones y capacidades."
+  },
+  {
+    "id": 242,
+    "pregunta": "¿Qué es inteligencia de imágenes (IMINT)?",
+    "respuesta": "La inteligencia de imágenes, o IMINT, es un proceso técnico mediante el cual se localizan, identifican y describen objetos y actividades relacionados con un blanco de interés. Esta inteligencia visual permite tener un reconocimiento claro del terreno o del enemigo, siendo esencial para la planificación de operaciones militares de precisión."
+  },
+  {
+    "id": 243,
+    "pregunta": "¿Qué es inteligencia de señales (SIGINT)?",
+    "respuesta": "La inteligencia de señales, conocida como SIGINT, es la actividad enfocada en recopilar información a través de señales electromagnéticas. Esta disciplina incluye tanto la inteligencia electrónica como la de comunicaciones, proporcionando una visión completa del uso del espectro electromagnético por parte del enemigo."
+  },
+  {
+    "id": 244,
+    "pregunta": "¿Qué es mando directo?",
+    "respuesta": "El mando directo es la autoridad y responsabilidad que tiene un superior para emitir órdenes a sus unidades subordinadas. Este tipo de mando abarca la utilización eficaz de los recursos, la planificación, coordinación y control de las operaciones asignadas. También implica la responsabilidad sobre el bienestar, salud, moral y disciplina del personal, así como aspectos administrativos y presupuestales."
+  },
+  {
+    "id": 245,
+    "pregunta": "¿Qué es mando operacional?",
+    "respuesta": "El mando operacional es una forma delegada de mando dentro de operaciones conjuntas, que permite al comandante asignar misiones, redistribuir fuerzas y hacer ajustes en la organización de las unidades subordinadas. Aunque no incluye responsabilidades logísticas o administrativas, sí otorga autoridad en términos de control y dirección táctica, especialmente en estructuras como comandos conjuntos y fuerzas de tarea conjuntas."
+  },
+  {
+    "id": 246,
+    "pregunta": "¿Qué es mando operacional funcional?",
+    "respuesta": "El mando operacional funcional es una delegación del mando que se ejerce dentro de un área funcional específica durante operaciones conjuntas. No incluye atribuciones disciplinarias ni responsabilidades logísticas o administrativas, pero sí otorga autoridad para asignar misiones y ejercer control en su área correspondiente, subordinándose a la autoridad del mando operacional general."
+  },
+  {
+    "id": 247,
+    "pregunta": "¿Qué es navegación y posicionamiento preciso?",
+    "respuesta": "La navegación y posicionamiento preciso es el resultado de integrar sistemas de inteligencia con equipos de navegación avanzada. Esta capacidad permite el lanzamiento extremadamente exacto de armamento guiado desde aeronaves, gracias a sensores remotos como FLIR, sistemas de selección de blancos y municiones de precisión, mejorando así la eficacia operativa en entornos complejos."
+  },
+  {
+    "id": 248,
+    "pregunta": "¿Qué es necesidad militar?",
+    "respuesta": "La necesidad militar se refiere a la existencia de razones fundadas que justifican el uso del armamento aéreo con el fin de neutralizar o disuadir una amenaza o acción criminal inminente o en curso. Esta acción está dirigida a proteger tanto al personal civil como a la Fuerza Pública, en el marco de la legalidad y la proporcionalidad."
+  },
+  {
+    "id": 249,
+    "pregunta": "¿Qué es nefoanálisis?",
+    "respuesta": "El nefoanálisis es un proceso de análisis de imágenes satelitales enfocado en identificar los sistemas nubosos más relevantes. Permite determinar su desarrollo, trayectoria y evolución con una proyección de hasta seis horas, siendo una herramienta clave en la meteorología aeronáutica y operativa."
+  },
+  {
+    "id": 250,
+    "pregunta": "¿Qué es detonación en el contexto aeronáutico?",
+    "respuesta": "La detonación es un fenómeno que actúa como el principal límite para el desarrollo de potencia en los motores de encendido por chispa. Es un evento no deseado que puede comprometer el rendimiento del motor, razón por la cual su prevención es fundamental en el diseño y operación de aeronaves."
+  },
+  {
+    "id": 251,
+    "pregunta": "¿Qué es límite inferior de explosividad?",
+    "respuesta": "El límite inferior de explosividad es la concentración mínima de vapor de un combustible en aire u oxígeno, por debajo de la cual no ocurre la propagación de llamas incluso si hay una fuente de ignición. En otras palabras, si la mezcla es demasiado pobre en combustible, no puede sostener una combustión, lo cual es relevante en contextos de seguridad aeronáutica y de manejo de materiales inflamables."
+  },
+  {
+    "id": 252,
+    "pregunta": "¿Qué es la Master Minimum Equipment List (MMEL)?",
+    "respuesta": "La Master Minimum Equipment List (MMEL) es una publicación técnica elaborada por el fabricante de un equipo de vuelo que establece el listado maestro de los equipos mínimos necesarios para garantizar la aeronavegabilidad de una aeronave. Esta lista permite definir cuáles sistemas o equipos pueden estar inoperativos durante un vuelo sin comprometer la seguridad, siempre que se cumplan ciertas condiciones establecidas."
+  },
+  {
+    "id": 253,
+    "pregunta": "¿Qué es un componente controlado por vida límite (Hard Time)?",
+    "respuesta": "Un componente controlado por vida límite, también conocido como 'Hard Time', es aquel cuyo tiempo de operación está estrictamente definido por el fabricante. Este límite se determina a partir de cálculos de ingeniería durante el diseño y fabricación, y se establece como un punto de reemplazo obligatorio debido a que, tras superar ese tiempo, el componente pierde su confiabilidad y niveles de seguridad requeridos."
+  },
+  {
+    "id": 254,
+    "pregunta": "¿Qué es aeronavegabilidad continuada?",
+    "respuesta": "La aeronavegabilidad continuada es el conjunto de funciones de mantenimiento e inspecciones implementadas por un operador aéreo para asegurar que una aeronave se mantenga en condiciones de vuelo seguras a lo largo del tiempo. Esto incluye el uso de programas de análisis, vigilancia continua y planes de confiabilidad para prevenir fallos y mantener los estándares de seguridad operacional."
+  },
+  {
+    "id": 255,
+    "pregunta": "¿Qué es retiro por tiempo (RC)?",
+    "respuesta": "El retiro por tiempo, abreviado RC, se refiere al tiempo máximo de operación permitido para un componente aeronáutico desde su estado nuevo. Una vez alcanzado este límite, el componente debe ser retirado del servicio y destruido, conforme a la publicación técnica aplicable. Esta medida asegura que no se utilicen partes que hayan excedido su vida útil segura."
+  },
+  {
+    "id": 256,
+    "pregunta": "¿Qué es un vuelo ferry?",
+    "respuesta": "Un vuelo ferry es una operación aérea que permite trasladar una aeronave a su base de mantenimiento con el fin de restaurar su condición aeronavegable. Aunque la aeronave no cumple completamente con todos los requisitos técnicos, se considera que puede realizar un vuelo seguro bajo condiciones controladas y supervisadas. Es una herramienta clave para evitar dejar aeronaves inoperativas lejos de su base de mantenimiento."
+  },
+  {
+    "id": 257,
+    "pregunta": "¿Qué es una directiva de aeronavegabilidad (AD)?",
+    "respuesta": "Una directiva de aeronavegabilidad es una comunicación oficial, de carácter obligatorio, emitida por la autoridad aeronáutica civil de Colombia o del país de origen de un producto aeronáutico. Su propósito es indicar acciones, métodos o procedimientos que deben aplicarse a ciertos productos para corregir condiciones de inseguridad detectadas, asegurando así la seguridad de las aeronaves afectadas."
+  },
+  {
+    "id": 258,
+    "pregunta": "¿Qué es una zona de alerta (ZOA)?",
+    "respuesta": "Una zona de alerta (ZOA) es un área comprendida entre las 30 y 60 millas náuticas desde el límite fronterizo del país. En esta zona, si se detectan aeronaves no identificadas o con apariencia militar y sin información conocida sobre sus intenciones, se activa un protocolo de respuesta que incluye alertar a las aeronaves interceptoras colombianas, como medida de defensa y control del espacio aéreo."
+  },
+  {
+    "id": 259,
+    "pregunta": "¿Qué son las tripulaciones disponibles de amarillo?",
+    "respuesta": "Las tripulaciones disponibles de amarillo son aquellas designadas semanalmente mediante una orden del día en su unidad aérea. Estas tripulaciones deben encontrarse en condiciones psicofísicas óptimas para realizar actividades de vuelo y tienen la obligación de poder presentarse en la unidad en un plazo no mayor a 60 minutos desde el momento en que se les requiera."
+  },
+  {
+    "id": 260,
+    "pregunta": "¿Qué es el toque de control?",
+    "respuesta": "El toque de control es la habilidad del alumno para manejar los controles de vuelo con suavidad y precisión. Se evalúa en función de su capacidad para anticipar y responder adecuadamente a las acciones de la aeronave, aplicando con precisión la fuerza necesaria según las condiciones aerodinámicas y los factores externos. Refleja un nivel avanzado de percepción y dominio técnico en la formación de pilotos."
+  },
+  {
+    "id": 261,
+    "pregunta": "¿Qué es ADF?",
+    "respuesta": "ADF es el Buscador Automático de Direcciones, un sistema que ayuda a la aeronave a localizar señales de radio para navegación."
+  },
+  {
+    "id": 262,
+    "pregunta": "¿Qué es HUMINT?",
+    "respuesta": "HUMINT es inteligencia humana, es decir, información recopilada a través de personas o fuentes humanas."
+  },
+  {
+    "id": 263,
+    "pregunta": "¿Qué es VOR?",
+    "respuesta": "VOR es un radiofaro omnidireccional de muy alta frecuencia que proporciona orientación direccional a las aeronaves."
+  },
+  {
+    "id": 264,
+    "pregunta": "¿Qué es MEL?",
+    "respuesta": "MEL es la Lista de Equipo Mínimo que establece qué elementos pueden estar inoperativos sin comprometer la aeronavegabilidad."
+  },
+  {
+    "id": 265,
+    "pregunta": "¿Qué es GPWS?",
+    "respuesta": "GPWS es el Sistema de Advertencia de Proximidad al Terreno, diseñado para prevenir colisiones contra el suelo."
+  },
+  {
+    "id": 266,
+    "pregunta": "¿Qué es CVR?",
+    "respuesta": "CVR es el Registrador de Voz en Cabina, que graba las comunicaciones dentro del puesto de pilotaje."
+  },
+  {
+    "id": 267,
+    "pregunta": "¿Qué es ELT?",
+    "respuesta": "ELT es un transmisor localizador de emergencia que se activa en caso de accidente para ayudar en el rescate."
+  },
+  {
+    "id": 268,
+    "pregunta": "¿Qué es CIWS?",
+    "respuesta": "CIWS es un sistema de armas de proximidad usado para defensa automática contra amenazas como misiles."
+  },
+  {
+    "id": 269,
+    "pregunta": "¿Qué es MACOA?",
+    "respuesta": "MACOA es el Manual de Combustibles de Aviación utilizado en las unidades aéreas para gestión y control."
+  },
+  {
+    "id": 270,
+    "pregunta": "¿Qué es ILS?",
+    "respuesta": "ILS es el Sistema de Aterrizaje por Instrumentos que guía a la aeronave durante la aproximación final."
+  },
+  {
+    "id": 271,
+    "pregunta": "¿Qué es FLIR?",
+    "respuesta": "FLIR es un sistema de visión infrarroja que permite ver en condiciones de baja visibilidad mediante detección de calor."
+  },
+  {
+    "id": 272,
+    "pregunta": "¿Qué es AFTN?",
+    "respuesta": "AFTN es la Red de Comunicaciones Fijas Aeronáuticas usada para la transmisión de datos entre autoridades aeronáuticas."
+  },
+  {
+    "id": 273,
+    "pregunta": "¿Qué es TAS?",
+    "respuesta": "TAS es la Velocidad Aérea Verdadera, que representa la velocidad real de una aeronave respecto al aire."
+  },
+  {
+    "id": 274,
+    "pregunta": "¿Qué es ATF?",
+    "respuesta": "ATF es el Combustible de Turbinas de Aviación, utilizado en aeronaves con motores de turbina."
+  },
+  {
+    "id": 275,
+    "pregunta": "¿Qué es NVG?",
+    "respuesta": "NVG son los lentes de visión nocturna que permiten operar en ambientes con poca o nula iluminación."
+  },
+  {
+    "id": 276,
+    "pregunta": "¿Qué es CAT?",
+    "respuesta": "CAT es un chequeo estandarizado para mejorar la conciencia situacional vertical y horizontal del piloto."
+  },
+  {
+    "id": 277,
+    "pregunta": "¿Qué es ATS?",
+    "respuesta": "ATS significa Servicio de Tránsito Aéreo, encargado de asegurar un flujo seguro y eficiente del tráfico aéreo."
+  },
+  {
+    "id": 278,
+    "pregunta": "¿Qué es CVT?",
+    "respuesta": "CVT es el Curso de Vuelo Transición, parte del entrenamiento para pilotos en nuevas fases operacionales."
+  },
+  {
+    "id": 279,
+    "pregunta": "¿Qué es ECM?",
+    "respuesta": "ECM son las Contramedidas Electrónicas utilizadas para interferir o engañar sistemas electrónicos enemigos."
+  },
+  {
+    "id": 280,
+    "pregunta": "¿Qué es SUADM?",
+    "respuesta": "SUADM es la Subdirección Administrativa que supervisaba la ejecución presupuestal de combustibles. Término en desuso."
+  }
+]

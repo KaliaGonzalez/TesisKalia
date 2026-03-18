@@ -1,0 +1,107 @@
+Tipo_Resumen,Pregunta_ID,Pregunta_Texto,EM,TokenOverlap,LengthRatio,BLEU-1,BLEU-2,BLEU-4,ROUGE-1,ROUGE-2,ROUGE-L,METEOR,BERT-P,BERT-R,BERT-F1,SemanticSim,Tiempo_Promedio_Generacion_s
+Pregunta,1,¿Cuál es el lema que inspira la Fuerza Aérea Colombiana?,0.0,0.2619,0.2037,0.0201,0.0201,0.0201,0.3385,0.3175,0.3385,0.2109,0.8709,0.6373,0.736,0.6029,0.463
+Pregunta,2,¿Cuál es el significado del lema de la Fuerza Aérea Colombiana?,0.0,0.5116,1.2308,0.625,0.6145,0.586,0.6897,0.6588,0.6897,0.7333,0.8084,0.8739,0.8399,0.8283,0.654
+Pregunta,3,¿En qué se soporta la estrategia para el desarrollo aéreo y espacial de la Fuerza Aérea Colombiana 2042?,0.0,0.1667,0.7838,0.2355,0.157,0.103,0.2727,0.0938,0.1818,0.1243,0.6898,0.6651,0.6772,0.3621,0.63
+Pregunta,4,¿Qué es el marco estratégico de la Fuerza Aerea Colombiana?,0.0,0.2895,0.6061,0.2871,0.1936,0.0973,0.4151,0.1569,0.3019,0.2803,0.8002,0.7233,0.7598,0.6297,0.438
+Pregunta,5,¿Cuáles son los valores de la Fuerza aerea Colombiana?,0.0,0.6364,0.5319,0.4148,0.4148,0.4148,0.6944,0.6857,0.6944,0.4539,0.9316,0.7892,0.8545,0.9122,0.48
+Pregunta,6,¿Cuáles son las virtudes de la Fuerza Aerea Colombiana?,0.0,0.1688,1.5319,0.1944,0.0735,0.0323,0.2353,0.0171,0.1513,0.1798,0.6562,0.66,0.6581,0.5284,0.791
+Pregunta,7,¿Cuáles son los cuatro ámbitos fundamentales de las veinte políticas planteadas por la institución?,0.0,0.2667,0.2581,0.0564,0.0564,0.0564,0.4103,0.3784,0.4103,0.2785,0.8585,0.6608,0.7468,0.568,0.207
+Pregunta,8,¿Cómo esta conformado el nivel estratégico organizacional de la Fuerza Aerea Colombiana?,0.0,0.8667,0.9268,0.8998,0.8751,0.8216,0.9367,0.8831,0.9367,0.9088,0.9577,0.9321,0.9447,0.9771,0.492
+Pregunta,9,¿Qué es el Estado Mayor?,0.0,0.2769,0.25,0.0479,0.0441,0.0351,0.3852,0.3158,0.3704,0.1917,0.8526,0.6904,0.763,0.9279,0.305
+Pregunta,10,¿Qué es el COAES (Comando de Operaciones Aéreas y Espaciales)?,0.0,0.3548,0.3214,0.1076,0.0906,0.0552,0.4324,0.2936,0.4144,0.2611,0.8714,0.7334,0.7965,0.8247,0.337
+Pregunta,11,¿Qué es el CODAF (Comando de Apoyo a la Fuerza)?,0.0,0.465,0.5585,0.3496,0.2716,0.1536,0.5529,0.3203,0.4917,0.3398,0.8434,0.7928,0.8173,0.7013,0.605
+Pregunta,12,¿Qué es el CODEH (Comando de Desarrollo Humano)?,0.0,0.5306,0.625,0.4665,0.3752,0.245,0.6538,0.4118,0.5769,0.4285,0.8574,0.7683,0.8105,0.8665,0.653
+Pregunta,13,¿Cuáles son las cinco áreas misionales propias de la Fuerza Pública?,0.0,0.3905,0.4384,0.2386,0.1984,0.1074,0.5429,0.375,0.4667,0.3571,0.8532,0.7464,0.7962,0.9126,0.967
+Pregunta,14,¿Cómo es la segmentación de los grupos de valor?,0.0,0.1139,0.082,0.0,0.0,0.0,0.1364,0.0615,0.1212,0.0406,0.7606,0.5848,0.6612,0.6586,0.393
+Pregunta,15,"¿Qué objetivos contempla la Fuerza Aérea Colombiana en la perspectiva de “Procesos Internos” para garantizar el cumplimiento de su misión en los dominios aéreo, espacial y ciberespacial?",0.0,0.2545,0.2839,0.0675,0.0576,0.0453,0.3719,0.264,0.3216,0.1886,0.8384,0.7174,0.7732,0.795,0.705
+Pregunta,16,¿Para la fuerza aerea colombiana que es el HONOR,0.0,0.2742,0.2956,0.0784,0.0515,0.029,0.3954,0.1609,0.251,0.1802,0.7991,0.6894,0.7402,0.86,0.854
+Pregunta,17,¿Qué significa el lema 'Sic itur ad astra'?,0.0,0.1515,0.105,0.0002,0.0001,0.0001,0.1736,0.1083,0.1157,0.0774,0.7334,0.5684,0.6404,0.8304,0.275
+Pregunta,18,¿Cuál es la misión de la Fuerza Aérea Colombiana?,0.0,0.1212,0.2157,0.0168,0.0105,0.006,0.2258,0.0813,0.1855,0.0822,0.6983,0.6287,0.6617,0.8442,0.457
+Pregunta,19,¿Cuál es la misión de la Fuerza Aérea Colombiana?,0.0,0.2645,0.2095,0.023,0.023,0.023,0.3465,0.3413,0.3465,0.1703,0.8349,0.6908,0.7561,0.945,0.455
+Pregunta,20,¿Cuál es la visión de la Fuerza Aérea Colombiana?,0.0,0.3488,0.3231,0.1172,0.1096,0.1007,0.4651,0.4,0.4419,0.2455,0.8755,0.7327,0.7977,0.954,0.427
+Pregunta,21,¿Cuáles son algunos de los principios institucionales que guían la conducta de los miembros de la Fuerza Aérea Colombiana?,0.0,0.2874,0.6569,0.3452,0.2533,0.1333,0.4615,0.2395,0.3195,0.2581,0.7496,0.7417,0.7456,0.7904,0.68
+Pregunta,22,¿Qué significa el valor el honor para los miembros de la Fuerza Aérea Colombiana?,0.0,0.4032,0.5625,0.3471,0.2526,0.14,0.544,0.2764,0.416,0.3637,0.8247,0.7679,0.7953,0.7773,0.544
+Pregunta,23,¿Cómo se manifiesta el valor en la conducta de los miembros de la Fuerza Aérea Colombiana?,0.0,0.2644,1.4265,0.3918,0.2461,0.1124,0.4606,0.1718,0.2788,0.3513,0.7235,0.7583,0.7405,0.9327,1.0
+Pregunta,24,¿Qué es el compromiso según los valores de la Fuerza Aérea Colombiana?,0.0,0.2289,0.7037,0.3339,0.1961,0.1018,0.4493,0.1324,0.2899,0.2641,0.7358,0.7206,0.7281,0.947,0.601
+Pregunta,25,¿Cuáles son los comportamientos vinculados al compromiso en la Fuerza Aérea Colombiana?,0.0,0.2,1.1205,0.3333,0.2159,0.1181,0.3523,0.1379,0.2727,0.2665,0.7339,0.7405,0.7372,0.7177,0.982
+Pregunta,26,¿Qué significa el orgullo por la institución en la Fuerza Aérea Colombiana?,0.0,0.254,0.5676,0.3001,0.2082,0.1545,0.4828,0.2105,0.3621,0.2996,0.7731,0.7379,0.7551,0.9262,0.484
+Pregunta,27,¿Cómo se define la lealtad en los valores de la Fuerza Aérea Colombiana?,0.0,0.193,0.2,0.0159,0.0098,0.0057,0.2889,0.0909,0.1778,0.1313,0.7865,0.6679,0.7224,0.8821,0.28
+Pregunta,28,¿Qué aspectos comprende el orgullo institucional en la Fuerza Aérea Colombiana?,0.0,0.2083,0.6628,0.2742,0.1784,0.1203,0.3776,0.1418,0.2937,0.2108,0.7083,0.6842,0.696,0.8885,0.748
+Pregunta,29,¿Qué es una virtud según el marco estratégico de la Fuerza Aérea Colombiana?,0.0,0.1475,0.6038,0.1621,0.1146,0.0691,0.2353,0.0964,0.1882,0.1349,0.6948,0.6642,0.6791,0.5692,0.386
+Pregunta,30,¿Qué es la virtud de la justicia para la Fuerza Aerea Colombiana?,0.0,0.2444,0.3061,0.076,0.0688,0.0585,0.3438,0.2581,0.3438,0.2354,0.8299,0.6858,0.751,0.6886,0.266
+Pregunta,31,¿Qué es la templanza como virtud en la Fuerza Aérea Colombiana?,0.0,0.18,0.1857,0.0096,0.0061,0.0026,0.241,0.0741,0.1928,0.0988,0.813,0.7024,0.7537,0.6746,0.219
+Pregunta,32,¿Qué es la la mística en las virtudes de la Fuerza Aérea Colombiana?,0.0,0.2558,0.2581,0.0458,0.036,0.0199,0.3333,0.1842,0.2564,0.1374,0.8009,0.6966,0.7451,0.6398,0.302
+Pregunta,33,¿Qué es la fortaleza como virtud en la Fuerza Aérea Colombiana?,0.0,0.1875,0.2545,0.042,0.0283,0.0205,0.3188,0.1194,0.2899,0.1569,0.783,0.6824,0.7293,0.7611,0.44
+Pregunta,34,¿Que es la prudencia para la Fuerza Aerea Colombiana?,0.0,0.1569,0.2344,0.0229,0.0187,0.0135,0.2278,0.1299,0.2025,0.1297,0.7247,0.6461,0.6831,0.5251,0.433
+Pregunta,35,¿En qué ámbitos ha planteado políticas la Fuerza Aérea Colombiana?,0.0,0.1125,1.25,0.2,0.1309,0.0684,0.2222,0.0806,0.1905,0.1671,0.663,0.6727,0.6678,0.7495,1.022
+Pregunta,36,¿Cuales son las políticas institionales de la Fuerza Aérea Colombiana y en qué ámbitos se enmarcan?,0.0,0.1538,2.0893,0.2051,0.1256,0.0555,0.289,0.0936,0.2312,0.2738,0.6419,0.7263,0.6815,0.8223,1.915
+Pregunta,37,¿Cómo se construye la legitimidad institucional en la Fuerza Aérea Colombiana?,0.0,0.2034,0.6667,0.2864,0.1838,0.0676,0.3778,0.1364,0.2222,0.1899,0.7011,0.6976,0.6993,0.6713,0.638
+Pregunta,38,¿Como es el actuar de los miembros de la Fuerza Aérea Colombiana?,0.0,0.1951,1.2679,0.3099,0.1982,0.125,0.3465,0.128,0.2205,0.2389,0.707,0.7358,0.7211,0.8833,1.086
+Pregunta,39,¿Como se define el liderazgo en la Fuerza Aerea Colombiana?,0.0,0.1525,0.7115,0.2703,0.156,0.0847,0.3371,0.092,0.2472,0.221,0.7343,0.6855,0.7091,0.7743,0.647
+Pregunta,40,¿Cómo aborda la Fuerza Aérea Colombiana la gestión del conocimiento y la formación?,0.0,0.1868,1.6852,0.2967,0.1399,0.0619,0.3724,0.0699,0.2207,0.2822,0.6852,0.7332,0.7084,0.8585,1.238
+Pregunta,41,¿Cómo promueve la Fuerza Aérea Colombiana el respeto y servicio al ciudadano?,0.0,0.2603,0.9839,0.4354,0.2514,0.1084,0.439,0.1322,0.2439,0.3357,0.7176,0.7176,0.7176,0.8654,1.026
+Pregunta,42,¿Quién es responsable del bienestar del personal en la Fuerza Aérea Colombiana?,0.0,0.1146,1.84,0.1957,0.113,0.0553,0.2535,0.0714,0.1831,0.2557,0.6757,0.7106,0.6927,0.7825,1.289
+Pregunta,43,¿Cómo aplica la Fuerza Aérea Colombiana la justicia y equidad entre sus miembros?,0.0,0.1884,0.7667,0.3047,0.1849,0.0931,0.3774,0.1154,0.283,0.2633,0.7288,0.6874,0.7075,0.8891,0.784
+Pregunta,44,¿Qué caracteriza el liderazgo operacional en la Fuerza Aérea Colombiana?,0.0,0.2381,1.0,0.4909,0.3406,0.1644,0.4909,0.2222,0.3091,0.3185,0.7548,0.7389,0.7467,0.9126,0.768
+Pregunta,45,¿Qué papel ejerce la Fuerza Aérea Colombiana como autoridad aeronáutica?,0.0,0.2281,0.8723,0.4003,0.2904,0.1764,0.4545,0.2093,0.2955,0.3325,0.7517,0.7231,0.7371,0.9111,0.708
+Pregunta,46,¿Qué importancia tiene la inteligencia para la Fuerza Aérea Colombiana?,0.0,0.1481,0.4545,0.1205,0.0762,0.0489,0.25,0.0769,0.2,0.1431,0.691,0.6649,0.6777,0.7334,0.545
+Pregunta,47,¿Cuál es el objetivo de la proyección espacial de la Fuerza Aérea Colombiana?,0.0,0.1,0.7955,0.1547,0.1169,0.0813,0.1772,0.0779,0.1772,0.1328,0.7156,0.7055,0.7105,0.8282,0.632
+Pregunta,48,¿En qué se basa el modelo integrado de gestión de la Fuerza Aérea Colombiana?,0.0,0.2105,0.8519,0.3106,0.226,0.1286,0.34,0.1633,0.24,0.2098,0.6885,0.6764,0.6824,0.8085,0.811
+Pregunta,49,"¿Cómo aborda la Fuerza Aérea Colombiana la gestión de ciencia, tecnología e innovación?",0.0,0.1358,1.5625,0.24,0.16,0.0918,0.2927,0.1157,0.2602,0.2733,0.7036,0.7127,0.7081,0.9235,1.093
+Pregunta,50,¿Cómo gestiona la Fuerza Aérea Colombiana los riesgos institucionales?,0.0,0.1774,0.8478,0.2786,0.1728,0.0971,0.3059,0.0964,0.2588,0.2117,0.7369,0.7234,0.7301,0.8532,0.664
+Pregunta,51,¿Qué principios rigen la gestión presupuestal en la Fuerza Aérea Colombiana?,0.0,0.2143,0.3778,0.1133,0.0878,0.0556,0.3226,0.1667,0.1935,0.2114,0.7793,0.6913,0.7326,0.5608,0.532
+Pregunta,52,¿Cómo busca la Fuerza Aérea Colombiana mejorar sus procesos organizacionales?,0.0,0.1458,2.3061,0.1947,0.1098,0.0584,0.2716,0.075,0.1975,0.2572,0.6551,0.6901,0.6721,0.8207,1.447
+Pregunta,53,¿Qué importancia tienen las relaciones institucionales para la Fuerza Aérea Colombiana?,0.0,0.1333,1.5581,0.2388,0.1689,0.0854,0.2909,0.1296,0.2364,0.2579,0.6902,0.7105,0.7002,0.7713,0.969
+Pregunta,54,¿Cómo contribuye la Fuerza Aérea Colombiana a la protección del medio ambiente?,0.0,0.1754,0.6667,0.2497,0.1493,0.0826,0.3294,0.0964,0.2824,0.1703,0.7416,0.7165,0.7288,0.8497,0.606
+Pregunta,55,¿Cómo contribuye la Fuerza Aérea Colombiana a la protección del medio ambiente?,0.0,0.1754,0.6667,0.2497,0.1493,0.0826,0.3294,0.0964,0.2824,0.1703,0.7416,0.7165,0.7288,0.8497,0.625
+Pregunta,56,¿Cómo define la Fuerza Aérea Colombiana sus capacidades institucionales?,0.0,0.1746,0.5714,0.2214,0.14,0.0729,0.3409,0.1163,0.2273,0.1888,0.7255,0.6585,0.6904,0.7759,0.593
+Pregunta,57,¿Cuál es el enfoque de la Fuerza Aérea Colombiana en inteligencia aérea?,0.0,0.0465,0.1042,0.0001,0.0001,0.0001,0.0755,0.0392,0.0755,0.0585,0.6998,0.5972,0.6444,0.6485,0.292
+Pregunta,58,¿Cómo contribuye la Fuerza Aérea Colombiana a la seguridad pública?,0.0,0.1875,0.7925,0.2932,0.2199,0.1331,0.3368,0.172,0.2737,0.2699,0.7517,0.7476,0.7496,0.8821,0.741
+Pregunta,59,¿Qué significa la capacidad de 'Protección' en la Fuerza Aérea Colombiana?,0.0,0.1364,0.3182,0.0503,0.0411,0.0307,0.2069,0.1071,0.2069,0.0732,0.7479,0.6823,0.7136,0.7076,0.425
+Pregunta,60,¿Cómo define la Fuerza Aérea Colombiana la capacidad de 'Fuegos'?,0.0,0.1591,0.3061,0.0691,0.0437,0.0287,0.3125,0.0968,0.125,0.1632,0.7908,0.7125,0.7496,0.6065,0.305
+Pregunta,61,¿Qué comprende la capacidad de 'Movimiento y Maniobra' en la Fuerza Aérea Colombiana?,0.0,0.2,1.2292,0.3559,0.2055,0.1177,0.4112,0.1143,0.2804,0.2797,0.7106,0.7391,0.7246,0.8924,0.938
+Pregunta,62,¿Cómo ejerce la Fuerza Aérea Colombiana el 'Mando y Control'?,0.0,0.193,1.0233,0.3864,0.2479,0.1195,0.3908,0.1412,0.2529,0.2968,0.6819,0.6768,0.6794,0.7756,0.692
+Pregunta,63,¿Qué papel juega la 'Inteligencia' en las capacidades de la Fuerza Aérea Colombiana?,0.0,0.1818,0.5854,0.1847,0.1231,0.0813,0.2769,0.0952,0.2462,0.1751,0.712,0.6812,0.6963,0.5999,0.524
+Pregunta,64,¿Cómo garantiza la Fuerza Aérea Colombiana el 'Sostenimiento' operacional?,0.0,0.193,0.8182,0.3114,0.1664,0.0973,0.375,0.0769,0.25,0.2061,0.715,0.7248,0.7199,0.8933,0.621
+Pregunta,65,¿Qué comprende la capacidad de 'Soporte' en la Fuerza Aérea Colombiana?,0.0,0.2553,0.75,0.3257,0.188,0.1217,0.3896,0.1067,0.3117,0.2358,0.7254,0.6827,0.7034,0.784,0.629
+Pregunta,66,¿Qué es la oferta de valor de la Fuerza Aérea Colombiana y cómo se define?,0.0,0.1882,0.8158,0.3217,0.2035,0.1019,0.3768,0.1324,0.2319,0.2567,0.7182,0.7157,0.7169,0.7522,0.85
+Pregunta,67,¿Cómo contribuye la Fuerza Aérea Colombiana a la defensa nacional y seguridad pública?,0.0,0.2133,0.746,0.3179,0.2301,0.1641,0.3818,0.1852,0.2909,0.2664,0.7741,0.7395,0.7564,0.9631,0.782
+Pregunta,68,¿Qué papel juega la Fuerza Aérea Colombiana en la gestión del riesgo de desastres?,0.0,0.1579,0.2833,0.0422,0.0315,0.0237,0.2597,0.1333,0.2597,0.1336,0.7495,0.6736,0.7095,0.6143,0.442
+Pregunta,69,¿Cómo participa la Fuerza Aérea Colombiana en la cooperación internacional?,0.0,0.193,0.4464,0.1505,0.1104,0.0863,0.321,0.1519,0.2469,0.2164,0.7906,0.7227,0.7551,0.9143,0.537
+Pregunta,70,¿Qué hace la Fuerza Aérea Colombiana para proteger los recursos naturales y el medio ambiente?,0.0,0.1837,0.25,0.032,0.0239,0.0153,0.2571,0.1176,0.2,0.1127,0.7978,0.7006,0.746,0.8564,0.426
+Pregunta,71,¿Cómo apoya la Fuerza Aérea Colombiana el desarrollo del país?,0.0,0.1613,0.5741,0.1843,0.119,0.0686,0.2824,0.0964,0.2118,0.1977,0.7251,0.7176,0.7213,0.8241,0.593
+Pregunta,72,¿Qué logros ha alcanzado la Fuerza Aérea Colombiana en gestión y apoyo institucional?,0.0,0.1529,1.0526,0.2833,0.1683,0.0998,0.3077,0.087,0.2393,0.255,0.6776,0.6791,0.6783,0.7007,0.875
+Pregunta,73,¿Qué son los grupos de valor para la Fuerza Aérea Colombiana y por qué son importantes?,0.0,0.1429,1.5507,0.2336,0.1236,0.0576,0.3182,0.069,0.1477,0.2191,0.6801,0.6819,0.681,0.8985,1.345
+Pregunta,74,¿Cuántos grupos de valor ha identificado la Fuerza Aérea Colombiana y cuáles son los principales?,0.0,0.2879,0.5455,0.2656,0.2119,0.1299,0.4314,0.26,0.3922,0.282,0.7813,0.7153,0.7468,0.9129,0.614
+Pregunta,75,¿Cómo segmenta la Fuerza Aérea Colombiana sus grupos de valor?,0.0,0.1889,0.8028,0.2882,0.1779,0.089,0.3594,0.1111,0.25,0.2293,0.7316,0.6953,0.713,0.8619,0.844
+Pregunta,76,¿Qué comprende el segmento de 'Población' en los grupos de valor de la Fuerza Aérea Colombiana?,0.0,0.2807,0.4154,0.1813,0.1216,0.0673,0.4565,0.1778,0.2609,0.261,0.801,0.6882,0.7403,0.9101,0.526
+Pregunta,77,¿Qué instituciones conforman el segmento de 'Direccionamiento estratégico' en la Fuerza Aérea Colombiana?,0.0,0.129,0.5593,0.1792,0.0994,0.0593,0.2826,0.0667,0.2174,0.1607,0.6969,0.6536,0.6745,0.6845,0.613
+Pregunta,78,¿Cuál es el objetivo principal del Plan de Desarrollo de la Fuerza Aérea Colombiana?,0.0,0.3043,0.6429,0.3188,0.2208,0.1476,0.4522,0.1947,0.4,0.3187,0.8093,0.7497,0.7784,0.8826,0.711
+Pregunta,79,¿Qué metodología utilizó la Fuerza Aérea Colombiana para definir su plan de desarrollo?,0.0,0.1786,0.3333,0.0855,0.0653,0.0378,0.3421,0.1622,0.2632,0.2038,0.7823,0.6758,0.7252,0.8109,0.534
+Pregunta,80,¿Cómo se proyecta la Fuerza Aérea Colombiana para el año 2022 según su plan de desarrollo?,0.0,0.169,0.4638,0.1278,0.0938,0.0658,0.2574,0.1212,0.2178,0.1388,0.7042,0.6454,0.6735,0.8295,0.627
+Pregunta,81,¿Qué avances contempla la Fuerza Aérea Colombiana para el escenario 2030?,0.0,0.4028,0.8548,0.5095,0.4127,0.2755,0.5565,0.354,0.4174,0.4689,0.7915,0.7721,0.7817,0.8656,0.939
+Pregunta,82,¿Cómo visualiza la Fuerza Aérea Colombiana su escenario ideal para 2042?,0.0,0.2642,1.3,0.3956,0.2874,0.1774,0.472,0.2264,0.3106,0.4426,0.7441,0.768,0.7559,0.9525,1.382
+Pregunta,83,¿Qué componentes DOMPI destacan en la evolución proyectada de la Fuerza Aérea Colombiana?,0.0,0.0323,0.1304,0.0003,0.0002,0.0002,0.0513,0.0,0.0256,0.0159,0.67,0.586,0.6252,0.362,0.406
+Pregunta,84,¿Qué capacidades espaciales desarrollará la Fuerza Aérea Colombiana según su plan?,0.0,0.0984,0.1912,0.0067,0.0047,0.0029,0.1481,0.0506,0.1235,0.0818,0.7287,0.6313,0.6765,0.6046,0.397
+Pregunta,85,¿Cómo evolucionará el personal de la Fuerza Aérea Colombiana según su plan de desarrollo?,0.0,0.1471,1.2254,0.2644,0.1654,0.112,0.2911,0.1026,0.2278,0.2198,0.7035,0.7066,0.705,0.8462,1.389
+Pregunta,86,¿Qué es el Plan Estratégico Institucional (PEI) de la Fuerza Aérea Colombiana y cuál es su propósito?,0.0,0.1951,1.0429,0.3699,0.2466,0.1711,0.3776,0.156,0.2937,0.2879,0.7492,0.7159,0.7322,0.9288,1.036
+Pregunta,87,¿Con qué instrumentos nacionales se alinea el PEI de la Fuerza Aérea Colombiana?,0.0,0.1207,0.2958,0.044,0.0241,0.0127,0.2174,0.0444,0.1522,0.0963,0.6772,0.6051,0.6391,0.3502,0.462
+Pregunta,88,¿Cómo se relacionan los objetivos del PEI de la Fuerza Aérea Colombiana con las áreas misionales del sector defensa?,0.0,0.2,1.0597,0.338,0.1952,0.1121,0.3478,0.1029,0.2174,0.253,0.6992,0.7048,0.702,0.8408,1.049
+Pregunta,89,"¿Qué objetivos estratégicos tiene la Fuerza Aérea Colombiana para ejercer el poder aéreo, espacial y ciberespacial?",0.0,0.2093,1.0806,0.3731,0.2239,0.1151,0.3876,0.126,0.2946,0.3122,0.7463,0.7409,0.7436,0.7975,0.909
+Pregunta,90,¿Cómo contribuye el PEI de la Fuerza Aérea Colombiana al desarrollo nacional según los pactos del PND?,0.0,0.1644,0.5067,0.1789,0.073,0.0275,0.3363,0.036,0.1947,0.1603,0.7213,0.6613,0.69,0.631,0.636
+Pregunta,91,¿Qué aspectos de gestión institucional incluye el PEI de la Fuerza Aérea Colombiana?,0.0,0.2027,0.9091,0.4072,0.2715,0.1706,0.4286,0.1774,0.3016,0.3243,0.7465,0.7103,0.7279,0.8832,0.887
+Pregunta,92,¿Cómo implementa la Fuerza Aérea Colombiana el Modelo Integrado de Planeación y Gestión (MIPG)?,0.0,0.1753,1.1912,0.2716,0.1418,0.0502,0.3087,0.068,0.1477,0.2056,0.6813,0.6709,0.6761,0.6314,1.382
+Pregunta,93,¿Qué metodología utiliza la Fuerza Aérea Colombiana para su mapa estratégico?,0.0,0.3143,0.8254,0.4202,0.3026,0.1347,0.4696,0.2301,0.4348,0.3716,0.8159,0.76,0.787,0.8923,0.734
+Pregunta,94,¿Cómo aborda la Fuerza Aérea Colombiana la perspectiva de partes interesadas en su mapa estratégico?,0.0,0.2027,0.746,0.2876,0.1866,0.0961,0.3636,0.1296,0.2182,0.2664,0.7381,0.7156,0.7267,0.8758,0.741
+Pregunta,95,¿Qué importancia tienen los procesos internos en la estrategia de la Fuerza Aérea Colombiana?,0.0,0.1806,0.5857,0.2164,0.1443,0.0835,0.3243,0.1284,0.2523,0.1906,0.6996,0.6847,0.6921,0.7244,0.658
+Pregunta,96,¿Cómo enfoca la Fuerza Aérea Colombiana el aprendizaje y la innovación en su estrategia?,0.0,0.2,0.697,0.2956,0.1824,0.0866,0.375,0.1273,0.2321,0.2248,0.7433,0.7059,0.7241,0.8879,0.736
+Pregunta,97,¿Cuáles son las líneas de esfuerzo estratégico de la Fuerza Aérea Colombiana?,0.0,0.0897,0.5775,0.1408,0.0575,0.0265,0.2143,0.0182,0.1607,0.0882,0.6735,0.6377,0.6552,0.543,0.652
+Pregunta,98,¿Qué compromisos refleja la línea de 'Integridad y transparencia' de la Fuerza Aérea Colombiana?,0.0,0.1765,1.087,0.3867,0.2589,0.1493,0.4167,0.169,0.2778,0.2558,0.7319,0.7176,0.7247,0.8455,1.138
+Pregunta,99,¿Cuáles son los objetivos estratégicos de la Fuerza Aérea Colombiana en la perspectiva de partes interesadas?,0.0,0.2727,0.7465,0.3896,0.2609,0.1581,0.4677,0.1967,0.2742,0.2924,0.7748,0.719,0.7459,0.8451,0.808
+Pregunta,100,¿Qué objetivos estratégicos tiene la Fuerza Aérea Colombiana en procesos internos?,0.0,0.2143,0.6571,0.2709,0.1774,0.0957,0.3793,0.1404,0.2586,0.2587,0.7641,0.7036,0.7326,0.8206,0.753
+Pregunta,101,¿Qué objetivos estratégicos tiene la Fuerza Aérea Colombiana en procesos internos?,0.0,0.2143,0.6571,0.2709,0.1774,0.0957,0.3793,0.1404,0.2586,0.2587,0.7641,0.7036,0.7326,0.8206,0.762
+Pregunta,102,¿Cómo aborda la Fuerza Aérea Colombiana la integridad y transparencia como objetivos estratégicos?,0.0,0.1395,0.9077,0.245,0.15,0.076,0.2903,0.0984,0.1774,0.1814,0.7059,0.6755,0.6904,0.8168,0.854
+Pregunta,103,¿Qué objetivos tiene la Fuerza Aérea Colombiana en aprendizaje e innovación?,0.0,0.3333,1.1579,0.4697,0.3156,0.1441,0.5203,0.2149,0.374,0.4209,0.7687,0.7601,0.7644,0.8608,0.924
+Pregunta,104,¿Qué iniciativas estratégicas implementa la Fuerza Aérea Colombiana para cumplir sus objetivos?,0.0,0.1389,2.2319,0.1558,0.1102,0.0554,0.2152,0.0995,0.1794,0.2329,0.654,0.6885,0.6708,0.8982,2.252
+Pregunta,105,¿Cómo se organizan las iniciativas estratégicas de la Fuerza Aérea Colombiana?,0.0,0.1184,0.4571,0.1144,0.0738,0.0425,0.2353,0.08,0.1569,0.1369,0.681,0.6212,0.6497,0.6874,0.592
+Global,GLOBAL_PROMEDIO,N/A,0.0,0.2194,0.7414,0.2336,0.1602,0.0987,0.3566,0.1656,0.2734,0.2375,0.7489,0.7023,0.7237,0.7863,0.7196

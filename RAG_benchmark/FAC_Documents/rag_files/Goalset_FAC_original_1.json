@@ -1,0 +1,258 @@
+[
+    {
+        "id": 1,
+        "pregunta": "¿Qué es el Estado Mayor General?",
+        "respuesta": "Conformado a su vez por dos Estados Mayores Orgánicos: el Estado Mayor Personal y el Estado Mayor de Planeación y Coordinación, con el propósito de asesorar al Comandante de la FAC en aquellos temas de su directa injerencia o interés."
+    },
+    {
+        "id": 2,
+        "pregunta": "¿Qué es el Estado Mayor Especial?",
+        "respuesta": "Corresponde a un grupo de especialistas que asesoran al Comandante en asuntos administrativos, técnicos, profesionales y en áreas específicas del conocimiento, cuando la situación así lo requiera, para el estudio, análisis y solución de problemas institucionales."
+    },
+    {
+        "id": 3,
+        "pregunta": "¿Para las FAC cuál es la razón de combatir?",
+        "respuesta": "Es la razón de ser de una fuerza militar para defender la nación, y la FAC combate con todas sus capacidades para vencer y dominar en el aire, espacio y ciberespacio."
+    },
+    {
+        "id": 4,
+        "pregunta": "¿Qué ha fortalecido los esfuerzos institucionales desarrollados en el último siglo?",
+        "respuesta": "Han permitido fortalecer la Fuerza Aérea y salvaguardar la estrategia nacional hacia un futuro que demanda una Fuerza innovadora, polivalente, interoperable con alcance global y capacidades disuasivas reales, permanentes y sostenibles."
+    },
+    {
+        "id": 5,
+        "pregunta": "¿Qué es un principio?",
+        "respuesta": "Es una norma e idea incuestionable que rige el pensamiento y la conducta; es una verdad fundamental que inspira y motiva la actuación humana."
+    },
+    {
+        "id": 6,
+        "pregunta": "¿Qué son los valores?",
+        "respuesta": "Son aquellas cualidades que producen comportamientos beneficiando tanto a quienes los practican como a aquellos que los reciben."
+    },
+    {
+        "id": 7,
+        "pregunta": "¿Qué es el honor según las FAC?",
+        "respuesta": "Es la cualidad moral que lleva al sujeto a cumplir con los deberes propios respecto al prójimo y a sí mismo."
+    },
+    {
+        "id": 8,
+        "pregunta": "¿Qué es la lealtad según las FAC?",
+        "respuesta": "Es la forma de expresar respeto hacia sí mismo, las demás personas y la Institución."
+    },
+    {
+        "id": 9,
+        "pregunta": "¿Qué es la virtud según las FAC?",
+        "respuesta": "Una virtud es aquella fuerza interior o disposición constante para hacer lo que es éticamente correcto, resultado del ejercicio o el aprendizaje."
+    },
+    {
+        "id": 10,
+        "pregunta": "¿Qué contienen las políticas institucionales de las FAC?",
+        "respuesta": "Contienen una serie de guías para sus miembros, las cuales proporcionan un marco de acción lógico y consistente para la toma de decisiones a todo nivel."
+    },
+    {
+        "id": 11,
+        "pregunta": "¿En qué están enmarcadas las acciones de la Fuerza Aérea?",
+        "respuesta": "Están enmarcadas en la Constitución y la Ley."
+    },
+    {
+        "id": 12,
+        "pregunta": "¿En qué se basará el desarrollo personal y la transferencia de conocimientos?",
+        "respuesta": "Formación moral, física, intelectual, humanística, técnica y profesional de mujeres y hombres visionarios, que fortalezcan el sostenimiento de las capacidades y obedezcan a necesidades institucionales."
+    },
+    {
+        "id": 13,
+        "pregunta": "¿En qué ejercerá liderazgo la Fuerza Aérea?",
+        "respuesta": "Autoridad Aeronáutica para la Aviación de Estado en Colombia, normalizando y regulando los métodos y procedimientos, encaminados a estandarizar las actividades aeronáuticas y fortalecer la seguridad operacional."
+    },
+    {
+        "id": 14,
+        "pregunta": "¿En qué se soportará la planeación estratégica de la Fuerza Aérea Colombiana?",
+        "respuesta": "Se soportará en su propio Modelo de Gestión, consolidando una cultura institucional basada en principios, valores, cumplimiento de la norma, mejoramiento continuo y la búsqueda permanente de la excelencia."
+    },
+    {
+        "id": 15,
+        "pregunta": "¿Cuál es el fin de impulsar proyectos de investigación, ciencia, innovación y tecnología?",
+        "respuesta": "Se desarrollará con el fin de satisfacer necesidades de la Fuerza, cumplir la misión y avanzar tecnológicamente, permitiendo el fortalecimiento y la sostenibilidad de las capacidades."
+    },
+    {
+        "id": 16,
+        "pregunta": "¿En qué se enmarca la ejecución de los recursos públicos de las FAC?",
+        "respuesta": "En la política de austeridad."
+    },
+    {
+        "id": 17,
+        "pregunta": "¿Cuál es el objetivo de tener en cuenta la política de austeridad?",
+        "respuesta": "El objetivo es lograr eficiencia del gasto, así como el uso responsable y razonable de los mismos."
+    },
+    {  
+        "id": 18,
+        "pregunta": "¿Qué se construirá para fortalecer la diplomacia de la defensa?",
+        "respuesta": "Se construirán alianzas estratégicas, que contribuyan al cumplimiento de la misión y al logro de la visión institucional."
+    },
+    {
+        "id": 19,
+        "pregunta": "¿Qué es la seguridad para las FAC?",
+        "respuesta": "La seguridad en la Fuerza Aérea Colombiana es un principio institucional. Es responsabilidad de todos los miembros y deberá estar presente en todas las actividades y procesos diarios."
+    },
+    {
+        "id": 20,
+        "pregunta": "¿Qué significan las siglas AAAES?",
+        "respuesta": "Autoridad Aeronáutica de la Aviación del Estado."
+    },
+    {
+        "id": 21,
+        "pregunta": "¿Cuál es la misión del Comando de la Fuerza?",
+        "respuesta": "Comandar, instruir y liderar para el empleo de la Fuerza Aérea Colombiana."
+    },
+    {   
+        "id": 22,
+        "pregunta": "¿Quiénes hacen parte del Estado Mayor Personal?",
+        "respuesta": "La Ayudantía Personal y las Oficinas de Autoridad Aeronáutica Aviación de Estado, Asuntos Internacionales, Comunicaciones Estratégicas e Investigaciones Disciplinarias y Administrativas del Comandante."
+    },
+    {   
+        "id": 23,
+        "pregunta": "¿Cuál es la misión de la Inspección General Fuerza Aérea - IGEFA?",
+        "respuesta": "Verificar la eficacia, eficiencia y efectividad de la Fuerza Aérea Colombiana y garantizar la seguridad operacional para el mejoramiento continuo de la Institución."
+    },
+    {
+        "id": 24,
+        "pregunta": "¿Qué permiten las áreas misionales en las FAC?",
+        "respuesta": "Permiten que los estudios de contexto y prospectiva identifiquen puntualmente los retos y amenazas que podrían afectar la defensa y seguridad de la nación."
+    },
+    {
+        "id": 25,
+        "pregunta": "¿En qué se enmarca el valor de la FAC?",
+        "respuesta": "En la identificación, el sostenimiento y el desarrollo de las capacidades requeridas para enfrentar los retos actuales y potenciales en cada una de las áreas misionales."
+    },
+    {
+        "id": 26,
+        "pregunta": "¿Qué es la protección?",
+        "respuesta": "Es el conjunto de habilidades que preservan la fuerza, la población civil y los activos estratégicos."
+    },
+    {
+        "id": 27,
+        "pregunta": "¿Qué se entiende por 'fuegos' en la FAC?",
+        "respuesta": "Es el conjunto de habilidades que permiten el uso de sistemas de armas, para cumplir la misión y mantener la superioridad."
+    },
+    {
+        "id": 28,
+        "pregunta": "¿En qué aporta la Fuerza Aérea al Estado?",
+        "respuesta": "Mediante una oferta de servicios diferenciada y enmarcada en Defensa de la Nación, respondiendo a las necesidades de los grupos de valor mediante capacidades distintivas de la Institución."
+    },
+    {
+        "id": 29,
+        "pregunta": "¿Qué significan las siglas SNGRD?",
+        "respuesta": "Sistema Nacional de Gestión del Riesgo de Desastres."
+    },
+    {
+        "id": 30,
+        "pregunta": "¿En el año 2022, cómo se distingue la Fuerza Aérea Colombiana?",
+        "respuesta": "Se distingue como referente regional, siendo innovadora, interoperable en ejercicios multinacionales, con alcance regional, capacidades defensivas y de operaciones multidominio, gracias a un trabajo institucional orientado a la transformación."
+    },
+    {
+        "id": 31,
+        "pregunta": "¿Cuál es el lema que inspira la Fuerza Aérea Colombiana?",
+        "respuesta": "\"Sic itur ad astra\" o \"así se va a las estrellas\"."
+    },
+    {
+        "id": 32,
+        "pregunta": "¿Cuál es el significado del lema?",
+        "respuesta": "Se trata de evolucionar de forma permanente, volando más alto, más lejos y más rápido en la protección de los colombianos y el Estado de Derecho, siempre volando, entrenando y combatiendo para vencer."
+    },
+    {
+        "id": 33,
+        "pregunta": "¿En qué se soporta la estrategia para el desarrollo aéreo y espacial de la Fuerza Aérea Colombiana 2042?",
+        "respuesta": "Se soporta en el espíritu de evolución, innovación y transformación permanente, teniendo como propósito la consolidación de una Fuerza polivalente e interoperable que cumpla los más altos estándares internacionales y se consolide como preferente y líder regional."
+    },
+    {
+        "id": 34,
+        "pregunta": "¿Qué es el marco estratégico?",
+        "respuesta": "Marco estratégico: que permite entender la naturaleza y alcance de la misión, visión, principios, valores, virtudes y políticas que fundamentan los esfuerzos institucionales."
+    },
+    {
+        "id": 35,
+        "pregunta": "¿Cuáles son los valores de la FAC?",
+        "respuesta": "Honor, Rectitud, confianza, Sinceridad, confiabilidad, valor, fuerza, disciplina, compromiso, orgullo y lealtad."
+    },
+    {
+        "id": 36,
+        "pregunta": "¿Cuáles son las virtudes de la FAC?",
+        "respuesta": "Justicia, templanza, mística, fortaleza y prudencia."
+    },
+    {
+        "id": 37,
+        "pregunta": "¿Cuáles son los cuatro ámbitos fundamentales de las veinte políticas planteadas por la institución?",
+        "respuesta": "Talento humano, misionalidad, soporte, e inspección y control."
+    },
+    {   
+        "id": 38,
+        "pregunta": "¿Cómo es el nivel estratégico organizacional de la FAC?",
+        "respuesta": "Está conformado por el Comando de la Fuerza (COFAC), el Segundo Comando y Jefatura de Estado Mayor (JEMFA), la Inspección General FAC (IGEFA) y las dependencias del Estado Mayor."
+    },
+    {
+        "id": 39,
+        "pregunta": "¿Qué es el Estado Mayor?",
+        "respuesta": "El Estado Mayor es el grupo de personas con la función de asistir al Comandante en el ejercicio del mando y en la toma de decisiones. Hay dos clases de estado mayor, general y especial."
+    },
+    {
+        "id": 40,
+        "pregunta": "¿Qué es el COAES (Comando de Operaciones Aéreas y Espaciales)?",
+        "respuesta": "Grupo donde se integran todos los esfuerzos operacionales bajo la misma estructura, optimizando la toma de decisiones y la asignación de recursos, así como el control centralizado y la ejecución descentralizada como principio del poder aéreo."
+    },
+    {
+        "id": 41,
+        "pregunta": "¿Qué es el CODAF (Comando de Apoyo a la Fuerza)?",
+        "respuesta": "Es la función doctrinaria que compila todas las actividades necesarias para que la FAC cuente con los recursos suficientes para cumplir con la misión constitucional. Tiene la misión de proporcionar el soporte y los servicios para las operaciones aéreas, unificar los procesos que trabajaban para el soporte funcional de la logística y proyectar una logística moderna, proactiva y eficiente."
+    },
+    {
+        "id": 42,
+        "pregunta": "¿Qué es el CODEH (Comando de Desarrollo Humano)?",
+        "respuesta": "Es el responsable de articular los componentes de la gestión humana y la administración de personal (tanto militar como civil), a través de sus Jefaturas de Potencial Humano, Educación Aeronáutica y Espacial, Familia y Bienestar Social, Relaciones Laborales y Salud, promoviendo un ambiente laboral favorable para el cumplimiento de la misión y la consecución de los objetivos institucionales."
+    },
+    {
+        "id": 43,
+        "pregunta": "¿Cuáles son las cinco áreas misionales propias de la Fuerza Pública?",
+        "respuesta": "Defensa nacional, convivencia y seguridad ciudadana, seguridad pública, cooperación internacional y gestión y apoyo institucional."
+    },
+    {
+        "id":44,
+        "pregunta": "¿Cómo es la segmentación de los grupos de valor?",
+        "respuesta": "La segmentación de los grupos de valor está dada por la población, direccionamiento estratégico y aeronáutica y otros."
+    },
+    {
+        "id": 45,
+        "pregunta": "¿Qué son las Tablas de Valoración Documental (TVD) de la Fuerza Aérea Colombiana?",
+        "respuesta": "Es un instrumento de soporte para recuperar la memoria institucional, mediante la aplicación de criterios archivísticos y que permitan realizar el plan de transferencias secundarias."
+    },
+    {
+        "id": 46,
+        "pregunta": "¿Cuáles son los deberes de los contratistas de la Fuerza Aérea Colombiana?",
+        "respuesta": [
+            "Brindar trato respetuoso, considerado y diligente a todas las personas sin distinción alguna.",
+            "Garantizar atención presencial y/o virtual al público, como mínimo durante cuarenta (40) horas a la semana.",
+            "Atender a todas las personas que hubieran ingresado a las oficinas, en el horario establecido para la atención al público.",
+            "Garantizar el debido proceso en toda clase de actuaciones administrativas.",
+            "Todos los demás que señalen la Constitución Política de Colombia y la normatividad vigente."
+        ]
+    },
+    {
+        "id": 47,
+        "pregunta": "¿Qué es la Air Traffic Management (ATM)?",
+        "respuesta": "Tiene como finalidad obtener un movimiento seguro, ordenado y rápido del tránsito aéreo tomando como base el empleo eficaz del espacio aéreo."
+    },
+    {
+        "id": 48,
+        "pregunta": "¿Qué es el ciberespacio?",
+        "respuesta": "Es un ambiente artificial, diferente de los ambientes naturales como el aire, la tierra, el agua y el espacio. Está caracterizado por permitir el alcance global y por la interdependencia de la infraestructura tecnológica de redes de información."
+    },
+    {
+        "id": 49,
+        "pregunta": "¿Qué significa OODA?",
+        "respuesta": "Traduce Observar, Orientar, Decidir y Actuar."
+    },
+    {
+        "id": 50,
+        "pregunta": "¿Qué es la Joint STARS?",
+        "respuesta": "Es un jet con capacidad de encontrar blancos muy pequeños a grandes distancias, incluyendo vehículos blindados, y ver a través de cualquier condición climática, cubriendo un área extensa durante misiones prolongadas."
+    }
+]

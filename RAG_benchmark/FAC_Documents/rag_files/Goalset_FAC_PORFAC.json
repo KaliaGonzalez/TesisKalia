@@ -1,0 +1,602 @@
+[
+  {
+    "id": 101,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 102,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 103,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 104,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 105,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 106,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 107,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 108,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 109,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 110,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 111,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 112,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 113,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 114,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 115,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 116,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 117,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 118,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 119,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 120,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 121,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 122,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 123,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 124,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 125,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 126,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 127,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 128,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 129,
+    "pregunta": "¿Qué dice el Artículo 1 del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establece normas para los Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 130,
+    "pregunta": "¿Según el Artículo 2 del Título II, quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente."
+  },
+  {
+    "id": 131,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 132,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 133,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 134,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 135,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 136,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 137,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 138,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 139,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 140,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 141,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 142,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 143,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 144,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 145,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 146,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 147,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 148,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 149,
+    "pregunta": "¿Qué dice el Artículo 2 del Título II sobre el perfil del Profesional Oficial de Reserva?",
+    "respuesta": "El perfil incluye ser colombiano con altos valores, conocimientos geopolíticos y lealtad a las Fuerzas Militares."
+  },
+  {
+    "id": 150,
+    "pregunta": "Según el Artículo 7 del Título III, ¿cuáles son los requisitos para ingresar al curso de formación?",
+    "respuesta": "El aspirante debe ser colombiano, tener título universitario, experiencia profesional, pasar exámenes médicos, entre otros."
+  },
+  {
+    "id": 151,
+    "pregunta": "¿Qué implicaciones tiene el Artículo 27 del Título III para la carrera militar?",
+    "respuesta": "Podría interpretarse como una forma de controlar el avance jerárquico, aunque depende del criterio del Comando General."
+  },
+  {
+    "id": 152,
+    "pregunta": "Según el Artículo 24 del Título III, ¿cuáles son las ventajas de pertenecer al Cuerpo Asesor?",
+    "respuesta": "No está claro si realmente existen ventajas más allá del mantenimiento del grado."
+  },
+  {
+    "id": 153,
+    "pregunta": "¿Qué implicaciones tiene el Artículo 27 del Título III para la carrera militar?",
+    "respuesta": "Podría interpretarse como una forma de controlar el avance jerárquico, aunque depende del criterio del Comando General."
+  },
+  {
+    "id": 154,
+    "pregunta": "Según el Artículo 24 del Título III, ¿cuáles son las ventajas de pertenecer al Cuerpo Asesor?",
+    "respuesta": "No está claro si realmente existen ventajas más allá del mantenimiento del grado."
+  },
+  {
+    "id": 155,
+    "pregunta": "¿Qué implicaciones tiene el Artículo 27 del Título III para la carrera militar?",
+    "respuesta": "Podría interpretarse como una forma de controlar el avance jerárquico, aunque depende del criterio del Comando General."
+  },
+  {
+    "id": 156,
+    "pregunta": "Según el Artículo 24 del Título III, ¿cuáles son las ventajas de pertenecer al Cuerpo Asesor?",
+    "respuesta": "No está claro si realmente existen ventajas más allá del mantenimiento del grado."
+  },
+  {
+    "id": 157,
+    "pregunta": "¿Qué implicaciones tiene el Artículo 27 del Título III para la carrera militar?",
+    "respuesta": "Podría interpretarse como una forma de controlar el avance jerárquico, aunque depende del criterio del Comando General."
+  },
+  {
+    "id": 158,
+    "pregunta": "Según el Artículo 24 del Título III, ¿cuáles son las ventajas de pertenecer al Cuerpo Asesor?",
+    "respuesta": "No está claro si realmente existen ventajas más allá del mantenimiento del grado."
+  },
+  {
+    "id": 159,
+    "pregunta": "¿Qué implicaciones tiene el Artículo 27 del Título III para la carrera militar?",
+    "respuesta": "Podría interpretarse como una forma de controlar el avance jerárquico, aunque depende del criterio del Comando General."
+  },
+  {
+    "id": 160,
+    "pregunta": "Según el Artículo 24 del Título III, ¿cuáles son las ventajas de pertenecer al Cuerpo Asesor?",
+    "respuesta": "No está claro si realmente existen ventajas más allá del mantenimiento del grado."
+  },
+  {
+    "id": 161,
+    "pregunta": "¿Qué dice el Artículo 1 del Capítulo Único del Título I sobre el objeto del reglamento?",
+    "respuesta": "Establecer normas para los Profesionales Oficiales de Reserva que forman parte de las reservas de las Fuerzas Militares."
+  },
+  {
+    "id": 162,
+    "pregunta": "Según el Artículo 1 del Capítulo Único del Título I, ¿qué aspectos abarca el reglamento?",
+    "respuesta": "Incorporación, disciplina, formación, cooperación, ascensos, desvinculación y otros aspectos normativos."
+  },
+  {
+    "id": 163,
+    "pregunta": "¿Qué dice el Artículo 2 del Capítulo Único del Título II sobre quiénes son los Profesionales Oficiales de Reserva?",
+    "respuesta": "Son profesionales con título universitario que se vinculan voluntariamente y sin relación laboral a las Fuerzas Militares."
+  },
+  {
+    "id": 164,
+    "pregunta": "Según el Artículo 2 del Capítulo Único del Título II, ¿cómo se vinculan los Profesionales Oficiales de Reserva a la institución?",
+    "respuesta": "A través de cursos especiales ordenados por el Ministro de Defensa o el Comandante General de las Fuerzas Militares."
+  },
+  {
+    "id": 165,
+    "pregunta": "¿Qué dice el Parágrafo 1° del Artículo 2 del Capítulo Único del Título II sobre las cualidades del aspirante?",
+    "respuesta": "Debe ser colombiano, con altas calidades personales y profesionales, y útil para las Fuerzas Militares."
+  },
+  {
+    "id": 166,
+    "pregunta": "Según el Parágrafo 1° del Artículo 2 del Capítulo Único del Título II, ¿qué conocimientos debe tener el aspirante?",
+    "respuesta": "Conocimientos sobre problemáticas internacionales, nacionales y regionales, y desarrollo geopolítico."
+  },
+  {
+    "id": 167,
+    "pregunta": "¿Qué dice el Parágrafo 1° del Artículo 2 del Capítulo Único del Título II sobre el comportamiento esperado?",
+    "respuesta": "Debe abstenerse de actividades que afecten negativamente a las Fuerzas Militares."
+  },
+  {
+    "id": 168,
+    "pregunta": "Según el Parágrafo 2° del Artículo 2 del Capítulo Único del Título II, ¿qué habilidades gerenciales debe tener el profesional?",
+    "respuesta": "Debe administrar recursos eficazmente y ejecutar proyectos con gerencia estratégica."
+  },
+  {
+    "id": 169,
+    "pregunta": "¿Qué dice el Parágrafo 2° del Artículo 2 del Capítulo Único del Título II sobre el trabajo en equipo?",
+    "respuesta": "Debe tener capacidad para trabajar en equipo y tomar decisiones acertadas."
+  },
+  {
+    "id": 170,
+    "pregunta": "Según el Parágrafo 3° del Artículo 2 del Capítulo Único del Título II, ¿para qué debe manejar la información el Profesional Oficial de Reserva?",
+    "respuesta": "Para planear y ejecutar actividades de acción integral y colaborar con la acción psicológica."
+  },
+  {
+    "id": 171,
+    "pregunta": "¿Qué dice el Artículo 3 del Capítulo Único del Título II sobre la vinculación de los Profesionales Oficiales de Reserva?",
+    "respuesta": "Es voluntaria, ad honorem y requiere acatamiento riguroso de deberes y obligaciones."
+  },
+  {
+    "id": 172,
+    "pregunta": "Según el Parágrafo 1° del Artículo 3 del Capítulo Único del Título II, ¿quién establece el número de Profesionales Oficiales de Reserva a incorporar?",
+    "respuesta": "Cada una de las Fuerzas, según sus necesidades."
+  },
+  {
+    "id": 173,
+    "pregunta": "¿Qué dice el Parágrafo 2° del Artículo 3 del Capítulo Único del Título II sobre la fijación anual de cupos?",
+    "respuesta": "El Comandante General los establece con base en propuestas y consultas a los Comandantes de Fuerza."
+  },
+  {
+    "id": 174,
+    "pregunta": "Según el Artículo 4 del Capítulo Único del Título II, ¿cuál es uno de los objetivos de los Profesionales Oficiales de Reserva?",
+    "respuesta": "Apoyar actividades logísticas y administrativas de las Fuerzas Militares."
+  },
+  {
+    "id": 175,
+    "pregunta": "¿Qué dice el Artículo 4 del Capítulo Único del Título II sobre la relación entre civiles y militares?",
+    "respuesta": "Debe fortalecerse para proyectar una imagen positiva de las Fuerzas Militares."
+  },
+  {
+    "id": 176,
+    "pregunta": "¿Qué dice el Artículo 5 del Capítulo I del Título III sobre el proceso de selección de aspirantes?",
+    "respuesta": "La selección es realizada por comités designados en cada Fuerza y Guarnición Militar."
+  },
+  {
+    "id": 177,
+    "pregunta": "Según el Artículo 5 del Capítulo I del Título III, ¿cuántos Oficiales deben conformar los comités de preselección?",
+    "respuesta": "Cinco Oficiales, de los cuales mínimo dos deben ser Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 178,
+    "pregunta": "¿Qué dice el Parágrafo 1° del Artículo 5 del Capítulo I del Título III sobre la designación de los comités de selección?",
+    "respuesta": "Depende del nivel: Comando General, Comandos de Fuerza o Unidades Operativas, según corresponda."
+  },
+  {
+    "id": 179,
+    "pregunta": "Según el Parágrafo 2° del Artículo 5 del Capítulo I del Título III, ¿quién puede incluir aspirantes directamente en la lista?",
+    "respuesta": "El Comandante General de las Fuerzas Militares."
+  },
+  {
+    "id": 180,
+    "pregunta": "¿Qué dice el Parágrafo 4° del Artículo 5 del Capítulo I del Título III sobre la documentación incompleta?",
+    "respuesta": "Será devuelta y no considerada; si no se completa a tiempo, el aspirante queda excluido."
+  },
+    {
+    "id": 181,
+    "pregunta": "¿Qué dice el Artículo 6 del Capítulo I del Título III sobre los requisitos para ingreso y ascenso?",
+    "respuesta": "Requiere cumplir el Artículo 5 y contar con autorización del Comandante General de las Fuerzas Militares."
+  },
+  {
+    "id": 182,
+    "pregunta": "Según el Parágrafo 1° del Artículo 6 del Capítulo I del Título III, ¿quién selecciona a los candidatos para el curso de formación?",
+    "respuesta": "El Comando General de las Fuerzas Militares."
+  },
+  {
+    "id": 183,
+    "pregunta": "¿Qué dice el Parágrafo 2° del Artículo 6 del Capítulo I del Título III sobre la asignación de grados?",
+    "respuesta": "El grado inicial lo otorga el Gobierno Nacional o el Ministro de Defensa; los subsiguientes mediante Decreto."
+  },
+  {
+    "id": 184,
+    "pregunta": "¿Qué dice el Artículo 7 del Capítulo I del Título III sobre la nacionalidad del aspirante?",
+    "respuesta": "Debe ser ciudadano colombiano."
+  },
+  {
+    "id": 185,
+    "pregunta": "Según el Parágrafo 1 del Artículo 7 del Capítulo I del Título III, ¿puede el aspirante anexar recomendaciones?",
+    "respuesta": "No, y si lo hace, su solicitud no será tenida en cuenta."
+  },
+  {
+    "id": 186,
+    "pregunta": "¿Qué dice el Artículo 8 del Capítulo I del Título III sobre la autorización de cursos de formación y ascenso?",
+    "respuesta": "Requieren autorización expresa del Comando General de las Fuerzas Militares."
+  },
+  {
+    "id": 187,
+    "pregunta": "Según el Artículo 9 del Capítulo I del Título III, ¿quién diseña los programas de instrucción?",
+    "respuesta": "Los Comandos de Fuerza, con base en las políticas del Comando General de las Fuerzas Militares."
+  },
+  {
+    "id": 188,
+    "pregunta": "¿Qué dice el Artículo 9 del Capítulo I del Título III sobre el contenido de los programas de instrucción?",
+    "respuesta": "Incluyen preparación sicológica, física, técnica, táctica y logística."
+  },
+  {
+    "id": 189,
+    "pregunta": "Según el Artículo 10 del Capítulo I del Título III, ¿en qué áreas pueden ser asignados los Profesionales Oficiales de Reserva?",
+    "respuesta": "Salud, educación, inteligencia, justicia, logística, entre otras."
+  },
+  {
+    "id": 190,
+    "pregunta": "¿Qué dice el Parágrafo 1° del Artículo 10 del Capítulo I del Título III sobre la asignación de funciones?",
+    "respuesta": "Debe basarse en cursos de instrucción, capacitación y actualización."
+  },
+  {
+    "id": 191,
+    "pregunta": "¿Qué dice el Artículo 11 del Capítulo I del Título III sobre las clases de cursos que deben adelantar los Profesionales Oficiales de Reserva?",
+    "respuesta": "Establece siete clases de cursos, desde el curso de formación inicial hasta cursos para ascensos sucesivos y de especialización, cada uno con objetivos específicos e intensidades horarias mínimas, ajustadas al perfil del cargo o nivel jerárquico al que se aspira dentro de las Fuerzas Militares."
+  },
+  {
+    "id": 192,
+    "pregunta": "Según el Artículo 11 del Capítulo I del Título III, ¿cuáles son los requisitos comunes para todos los cursos?",
+    "respuesta": "Cumplir el Programa de Instrucción y Capacitación (PIC), asistir al menos al 80% de las horas programadas, obtener una calificación mínima del 75% y contar con concepto favorable de idoneidad profesional y adaptación militar por parte de las autoridades designadas."
+  },
+  {
+    "id": 193,
+    "pregunta": "¿Qué dice el Artículo 11 del Capítulo I del Título III sobre el curso para el ascenso al grado de Capitán o Teniente de Navío?",
+    "respuesta": "Este curso busca preparar a los oficiales como ejecutores y asesores con un perfil de alta gerencia, capaces de evaluar programas e integrar comités de investigación. Su contenido debe ser útil tanto en tiempos de paz como en movilización, con un mínimo de 256 horas de capacitación."
+  },
+  {
+    "id": 194,
+    "pregunta": "Según el Artículo 11 del Capítulo I del Título III, ¿cuál es el objetivo del curso para el ascenso al grado de Coronel o Capitán de Navío?",
+    "respuesta": "Formar a los oficiales para comandar Comandos de Apoyo a la Misión a nivel de comando general, fuerza o divisiones. Deben adquirir conocimientos estratégicos en administración de personal, evaluación de programas y planeación, sin que este curso otorgue el título de Oficial de Estado Mayor. Tiene una intensidad mínima de 128 horas y se dicta en la Escuela Superior de Guerra."
+  },
+  {
+    "id": 195,
+    "pregunta": "¿Qué dice el Parágrafo 2° del Artículo 11 del Capítulo I del Título III sobre personal que se encuentre en el exterior?",
+    "respuesta": "Permite que, si están en comisión oficial, puedan ser autorizados para elaborar un trabajo estratégico en vez de asistir presencialmente al curso, bajo la tutoría de un oficial designado. El trabajo será sustentado ante el Estado Mayor Conjunto para su evaluación y aprobación."
+  },
+  {
+    "id": 196,
+    "pregunta": "¿Qué dice el Artículo 12 del Capítulo I del Título III sobre los ascensos?",
+    "respuesta": "Los ascensos son dispuestos por decreto del Gobierno Nacional y tienen carácter ad honorem. No implican derechos prestacionales salvo que el Oficial sea llamado a servicio activo, en cuyo caso gozará de las garantías laborales de los oficiales en servicio."
+  },
+  {
+    "id": 197,
+    "pregunta": "Según el Artículo 13 del Capítulo I del Título III, ¿cuáles son los requisitos generales para ascenso en los grados subsiguientes?",
+    "respuesta": "Incluyen pertenecer al escalafón regular, cumplir el tiempo mínimo en el grado, aprobar cursos de ascenso, carecer de antecedentes judiciales, disciplinarios y fiscales, tener condiciones psicofísicas adecuadas y estar vinculado al área de trabajo correspondiente con participación comprobada."
+  },
+  {
+    "id": 198,
+    "pregunta": "¿Qué dice el Artículo 13 del Capítulo I del Título III sobre el papel del comité asesor en los ascensos?",
+    "respuesta": "Establece que la propuesta de ascenso debe contar con concepto favorable de un comité asesor presidido por el Comandante General o su delegado, e integrado por un oficial superior y por al menos tres Profesionales Oficiales de Reserva de cada Fuerza, actuando el Jefe de Estado Mayor como secretario."
+  },
+  {
+    "id": 199,
+    "pregunta": "¿Qué dice el Artículo 13 del Capítulo I del Título III sobre la participación activa como requisito para ascenso?",
+    "respuesta": "Se exige haber participado en actividades como ejercicios de campaña, programas de entrenamiento o desempeño en cargos de comando, técnicos o administrativos, durante al menos 60 días en el grado actual, para asegurar experiencia y compromiso con la institución."
+  },
+  {
+    "id": 200,
+    "pregunta": "Según el Artículo 13 del Capítulo I del Título III, ¿cuál es la posición respecto a la presentación de recomendaciones?",
+    "respuesta": "El reglamento prohíbe que el oficial presente o adjunte recomendaciones de cualquier índole y advierte que, de hacerlo, su solicitud de ascenso no será tenida en cuenta."
+  },
+  {
+    "id": 201,
+    "pregunta": "¿Qué dice el Artículo 35 del Capítulo VI del Título III sobre el Comando de los Profesionales Oficiales de Reserva COPOR?",
+    "respuesta": "El COPOR es el organismo rector encargado de la organización, capacitación, manejo y asignación de los Profesionales Oficiales de Reserva. Funciona como dependencia de dirección y control de políticas impartidas por el Comandante General de las Fuerzas Militares, asesora su destinación adecuada, y propone actividades para su incorporación, entrenamiento y proyección institucional. Su estructura incluye un Comandante designado por el Comando General, un Jefe de Estado Mayor Conjunto, un Jefe de Estado Mayor Especial y un Inspector General."
+  },
+  {
+    "id": 202,
+    "pregunta": "Según el Artículo 35 del Capítulo VI del Título III, ¿cómo está organizado el Comando de Profesionales Oficiales de Reserva en las Fuerzas?",
+    "respuesta": "Cada Fuerza organiza su propio Comando de Profesionales Oficiales de Reserva, liderado por un Oficial de Reserva y compuesto por un estado mayor también integrado por Oficiales de Reserva. Estos Comandos dependen del Comandante de la Fuerza, quien puede delegar su gestión en el Segundo Comandante y Jefe de Estado Mayor. También pueden establecer unidades de coordinación con las direcciones de acción integral, con funciones similares a las del COPOR pero adaptadas a cada Fuerza."
+  },
+  {
+    "id": 203,
+    "pregunta": "¿Qué dice el Artículo 35 del Capítulo VI del Título III sobre la organización de los Comandos de Apoyo a la Misión COAMI y BAAMI?",
+    "respuesta": "Estos comandos operan a nivel de unidades operativas mayores, menores o tácticas y dependen del Comandante de la Unidad, con posibilidad de delegar funciones en el Segundo Comandante. Sus funciones incluyen ejecutar y controlar programas y políticas, asesorar en logística e interacción civil-militar, y proponer actividades de incorporación y campañas cívico-militares. También deben contar con oficinas propias en sus reparticiones para mantener pertenencia, operar con autonomía y desarrollar planes específicos en apoyo a las unidades."
+  },
+  {
+    "id": 204,
+    "pregunta": "¿Qué dice el Artículo 41 del Capítulo III del Título IV sobre los deberes de los Profesionales Oficiales de Reserva?",
+    "respuesta": "El artículo establece que los deberes son fundamentales para el capital ético del cuerpo y abarcan una amplia gama de responsabilidades. Incluyen desde el cumplimiento de la Constitución y las leyes, el respeto a los símbolos institucionales, la diligencia en las funciones encomendadas, hasta la evaluación justa del desempeño de otros oficiales. También destaca el deber de proteger la información y bienes bajo su responsabilidad, actuar con buena fe, no buscar beneficios indebidos, cumplir los cursos requeridos y asistir a las actividades programadas por la unidad a la que pertenecen."
+  },
+  {
+    "id": 205,
+    "pregunta": "Según el Artículo 42 del Capítulo III del Título IV, ¿cuáles son las obligaciones generales de los Profesionales Oficiales de Reserva?",
+    "respuesta": "Las obligaciones generales incluyen una serie de comportamientos prohibidos y deberes que garantizan la integridad institucional. Se deben abstener de divulgar información clasificada, participar en actividades contra la seguridad del Estado, consumir sustancias prohibidas, utilizar uniformes sin autorización, y ejercer coacción o violencia. Además, se exige no involucrarse políticamente cuando se esté uniformado, no falsear información, ni utilizar su posición para obtener beneficios indebidos. Todo esto busca proteger la imagen, disciplina y operación eficiente del cuerpo."
+  },
+  {
+    "id": 206,
+    "pregunta": "¿Qué dice el Artículo 42 del Capítulo III del Título IV sobre los aspectos de obediencia y servicio de los Profesionales Oficiales de Reserva?",
+    "respuesta": "En cuanto a obediencia, los Profesionales Oficiales de Reserva deben cumplir las órdenes del servicio sin tardanza, asistir a actividades programadas, y no alterar órdenes sin autorización. Respecto al servicio, deben presentarse a sus respectivos comandantes, cumplir traslados, participar activamente en las tareas asignadas, no retirarse sin permiso y no mentir sobre asuntos del servicio. Estos aspectos garantizan el cumplimiento disciplinado y profesional de los deberes operativos, manteniendo el orden y eficacia en las actividades asignadas a cada Oficial de Reserva."
+  },
+  {
+    "id": 207,
+    "pregunta": "¿Qué dice el Artículo 62 del Capítulo III del Título VI sobre las listas de clasificación?",
+    "respuesta": "El artículo establece cinco listas de clasificación que reflejan el desempeño del Profesional Oficial de Reserva. Estas son: Lista UNO (nivel excelente), Lista DOS (nivel muy bueno), Lista TRES (nivel bueno), Lista CUATRO (nivel regular) y Lista CINCO (nivel deficiente). Estas listas permiten calificar objetivamente a los oficiales asignados a los Comandos COAMI o BAAMI según sus actuaciones dentro de la unidad."
+  },
+  {
+    "id": 208,
+    "pregunta": "Según el Parágrafo 2° del Artículo 62 del Capítulo III del Título VI, ¿qué procedimiento se aplica a los Oficiales de Reserva inactivos en la unidad?",
+    "respuesta": "Se debe elaborar el folio de vida con una anotación de apertura el 1° de octubre y de cierre el 30 de septiembre, indicando que no hubo participación. El evaluador debe firmar ambas anotaciones y solicitar la firma del revisor como garantía de imparcialidad. En el primer año se clasificará en Lista CUATRO, y si persiste la inasistencia, pasará a Lista CINCO, iniciando el proceso para su posible desvinculación."
+  },
+  {
+    "id": 209,
+    "pregunta": "¿Qué dice el Artículo 63 del Capítulo III del Título VI sobre el objeto de las listas de clasificación?",
+    "respuesta": "Las listas de clasificación sirven como base para tomar decisiones sobre ascensos, asignación de premios, utilización y capacitación del talento humano, participación en el escalafón y posibles desvinculaciones. Son herramientas clave para evaluar el rendimiento y compromiso del personal de Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 210,
+    "pregunta": "Según el Parágrafo del Artículo 63 del Capítulo III del Título VI, ¿quién administra la estadística de las listas de clasificación?",
+    "respuesta": "El Comando de los Profesionales Oficiales de Reserva de las Fuerzas Militares es el encargado de llevar la estadística de las listas de clasificación del personal, lo cual permite respaldar las decisiones sobre ascensos, premios, formación y desvinculación del personal según lo estipulado en el artículo 63."
+  },
+  {
+    "id": 211,
+    "pregunta": "¿Según el Artículo 82 del Capítulo I del Título VIII, qué podría implicar no tener una Cédula Militar como Profesional Oficial de Reserva?",
+    "respuesta": "Podría significar que el oficial fue desvinculado o no cumple con los requisitos establecidos en el reglamento."
+  },
+  {
+    "id": 212,
+    "pregunta": "¿Qué podría interpretarse del Parágrafo del Artículo 85 del Capítulo II del Título VIII sobre el uso de sables y anillos?",
+    "respuesta": "Se puede inferir que existe una intención de diferenciar claramente a los Profesionales Oficiales de Reserva de los oficiales en servicio activo en cuanto a símbolos de mando o tradición."
+  },
+  {
+    "id": 213,
+    "pregunta": "Según el Artículo 83 del Capítulo I del Título VIII, ¿qué se podría deducir si un Oficial de Reserva no porta su fichero dentro de instalaciones militares?",
+    "respuesta": "Podría interpretarse como una falta a las normas de identificación y disciplina, aunque no se especifica la sanción directa."
+  },
+  {
+    "id": 214,
+    "pregunta": "¿Qué se podría suponer del Artículo 87 del Capítulo II del Título VIII respecto al uso del uniforme por parte de alumnos con monograma AR?",
+    "respuesta": "Podría inferirse que se busca distinguir claramente a los alumnos en formación del resto del personal, reflejando su estatus de aprendizaje."
+  },
+  {
+    "id": 215,
+    "pregunta": "¿Qué se podría deducir del Parágrafo 3° del Artículo 87 del Capítulo II del Título VIII sobre el uso del uniforme después de los 75 años?",
+    "respuesta": "Se podría entender que existe una restricción basada en la edad para asegurar un uso adecuado de la imagen institucional, salvo casos especiales."
+  },
+  {
+    "id": 216,
+    "pregunta": "¿Qué implicaciones podría tener el Parágrafo del Artículo 88 del Capítulo II del Título VIII sobre los distintivos de cursos especiales?",
+    "respuesta": "Podría inferirse que el uso de ciertos distintivos representa prestigio o autoridad, por lo cual se requiere control y autorización formal para evitar su uso indebido."
+  },
+  {
+    "id": 217,
+    "pregunta": "¿Qué se podría concluir del Artículo 86 del Capítulo II del Título VIII sobre la adquisición de uniformes y elementos?",
+    "respuesta": "Parece que los Profesionales Oficiales de Reserva deben asumir económicamente parte de su presentación y dotación, lo que podría reflejar la naturaleza voluntaria y ad honorem de su vinculación."
+  },
+  {
+    "id": 218,
+    "pregunta": "¿Qué se puede inferir del Artículo 88 del Capítulo II del Título VIII sobre las alas de piloto civil en Profesionales Oficiales de Reserva?",
+    "respuesta": "Se podría interpretar que hay un reconocimiento formal a su experiencia previa, pero se exige validación y autorización institucional para mantener el orden y la coherencia en la imagen militar."
+  },
+  {
+    "id": 219,
+    "pregunta": "¿Qué se podría deducir del Artículo 84 del Capítulo I del Título VIII sobre la nomenclatura de grados?",
+    "respuesta": "La inclusión del sufijo 'RVA' podría implicar que se busca una clara diferenciación entre oficiales activos y de reserva, sin afectar el respeto al grado militar."
+  },
+  {
+    "id": 220,
+    "pregunta": "¿Qué podría significar que los Oficiales de Reserva solo usen ciertos uniformes con autorización del Comandante de Unidad según el Artículo 87?",
+    "respuesta": "Podría inferirse que se busca asegurar que el uso de uniformes esté estrictamente alineado con la necesidad y el contexto institucional, evitando excesos o usos indebidos."
+  }
+]

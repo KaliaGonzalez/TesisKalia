@@ -1,0 +1,252 @@
+[
+  {
+    "id": 51,
+    "pregunta": "Cual es el objetivo del reglamento del cuerpo de profesionales oficiales de reserva de las fuerzas militares?",
+    "respuesta": "Tiene por objeto establecer las normas que rigen para el personal que integra el cuerpo de los Profesionales Oficiales de Reserva que forman parte de las reservas de las Fuerzas Militares."
+  },
+  {
+    "id": 52,
+    "pregunta": "Cual es el perfil de los profesionales según el reglamento del cuerpo de profesionales oficiales de reserva de las fuerzas militares?",
+    "respuesta": "Son Profesionales Oficiales de Reserva de las Fuerzas Militares, los profesionales con título de formación universitaria completa conforme con los términos de la Ley 30 de 1992 o a las normas de educación superior vigentes en todo tiempo."
+  },
+  {
+    "id": 53,
+    "pregunta": "Como se eligen a los candidatos a Profesional Oficial de Reserva?",
+    "respuesta": "Serán preseleccionados por los Comandantes de Fuerza o sus delegados en cada Guarnición Militar, mediante comités integrados por Oficiales Superiores y Profesionales Oficiales de Reserva de mayor antigüedad orgánicos de cada Unidad"
+  },
+  {
+    "id": 54,
+    "pregunta": "Como se pueden realizar los cursos para formación y ascenso de los profesionales oficiales de reserva?",
+    "respuesta": "Sólo podrán realizarse con autorización expresa del Comando General de las Fuerzas Militares y versarán sobre los programas de instrucción previamente preparados por los Comandos de Fuerza y aprobados por el Comando General de las Fuerzas Militares."
+  },
+  {
+    "id": 55,
+    "pregunta": "Como preparan los programas para los profesionales oficiales de reserva?",
+    "respuesta": "Diseñan los programas de instrucción, capacitación y entrenamiento, en áreas de preparación sicológica, física, técnica, táctica y de administración logística."
+  },
+  {
+    "id": 56,
+    "pregunta": "Cuando es el dia de los profecionales oficiales de reserva?",
+    "respuesta": "Se establece como Día de los Profesionales Oficiales de Reserva el 15 de mayo y su celebración será el segundo fin de semana del mismo mes de cada año."
+  },
+  {
+    "id": 57,
+    "pregunta": "Cual es el lema que se encuentra en el escudo de los profesionales oficiales de reserva?",
+    "respuesta": "\"Todo por la Patria\""
+  },
+  {
+    "id": 58,
+    "pregunta": "De que color son las 3 cabrias del escudo?",
+    "respuesta": "La superior izquierda tiene fondo en gules, o sea el rojo del Ejército; la superior derecha tiene color azul oscuro o sea el color de la Armada; y la cabría inferior tiene fondo azul claro, color de la Fuerza Aérea."
+  },
+  {
+    "id": 59,
+    "pregunta": "Cuales son los tres tipos de escudos?",
+    "respuesta": "Escudo por tiempo de servicio, Escudo Honorario, Escudo al Merito Academico."
+  },
+  {
+    "id": 60,
+    "pregunta": "Cuales son las insignias y distintivos de los profesionales oficiales de reserva?",
+    "respuesta": "Insignias de grado,Distintivo de profesión y Clases de alas de piloto."
+  },
+  {
+    "id": 61,
+    "pregunta": "Que es la insignia de grado?",
+    "respuesta": "Las insignias de grado para el Ejército y la Fuerza Aérea son las mismas de los oficiales en actividad."
+  },
+  {
+    "id": 62,
+    "pregunta": "Cual es la edad maxima para utilizar el uniforme?",
+    "respuesta": "75 años"
+  },
+  {
+    "id": 63,
+    "pregunta": "Que elemento no pueden usar los Profesionales Oficiales de Reserva?",
+    "respuesta": "Los Profesionales Oficiales de Reserva no podrán hacer uso de sables y/o espadas ni utilizar el anillo de la Fuerza a la que pertenecen."
+  },
+  {
+    "id": 64,
+    "pregunta": "Que deben portar obligatoriamente los profesionales oficiales e reserva?",
+    "respuesta": "Están obligados a portar dentro de las instalaciones militares, el fichero de identificación militar que establezca la respectiva unidad"
+  },
+  {
+    "id": 65,
+    "pregunta": "Que documento tienen como identificacion los profesionales oficiales de reserva?",
+    "respuesta": "Tendrán como identificación el documento denominado Cédula Militar"
+  },
+  {
+    "id": 66,
+    "pregunta": "Que entidad puede expedir la cedula militar?",
+    "respuesta": "Dirección de Reclutamiento y Movilización de la respectiva Fuerza"
+  },
+  {
+    "id": 67,
+    "pregunta": "A cuales grados los profesionales oficiales de reserva pueden solicitar reingreso?",
+    "respuesta": "A partir del grado de Capitán o Teniente de Navío."
+  },
+  {
+    "id": 68,
+    "pregunta": "Quien recibe y analiza las solicitudes de reingreso de los profesionales oficiales de reserva?",
+    "respuesta": "Al Comandante General de las Fuerzas Militares"
+  },
+  {
+    "id": 69,
+    "pregunta": "Cual es la causa de desvincular a profecionales oficiales de reserva?",
+    "respuesta": "Presenten antecedentes penales, excluidos los delitos culposos, o disciplinarios."
+  },
+  {
+    "id": 70,
+    "pregunta": "Que pasa si un oficial no apruebe un curso de ascenso?",
+    "respuesta": "Se realiza la desvinculacion del Cuerpo de Profesionales Oficiales de Reserva."
+  },
+  {
+    "id": 71,
+    "pregunta": "Que es la desvinculacion?",
+    "respuesta": "La desvinculación de Profesionales Oficiales de Reserva es la situación en la que los Profesionales Oficiales de Reserva, sin perder su grado militar, por disposición de autoridad competente, cesan en la obligación de seguir prestando sus servicios en forma voluntaria a la Fuerza."
+  },
+  {
+    "id": 72,
+    "pregunta": "Cuales son los distintos tipos de listas de clasificacion?",
+    "respuesta": "Lista numero uno ,lista numero dos, lista numero tres, lista numero cuatro y lista numero cinco."
+  },
+  {
+    "id": 73,
+    "pregunta": "Que es la accion negativa?",
+    "respuesta": "La Acción Negativa es el registro consignado de carácter negativo, a causa de una acción u omisión y que se refiere a un hecho, actitud o conducta perjudicial, desfavorable, ineficaz y digna de censura."
+  },
+  {
+    "id": 74,
+    "pregunta": "Que es la accion positiva?",
+    "respuesta": "La Acción Positiva es el registro en el folio de vida de carácter positivo que se refiere a un hecho, desempeño, actitud, estímulo o habilidad, benéfica, favorable, eficaz y digna de realce por el esfuerzo realizado para lograr el objetivo propuesto."
+  },
+  {
+    "id": 75,
+    "pregunta": "Cuales son los niveles de calidad?",
+    "respuesta": "Excelente, Muy Bueno, Bueno, Regular y Deficiente"
+  },
+  {
+    "id": 76,
+    "pregunta": "Que es le Folio de Vida?",
+    "respuesta": "Es un instrumento que sirve para registrar de manera oportuna, ordenada, clara y concreta las actuaciones y desempeños significativos de carácter positivo o negativo del personal evaluado"
+  },
+  {
+    "id": 77,
+    "pregunta": "Que es la evaluacion y clasificacion de profesionales oficiales de reserva?",
+    "respuesta": "Es un instrumento del proceso para evaluación y clasificación anual, es diligenciada por las autoridades evaluadora y revisora. Concreta y define el desempeño profesional"
+  },
+  {
+    "id": 78,
+    "pregunta": "Cuales son los documentos del proceso de evaluacion?",
+    "respuesta": "Folio de Vida y Evaluación del Profesional Oficial de Reserva."
+  },
+  {
+    "id": 79,
+    "pregunta": "Cual es el objetivo de los documentos de evaluacion?",
+    "respuesta": "Tienen el propósito de suministrar elementos de juicio para sustentar las decisiones en la administración de personal y contribuir a la formación y superación profesional del evaluado"
+  },
+  {
+    "id": 80,
+    "pregunta": "A quienes se les denomina \"Autoridad Revisora\"?",
+    "respuesta": "Los jefes de las Direcciones de Acción Integral de las Fuerzas, los jefes de Estado Mayor, Subdirectores, Ejecutivos y Segundos Comandantes y sus equivalentes en las demás Fuerzas en servicio activo o de línea"
+  },
+  {
+    "id": 81,
+    "pregunta": "A que se le denomina \"Autoridad Evaluadora\"?",
+    "respuesta": "Al oficial en servicio activo y/o Profesional Oficial de Reserva que dentro de la estructura orgánica de la unidad, dependencia o repartición, sea el inmediato superior del evaluado, responsable de su dirección, control y progreso"
+  },
+  {
+    "id": 82,
+    "pregunta": "Cuales son las dos autoridades que intervienen en el proceso de evaluacion?",
+    "respuesta": "Evaluadoras y revisoras"
+  },
+  {
+    "id": 83,
+    "pregunta": "Como es el periodo de evaluacion?",
+    "respuesta": "El período de evaluación es anual y se establece del 1° de octubre al 30 de septiembre del año siguiente"
+  },
+  {
+    "id": 84,
+    "pregunta": "Que es la disciplina segun los profesionales oficiales de reserva?",
+    "respuesta": "Consiste en mandar y obedecer dentro de las atribuciones del superior y las obligaciones y deberes del subalterno, en un criterio profesional. Implica la observancia de las normas y órdenes que consagren el deber profesional y legal"
+  },
+  {
+    "id": 85,
+    "pregunta": "Cuales son los tipos de obligaciones que deben cumplir los",
+    "respuesta": "Generales, subordinacion, obediencia, servicio, academica, reserva militar y profesional, cortesia militar y responsabilidad administrativa."
+  },
+  {
+    "id": 86,
+    "pregunta": "Cuales son los estimulos para los oficiales?",
+    "respuesta": "Felicitacion privada, felicitacion publica escrita, mencion honorifica, escudo de la reserva, medalla militar, condecoraciones y premios especiales."
+  },
+  {
+    "id": 87,
+    "pregunta": "Que son las condecoraciones?",
+    "respuesta": "Las condecoraciones se constituyen en la más alta distinción y se otorgan a los Profesionales Oficiales de Reserva de acuerdo con las disposiciones vigentes."
+  },
+  {
+    "id": 88,
+    "pregunta": "Que es el Honor militar?",
+    "respuesta": "Se entiende por Honor Militar el conjunto de cualidades morales y profesionales que sustentan los valores y virtudes militares."
+  },
+  {
+    "id": 89,
+    "pregunta": "Que es el comando de los profesionales de reserva?",
+    "respuesta": "Es el organismo rector de la organización, capacitación, manejo y asignación de los Profesionales Oficiales de Reserva"
+  },
+  {
+    "id": 90,
+    "pregunta": "Como se puede realizar un cambio de unidad?",
+    "respuesta": "Podrán ser autorizados por necesidades del servicio, mediante Orden Administrativa de Personal OAP y deben ser autorizados por el Comando General de las Fuerzas Militares"
+  },
+  {
+    "id": 91,
+    "pregunta": "Que es el Back Side?",
+    "respuesta": "Nombre dado al piloto ubicado en la silla trasera de la cabina"
+  },
+  {
+    "id": 92,
+    "pregunta": "Que es BRIEFING?",
+    "respuesta": "Procedimiento estandarizado de planeamiento de la misión previo al vuelo"
+  },
+  {
+    "id": 93,
+    "pregunta": "Que es FLIR?",
+    "respuesta": "Equipo de tecnología avanzada, el cual posee el sistema de detectar y ubicar una concentración de calor generada por los cuerpos"
+  },
+  {
+    "id": 94,
+    "pregunta": "Que es la TVD de la FAC?",
+    "respuesta": "Instrumentos de soporte para recuperar la memoria institucional mediante criterios archivísticos y facilitar el plan de transferencias secundarias"
+  },
+  {
+    "id": 95,
+    "pregunta": "Que es ATM de la FAC?",
+    "respuesta": "Sistema que busca un movimiento seguro, ordenado y rápido del tránsito aéreo, optimizando el uso del espacio aéreo disponible basado en tecnología para aumentar el número de operaciones"
+  },
+  {
+    "id": 96,
+    "pregunta": "Que significa las siglas COAMI?",
+    "respuesta": "Comandos de Apoyo a la Misión"
+  },
+  {
+    "id": 97,
+    "pregunta": "Cual es el tiempo minimo de permanencia en el grado Teniente de Navio Mayor?",
+    "respuesta": "5 años."
+  },
+  {
+    "id": 98,
+    "pregunta": "Cual es el tiempo minimo de permanencia en el grado Capitan de Navio ?",
+    "respuesta": "6 años"
+  },
+  {
+    "id": 99,
+    "pregunta": "Cual es el tiempo minimo de permanencia en el grado Capitan de Corbeta ?",
+    "respuesta": "5 años"
+  },
+  {
+    "id": 100,
+    "pregunta": "Cual es el tiempo minimo de permanencia en el grado Capitan de Fragata ?",
+    "respuesta": "6 años"
+  }
+]
