@@ -98,21 +98,19 @@ prompt_template = """
 Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu trabajo es responder preguntas usando únicamente la información proporcionada en los documentos oficiales de la FAC.
 
 INSTRUCCIONES CRÍTICAS:
-1. BUSCA CUIDADOSAMENTE en los documentos la información específica solicitada.
-2. Si encuentras información relevante, responde de manera COMPLETA y DETALLADA usando esa información exacta.
-3. Para preguntas sobre PRINCIPIOS, busca específicamente secciones tituladas "PRINCIPIOS" o que contengan "principios institucionales".
-4. Para preguntas sobre DEFINICIONES, busca secciones que contengan la definición exacta del término.
-5. CITA la fuente específica cuando sea relevante (ej: "Según el documento EDAES...").
-6. Proporciona información completa, incluyendo definiciones, explicaciones y detalles disponibles.
-7. SOLO si realmente NO encuentras información específica relevante, indica que no tienes información suficiente.
+1. Responde UNICAMENTE a la pregunta del usuario. NO incluyas información sobre otros términos o conceptos que no hayan sido solicitados explícitamente.
+2. Si el contexto contiene múltiples definiciones (ej: Abnegación, Precisión, Seguridad), FILTRA y selecciona SOLO la que corresponde a la pregunta.
+3. Responde de manera COMPLETA y DETALLADA sobre el tema específico consultado, citando la fuente (ej: "Según el documento EDAES...").
+4. Si la pregunta es sobre "Principios" o listas, menciona todos los elementos relevantes encontrados.
+5. Si no encuentras información sobre lo preguntado en el contexto, indica claramente que no tienes información suficiente.
 
-IMPORTANTE: Para principios de la Fuerza Aérea, busca específicamente información sobre "INTEGRIDAD" y "SEGURIDAD".
+Contexto Relevante:
+{contexto}
 
-Pregunta: {pregunta}
+Pregunta del Usuario:
+{pregunta}
 
-Documentos disponibles: {contexto}
-
-Respuesta (específica y detallada basada únicamente en los documentos):
+Respuesta (Exclusivamente sobre lo preguntado):
 """
 
 PROMPT = PromptTemplate(
@@ -1290,27 +1288,26 @@ def chatbot_response(
 
     # Construir contexto final
     fc = ""
-    referencias_set = set()
     registro = []
+    referencias_dict = {}
 
-    for doc in re_ranked_docs:
+    # Usar solo los top 3 documentos más relevantes para evitar ruido en referencias
+    for doc in re_ranked_docs[:3]:
         origin = doc.metadata.get("origin", "Búsqueda híbrida")
         title = doc.metadata.get("title", "Sin título")
 
-        # Crear referencia única
+        # Agrupar títulos por documento origen
+        if origin not in referencias_dict:
+            referencias_dict[origin] = set()
+
         if title and title != "Sin título":
-            referencia = f"{origin} - {title}"
-        else:
-            referencia = origin
+            referencias_dict[origin].add(title)
 
         if usar_full_context and origin == "EDAES":
             try:
                 fc += get_full_context(vectorstore, doc) + "\n\n"
-                referencias_set.add(referencia)
             except Exception as e:
-                # Fallback: usar contenido directo si falla el contexto completo
                 fc += doc.page_content + "\n\n"
-                referencias_set.add(referencia)
         elif (
             usar_full_context
             and origin == "EDAES Segmentado"
@@ -1319,35 +1316,48 @@ def chatbot_response(
             try:
                 text, ref = get_full_chunk(vectorstore, doc)
                 fc += text + "\n\n"
-                referencias_set.add(ref.strip())
             except Exception as e:
-                # Fallback: usar contenido directo
                 fc += doc.page_content + "\n\n"
-                referencias_set.add(referencia)
         elif (
             usar_full_context and origin == "Resumen EDAES" and "parent" in doc.metadata
         ):
             try:
                 text, ref = get_full_reference(vectorstore, doc, registro)
                 fc += text + "\n\n"
-                referencias_set.add(ref.strip())
             except Exception as e:
-                # Fallback: usar contenido directo
                 fc += doc.page_content + "\n\n"
-                referencias_set.add(referencia)
         else:
             fc += doc.page_content + "\n\n"
-            referencias_set.add(referencia)
 
-    # Convertir set a string sin duplicados
-    referencias = "\n".join(referencias_set)
+    # Construir string de referencias formateado
+    referencias_list = []
+    for origin, titles in referencias_dict.items():
+        if titles:
+            titulo_str = ", ".join(sorted(titles))
+            referencias_list.append(f"{origin} - {titulo_str}")
+        else:
+            referencias_list.append(origin)
+
+    referencias = "\n".join(referencias_list)
 
     start = time.time()
-    respuesta = llm_chain.invoke({"contexto": fc, "pregunta": query})
+    try:
+        respuesta = llm_chain.invoke({"contexto": fc, "pregunta": query})
+
+        # Verificar si la respuesta es un diccionario (legacy LLMChain) o string (Runnable)
+        if isinstance(respuesta, dict) and "text" in respuesta:
+            respuesta = respuesta["text"]
+
+    except Exception as e:
+        print(f"❌ Error al invocar LLM: {e}")
+        respuesta = "Lo siento, hubo un error al generar la respuesta."
+
     print("-" * 50)
-    print(query)
+    print(f"❓ Pregunta: {query}")
     print("-" * 50)
-    print(fc)
+    print(f"🤖 Respuesta generada: {respuesta}")
+    print("-" * 50)
+    # print(fc) # Opcional: comentar si es demasiado verbose
     stop = time.time()
     tiempo_res = stop - start
 
