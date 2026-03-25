@@ -965,43 +965,42 @@ if __name__ == "__main__":
         retriever_newMater = vectorstore_newMater.as_retriever(search_kwargs={"k": k})
         retriever_historia = vectorstore_Historia.as_retriever(search_kwargs={"k": k})
 
+    # vectorstore = store_in_chromadb(chunks, persist_directory, c_name, embedding_model_name)
 
-# vectorstore = store_in_chromadb(chunks, persist_directory, c_name, embedding_model_name)
+    # Aqui estamos creando el modelo en esta case deberas cambiar el nombre arriba del archivo o aqui mismo.
+    llm = OllamaLLM(model=model_name, temperature=temperature)
+    # prueba = vectorstore.get(where={"id": "chunk_5"})
+    # print(prueba)
 
-# Aqui estamos creando el modelo en esta caso deberas cambiar el nombre arriba del archivo o aqui mismo.
-llm = OllamaLLM(model=model_name, temperature=temperature)
-# prueba = vectorstore.get(where={"id": "chunk_5"})
-# print(prueba)
+    # Se crea el retriever quien ser el encargado de traer los documento segun el query, la k es el numero de documento que se quiere recuperar.
+    # En esta caso seria solo 5 documentos, pero si quieres porbar trae mas.
+    # retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
 
-# Se crea el retriever quien ser el encargado de traer los documento segun el query, la k es el numero de documento que se quiere recuperar.
-# En esta caso seria solo 5 documentos, pero si quieres porbar trae mas.
-# retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+    # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
+    reranker = CrossEncoder(re_ranker_model)
 
-# Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
-reranker = CrossEncoder(re_ranker_model)
+    # Esto simplementes es un tempate de prompt que se le pasara al modelo de lenguaje para que genere la respuesta.
+    prompt_template = """
+            Eres un asistente especializado en responder preguntas sobre la Fuerza Aérea Colombiana, o sus siglas FAC, basadas en
+            documentos proporcionados. Tu respuesta debe basarse únicamente en la información de los documentos recuperados.
+            Evita estrictamente frases como 'no sé', 'no encontré información al respecto', 'no puedo responder', 'la información no está disponible' o similares.
+            Si la información para responder una parte de la pregunta no se encuentra explícitamente en el contexto,
+            céntrate en responder las partes de la pregunta que sí puedes abordar con el contexto.
+            Proporciona una respuesta concisa, directa y sin conversación innecesaria.
 
-# Esto simplementes es un tempate de prompt que se le pasara al modelo de lenguaje para que genere la respuesta.
-prompt_template = """
-        Eres un asistente especializado en responder preguntas sobre la Fuerza Aérea Colombiana, o sus siglas FAC, basadas en
-        documentos proporcionados. Tu respuesta debe basarse únicamente en la información de los documentos recuperados.
-        Evita estrictamente frases como 'no sé', 'no encontré información al respecto', 'no puedo responder', 'la información no está disponible' o similares.
-        Si la información para responder una parte de la pregunta no se encuentra explícitamente en el contexto,
-        céntrate en responder las partes de la pregunta que sí puedes abordar con el contexto.
-        Proporciona una respuesta concisa, directa y sin conversación innecesaria.
+            Contexto: {contexto}
 
-        Contexto: {contexto}
+            Pregunta: {pregunta}
 
-        Pregunta: {pregunta}
+            Respuesta: """
 
-        Respuesta: """
-
-PROMPT = PromptTemplate(
-    template=prompt_template, input_variables=["contexto", "pregunta"]
-)
+    PROMPT = PromptTemplate(
+        template=prompt_template, input_variables=["contexto", "pregunta"]
+    )
 
 
 def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
-    # Aqui estamos creando el modelo en esta caso deberas cambiar el nombre arriba del archivo o aqui mismo.
+    # Aqui estamos creando el modelo en esta case deberas cambiar el nombre arriba del archivo o aqui mismo.
     llm = OllamaLLM(model=model_name, temperature=temperature)
     # Se crea el pipeline (reemplaza LLMChain que está deprecado)
     llm_chain = prompt | llm
@@ -1149,6 +1148,17 @@ num_iterations = 10
 usar_full_context = False
 # Definición de temperaturas a iterar (automatización)
 temperatures_to_run = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+
+# Initializing retrievers and vectorstores
+(
+    retriever_edaes,
+    retriever_pruebas,
+    retriever_newMater,
+    vectorstore_edaes,
+    retriever_resumen_edaes,
+    retriever_edaes_seg,
+    retriever_historia,
+) = inicializar_retriever_vectorstore()
 
 
 def eliminar_chain_of_thought(texto_respuesta):
