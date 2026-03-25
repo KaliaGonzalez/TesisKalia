@@ -95,20 +95,20 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 reranker = CrossEncoder(re_ranker_model)
 
 prompt_template = """
-Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu trabajo es responder preguntas usando únicamente la información proporcionada en los documentos oficiales de la FAC.
+Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu misión es responder preguntas basándote ÚNICAMENTE en la información proporcionada.
 
-INSTRUCCIONES CRÍTICAS:
-1. Responde DIRECTAMENTE a la pregunta del usuario.
-2. NO menciones el nombre del documento en el texto de tu respuesta (ej: EVITA decir "Según el documento EDAES...").
-3. Si encuentras la respuesta, dala tal cual está en el texto.
-4. Si el contexto contiene múltiples definiciones, usa SOLO la que corresponde a la pregunta exacta.
-5. NO inventes información. Si no está en el contexto, di "No tengo información suficiente".
+INSTRUCCIONES DE RESPUESTA:
+1. Responde DIRECTAMENTE a la pregunta. No divagues ni incluyas información no solicitada.
+2. Si la pregunta es "¿Qué es X?", y el documento habla de "Y", NO respondas sobre "Y". DI CLARAMENTE: "No encontré una definición exacta de X en los documentos".
+3. EVITA la frase "Según el documento...". Simplemente da la respuesta. Si es necesario citar, hazlo al final entre paréntesis, ej: (Fuente: Nombre del Documento).
+4. NO repitas el nombre de la fuente múltiples veces. Nombra el documento una sola vez si es estrictamente necesario para dar contexto.
+5. NO inventes definiciones. Si el texto dice "Fase de Peligro", eso NO es lo mismo que "Peligro" por sí solo. Sé preciso.
+6. Si la información no está en el contexto, responde: "No tengo información suficiente en los documentos proporcionados".
+7. IMPORTANTE: No agregues información de términos relacionados no solicitados (ej. si preguntan por "X", no definas "Y" ni "Z").
 
-Contexto Relevante:
-{contexto}
+Pregunta: {pregunta}
 
-Pregunta del Usuario:
-{pregunta}
+Documentos disponibles: {contexto}
 
 Respuesta:
 """
@@ -133,7 +133,7 @@ PROMPT_RERANK = PromptTemplate(
 
 
 def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
-    # Aqui estamos creando el modelo en esta caso deberas cambiar el nombre arriba del archivo o aqui mismo.
+    # Aqui estamos creando el modelo en esta case deberas cambiar el nombre arriba del archivo o aqui mismo.
     llm = OllamaLLM(model=model_name, temperature=temperature)
     # Se crea el pipeline (reemplaza LLMChain que está deprecado)
     llm_chain = prompt | llm
@@ -888,7 +888,9 @@ def inicializar_retriever_vectorstore(k=5):
             collection_name="fac_documents_complete",
             embedding_function=embedding_model,
         )
-        vectorstore_complete = vectorstore_edaes
+        vectorstore_complete = (
+            vectorstore_edaes  # Definir variable unificada en este scope
+        )
         vectorstore_pruebas = vectorstore_edaes  # Misma colección para todos
         vectorstore_resumen_edaes = vectorstore_edaes
         vectorstore_edaes_seg = vectorstore_edaes
@@ -1022,6 +1024,7 @@ def inicializar_retriever_vectorstore(k=5):
         if vs is None:
             raise ValueError(f"Error: {name} no se pudo crear correctamente")
 
+    # Crear Retrievers estándar (Vector Search)
     retriever_edaes = vectorstore_edaes.as_retriever(search_kwargs={"k": k})
     retriever_pruebas = vectorstore_pruebas.as_retriever(search_kwargs={"k": k})
     retriever_newMater = vectorstore_newMater.as_retriever(search_kwargs={"k": k})
@@ -1031,25 +1034,13 @@ def inicializar_retriever_vectorstore(k=5):
     )
     retriever_edaes_seg = vectorstore_edaes_seg.as_retriever(search_kwargs={"k": k})
 
-    # Validar que todos los retrievers se crearon correctamente
-    retrievers = [
-        ("retriever_edaes", retriever_edaes),
-        ("retriever_pruebas", retriever_pruebas),
-        ("retriever_newMater", retriever_newMater),
-        ("retriever_resumen_edaes", retriever_resumen_edaes),
-        ("retriever_edaes_seg", retriever_edaes_seg),
-        ("retriever_historia", retriever_historia),
-    ]
-
-    for name, ret in retrievers:
-        if ret is None:
-            raise ValueError(f"Error: {name} no se pudo crear correctamente")
+    print(f"✅ Retrievers (VectorStore) inicializados correctamente.")
 
     return (
         retriever_edaes,  # 1
         retriever_pruebas,  # 2
         retriever_newMater,  # 3
-        vectorstore_edaes,  # 4
+        vectorstore_edaes,  # 4 (Se mantiene por compatibilidad, aunque no se use para búsqueda)
         retriever_resumen_edaes,  # 5
         retriever_edaes_seg,  # 6
         retriever_historia,  # 7
@@ -1121,161 +1112,33 @@ def chatbot_response(
     )
 
     # BÚSQUEDA UNIVERSAL: Sin restricciones de dominio, buscar en TODOS los documentos
-    print(f"🔍 Búsqueda universal para: '{query}'")
+    print(f"🔍 Búsqueda universal con BM25 para: '{query}'")
 
-    # MEJORAR: Búsqueda híbrida universal - SIN restricciones de dominio
-    hybrid_docs = []
+    # -------------------------------------------------------------
+    # SIMPLIFICACIÓN A SOLO BM25 (SOLICITUD DE USUARIO)
+    # -------------------------------------------------------------
+    # Como todos los retrievers ahora apuntan al mismo índice BM25 global,
+    # invocamos uno solo para obtener los resultados de todo el corpus.
 
-    try:
-        # Búsqueda directa en ChromaDB con estrategias múltiples
-        collection = vectorstore._collection
-        all_results = []
+    # Aumentamos k aquí para asegurar que el re-ranking tenga suficientes candidatos
+    # Recuperamos documentos con BM25
+    original_k = retriever_edaes.k
+    retriever_edaes.k = (
+        40  # Aumentar recall para asegurar encontrar la definición exacta
+    )
 
-        # Estrategia 1: Búsqueda semántica básica
-        semantic_results = collection.query(
-            query_texts=[query],
-            n_results=25,  # Aumentar para más diversidad
-            include=["documents", "metadatas", "distances"],
-        )
+    docs = retriever_edaes.invoke(query_limpia)
 
-        # Estrategia 2: Búsqueda con query expandido
-        expanded_query = f"{query} Fuerza Aérea Colombiana FAC"
-        expanded_results = collection.query(
-            query_texts=[expanded_query],
-            n_results=15,
-            include=["documents", "metadatas", "distances"],
-        )
+    retriever_edaes.k = original_k  # Restaurar k original
 
-        # Combinar y procesar TODOS los resultados sin filtros de dominio
-        if semantic_results["documents"] and len(semantic_results["documents"][0]) > 0:
-            for doc, metadata, distance in zip(
-                semantic_results["documents"][0],
-                semantic_results["metadatas"][0],
-                semantic_results["distances"][0],
-            ):
-                all_results.append(
-                    {
-                        "content": doc,
-                        "metadata": metadata,
-                        "distance": distance,
-                        "source": "semantic",
-                    }
-                )
+    print(f"📄 Documentos recuperados por BM25: {len(docs)}")
 
-        if expanded_results["documents"] and len(expanded_results["documents"][0]) > 0:
-            for doc, metadata, distance in zip(
-                expanded_results["documents"][0],
-                expanded_results["metadatas"][0],
-                expanded_results["distances"][0],
-            ):
-                all_results.append(
-                    {
-                        "content": doc,
-                        "metadata": metadata,
-                        "distance": distance,
-                        "source": "expanded",
-                    }
-                )
+    # Pasamos directamente al re-ranking sin lógica vectorial/híbrida compleja
+    final_docs = docs
 
-        # Extraer términos clave de la consulta para búsqueda adicional
-        key_terms = [
-            word
-            for word in query_keywords
-            if word
-            not in [
-                "que",
-                "es",
-                "un",
-                "una",
-                "el",
-                "la",
-                "los",
-                "las",
-                "de",
-                "del",
-                "en",
-                "para",
-                "por",
-                "con",
-                "como",
-            ]
-            and len(word) > 2
-        ]
-
-        # Estrategia 3: Búsqueda exacta por palabras clave en texto
-        for keyword in key_terms:
-            try:
-                keyword_results = collection.get(
-                    where_document={"$contains": keyword},
-                    include=["documents", "metadatas"],
-                    limit=5,
-                )
-
-                if keyword_results["documents"]:
-                    for doc, metadata in zip(
-                        keyword_results["documents"], keyword_results["metadatas"]
-                    ):
-                        # Verificar relevancia real
-                        if any(term.lower() in doc.lower() for term in key_terms):
-                            all_results.append(
-                                {
-                                    "content": doc,
-                                    "metadata": metadata,
-                                    "distance": 1.0,  # Distancia fija para búsqueda exacta
-                                    "source": "keyword_exact",
-                                }
-                            )
-            except:
-                continue
-
-        # Eliminar duplicados y ordenar por relevancia
-        seen_content = set()
-        unique_results = []
-
-        for result in all_results:
-            content_key = result["content"][
-                :100
-            ]  # Usar primeros 100 chars como clave única
-            if content_key not in seen_content:
-                seen_content.add(content_key)
-
-                # Calcular score de relevancia basado solo en distancia
-                relevance_score = result["distance"]
-
-                # BONUS por contener palabras clave exactas
-                content_lower = result["content"].lower()
-                keyword_matches = sum(1 for term in key_terms if term in content_lower)
-                if keyword_matches > 0:
-                    relevance_score *= 0.8**keyword_matches  # Más matches = mejor score
-
-                result["final_score"] = relevance_score
-                unique_results.append(result)
-
-        # Ordenar por score final (menor = mejor)
-        unique_results.sort(key=lambda x: x["final_score"])
-
-        print(f"📊 Resultados únicos procesados: {len(unique_results)}")
-
-        # Convertir a formato Document
-        from langchain_core.documents import Document
-
-        for result in unique_results[:20]:  # Top 20 resultados
-            hybrid_docs.append(
-                Document(page_content=result["content"], metadata=result["metadata"])
-            )
-
-    except Exception as e:
-        print(f"❌ Error en búsqueda híbrida mejorada: {e}")
-        hybrid_docs = []
-
-    # Usar documentos híbridos si están disponibles, sino usar los originales
-    final_docs = hybrid_docs if hybrid_docs else docs
-
-    print(f"📄 Documentos finales para re-ranking: {len(final_docs)}")
-
-    # Re-ranking con mejor algoritmo
+    # Re-ranking con CrossEncoder (esencial para filtrar resultados de BM25)
     re_ranked_docs = re_rank_docs(
-        query_limpia, final_docs[:30], reranker
+        query_limpia, final_docs[:15], reranker
     )  # Limitar a top 30 para eficiencia
 
     # Mostrar información de debug
@@ -1289,68 +1152,54 @@ def chatbot_response(
 
     # Construir contexto final
     fc = ""
+    referencias_set = set()
+    # Lista necesaria para la función get_full_reference si se usa
     registro = []
 
-    # Set para almacenar SOLO los orígenes únicos
-    referencias_origen_set = set()
+    for doc in re_ranked_docs:
+        origin = doc.metadata.get("origin", "Búsqueda híbrida")
 
-    # Usar TODOS los documentos re-rankeados para contexto
-    # pero solo capturar el origen de los Top 5 para mostrar al usuario
-    for i, doc in enumerate(re_ranked_docs):
-        origin = doc.metadata.get("origin", "Documento desconocido")
+        # MODIFICACIÓN: SOLO MENCIONAR EL DOCUMENTO DE ORIGEN (NO EL TÍTULO DEL CHUNK)
+        referencias_set.add(origin)
 
-        # AGREGAR SOLO EL ORIGEN PARA LA CITA (Solo de los top 5)
-        if i < 5:
-            referencias_origen_set.add(origin)
-
-        # Lógica de Full Context
-        try:
-            if usar_full_context and origin == "EDAES":
+        if usar_full_context and origin == "EDAES":
+            try:
                 fc += get_full_context(vectorstore, doc) + "\n\n"
-            elif (
-                usar_full_context
-                and origin == "EDAES Segmentado"
-                and "id_referencia" in doc.metadata
-            ):
-                text, _ = get_full_chunk(vectorstore, doc)
-                fc += text + "\n\n"
-            elif (
-                usar_full_context
-                and origin == "Resumen EDAES"
-                and "parent" in doc.metadata
-            ):
-                text, _ = get_full_reference(vectorstore, doc, registro)
-                fc += text + "\n\n"
-            else:
+            except Exception as e:
+                # Fallback: usar contenido directo si falla el contexto completo
                 fc += doc.page_content + "\n\n"
-        except Exception:
-            # Fallback seguro
+        elif (
+            usar_full_context
+            and origin == "EDAES Segmentado"
+            and "id_referencia" in doc.metadata
+        ):
+            try:
+                text, ref = get_full_chunk(vectorstore, doc)
+                fc += text + "\n\n"
+            except Exception as e:
+                # Fallback: usar contenido directo
+                fc += doc.page_content + "\n\n"
+        elif (
+            usar_full_context and origin == "Resumen EDAES" and "parent" in doc.metadata
+        ):
+            try:
+                text, ref = get_full_reference(vectorstore, doc, registro)
+                fc += text + "\n\n"
+            except Exception as e:
+                # Fallback: usar contenido directo
+                fc += doc.page_content + "\n\n"
+        else:
             fc += doc.page_content + "\n\n"
 
-    # Construir string de referencias limpio (UNA SOLA MENCIÓN POR DOCUMENTO)
-    if referencias_origen_set:
-        referencias = "\n".join(sorted(referencias_origen_set))
-    else:
-        referencias = "No hay fuentes específicas."
+    # Convertir set a string sin duplicados
+    referencias = "\n".join(referencias_set)
 
     start = time.time()
-    try:
-        respuesta = llm_chain.invoke({"contexto": fc, "pregunta": query})
-
-        # Verificar si la respuesta es un diccionario (legacy LLMChain) o string (Runnable)
-        if isinstance(respuesta, dict) and "text" in respuesta:
-            respuesta = respuesta["text"]
-
-    except Exception as e:
-        print(f"❌ Error al invocar LLM: {e}")
-        respuesta = "Lo siento, hubo un error al generar la respuesta."
-
+    respuesta = llm_chain.invoke({"contexto": fc, "pregunta": query})
     print("-" * 50)
-    print(f"❓ Pregunta: {query}")
+    print(query)
     print("-" * 50)
-    print(f"🤖 Respuesta generada: {respuesta}")
-    print("-" * 50)
-    # print(fc) # Opcional: comentar si es demasiado verbose
+    print(fc)
     stop = time.time()
     tiempo_res = stop - start
 
@@ -1363,13 +1212,9 @@ def create_specialized_mater_chunks(md_text, sections):
     optimizada para responder preguntas sobre términos aeronáuticos.
     """
     lines = md_text.split("\n")
-    # CORREGIR: Regex para capturar MÚLTIPLES formatos del NuevoMATER
-    # Formato 1: **Término.** Definición
-    term_regex_dot = re.compile(r"^\*\*(.+?)\.\*\*\s*(.*)$")
-    # Formato 2: **Término:** Definición
-    term_regex_colon = re.compile(r"^\*\*(.+?):\*\*\s*(.*)$")
-    # Formato 3: **Término***.* Definición (Caso especial detectado en NuevoMATER)
-    term_regex_star_dot = re.compile(r"^\*\*(.+?)\*{3}\.\*\s*(.*)$")
+    # CORREGIR: Regex para capturar AMBOS formatos: **Término.** y **Término:**
+    term_regex_dot = re.compile(r"^\*\*(.+?)\.\*\*\s*(.*)$")  # **Término.** Definición
+    term_regex_colon = re.compile(r"^\*\*(.+?):\*\*\s*(.*)$")  # **Término:** Definición
 
     current_term = None
     current_definition = []
@@ -1380,12 +1225,8 @@ def create_specialized_mater_chunks(md_text, sections):
         if not line or line.startswith("![]") or line.startswith("Figura"):
             continue
 
-        # Intentar todos los formatos
-        term_match = (
-            term_regex_dot.match(line)
-            or term_regex_colon.match(line)
-            or term_regex_star_dot.match(line)
-        )
+        # Intentar ambos formatos
+        term_match = term_regex_dot.match(line) or term_regex_colon.match(line)
 
         if term_match:
             # Procesar término anterior si existe
