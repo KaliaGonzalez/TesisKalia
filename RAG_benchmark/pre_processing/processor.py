@@ -74,6 +74,20 @@ EXCLUDED_TITLES = {
 }
 
 
+# Variables de configuración (disponibles al importar)
+# Obtener paths absolutos para evitar errores de ejecución desde diferentes directorios
+current_dir = os.path.dirname(os.path.abspath(__file__))  # Dir pre_processing
+base_dir = os.path.dirname(current_dir)  # Dir RAG_benchmark
+
+c_name = "pruebas"
+embedding_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+persist_directory = os.path.join(base_dir, "data", "chroma_db")
+re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+# Paths absolutos para inputs (Markdown y JSON)
+input_dir = os.path.join(base_dir, "FAC_Documents", "rag_files")
+
+
 def load_goalset(ruta_json):
     with open(ruta_json, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -81,7 +95,7 @@ def load_goalset(ruta_json):
 
 # Solo ejecutar al correr directamente, no al importar
 if __name__ == "__main__":
-    ruta_json = "FAC_Documents/rag_files/GoalSetNewMater.json"
+    ruta_json = os.path.join(input_dir, "GoalSetNewMater.json")
     preguntas_respuestas = load_goalset(ruta_json)
 
     parser = argparse.ArgumentParser(
@@ -104,10 +118,17 @@ if __name__ == "__main__":
     temperature = args.temperature
 
 # Variables de configuración (disponibles al importar)
+# Obtener paths absolutos para evitar errores de ejecución desde diferentes directorios
+current_dir = os.path.dirname(os.path.abspath(__file__))  # Dir pre_processing
+base_dir = os.path.dirname(current_dir)  # Dir RAG_benchmark
+
 c_name = "pruebas"
 embedding_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-persist_directory = "../data/chroma_db"
+persist_directory = os.path.join(base_dir, "data", "chroma_db")
 re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+# Paths absolutos para inputs (Markdown y JSON)
+input_dir = os.path.join(base_dir, "FAC_Documents", "rag_files")
 
 
 def limpiar_string(texto):
@@ -851,92 +872,98 @@ if __name__ == "__main__":
             collection_name="pruebas",
             embedding_function=embedding_model,
         )
-    vectorstore_resumen_edaes = Chroma(
-        persist_directory=persist_directory,
-        collection_name="resumen_edaes",
-        embedding_function=embedding_model,
-    )
-    vectorstore_edaes_seg = Chroma(
-        persist_directory=persist_directory,
-        collection_name="edaes_seg",
-        embedding_function=embedding_model,
-    )
-    vectorstore_newMater = Chroma(
-        persist_directory=persist_directory,
-        collection_name="newMater",
-        embedding_function=embedding_model,
-    )
-    vectorstore_Historia = Chroma(
-        persist_directory=persist_directory,
-        collection_name="Historia",
-        embedding_function=embedding_model,
-    )
-else:
-    print("Creando Base de datos... ")
-    chunks = []
-    chunks_edaes = []
-    chunk_resumen_edaes = []
-    chunks_seg = []
-    chunks_Historia = []
+        vectorstore_resumen_edaes = Chroma(
+            persist_directory=persist_directory,
+            collection_name="resumen_edaes",
+            embedding_function=embedding_model,
+        )
+        vectorstore_edaes_seg = Chroma(
+            persist_directory=persist_directory,
+            collection_name="edaes_seg",
+            embedding_function=embedding_model,
+        )
+        vectorstore_newMater = Chroma(
+            persist_directory=persist_directory,
+            collection_name="newMater",
+            embedding_function=embedding_model,
+        )
+        vectorstore_Historia = Chroma(
+            persist_directory=persist_directory,
+            collection_name="Historia",
+            embedding_function=embedding_model,
+        )
+    else:
+        print("Creando Base de datos... ")
+        chunks = []
+        chunks_edaes = []
+        chunk_resumen_edaes = []
+        chunks_seg = []
+        chunks_Historia = []
 
-    markdown_content_EDAES = read_markdown_file("FAC_Documents/rag_files/edaes.md")
-    markdown_content_MATER = read_markdown_file(
-        "FAC_Documents/rag_files/manual_de_terminos_fuerza_aerea_colombiana.md"
-    )
-    markdown_content_PORFAC = read_markdown_file(
-        "FAC_Documents/rag_files/reglamento_porfac.md"
-    )
-    markdown_content_resumen_edaes = read_markdown_file(
-        "FAC_Documents/rag_files/Preguntas_FAC.md"
-    )
-    markdown_content_newMater = read_markdown_file(
-        "FAC_Documents/rag_files/NuevoMater.md"
-    )
-    markdown_content_Historia = read_markdown_file(
-        "FAC_Documents/rag_files/Historia.md"
-    )
+        markdown_content_EDAES = read_markdown_file("FAC_Documents/rag_files/edaes.md")
+        markdown_content_MATER = read_markdown_file(
+            "FAC_Documents/rag_files/manual_de_terminos_fuerza_aerea_colombiana.md"
+        )
+        markdown_content_PORFAC = read_markdown_file(
+            "FAC_Documents/rag_files/reglamento_porfac.md"
+        )
+        markdown_content_resumen_edaes = read_markdown_file(
+            "FAC_Documents/rag_files/Preguntas_FAC.md"
+        )
+        markdown_content_newMater = read_markdown_file(
+            "FAC_Documents/rag_files/NuevoMater.md"
+        )
+        markdown_content_Historia = read_markdown_file(
+            "FAC_Documents/rag_files/Historia.md"
+        )
+        parse_markdown_edaes(markdown_content_EDAES, chunks_edaes)
+        print(len(chunks_edaes))
+        prototipo_1(chunks_edaes, chunks_seg)
+        print(len(chunks_seg))
+        parse_markdown_mater(markdown_content_MATER, chunks)
+        print(len(chunks))
+        parse_markdown_porfac(markdown_content_PORFAC, chunks)
+        print(len(chunks))
+        parse_markdown_resumen_edaes(
+            markdown_content_resumen_edaes, chunk_resumen_edaes
+        )
+        print(len(chunk_resumen_edaes))
+        parse_markdown_Historia(markdown_content_Historia, chunks_Historia)
+        print(f"Historia chunks: {len(chunks_Historia)}")
+        parse_markdown_mater(markdown_content_newMater, chunks)
+        print(len(chunks))
 
-    parse_markdown_edaes(markdown_content_EDAES, chunks_edaes)
-    print(len(chunks_edaes))
-    prototipo_1(chunks_edaes, chunks_seg)
-    print(len(chunks_seg))
-    parse_markdown_mater(markdown_content_MATER, chunks)
-    print(len(chunks))
-    parse_markdown_porfac(markdown_content_PORFAC, chunks)
-    print(len(chunks))
-    parse_markdown_resumen_edaes(markdown_content_resumen_edaes, chunk_resumen_edaes)
-    print(len(chunk_resumen_edaes))
-    parse_markdown_Historia(markdown_content_Historia, chunks_Historia)
-    print(f"Historia chunks: {len(chunks_Historia)}")
-    parse_markdown_mater(markdown_content_newMater, chunks)
-    print(len(chunks))
+        vectorstore_edaes = store_in_chromadb(
+            chunks_edaes, persist_directory, "edaes", embedding_model_name
+        )
+        vectorstore_pruebas = store_in_chromadb(
+            chunks, persist_directory, "pruebas", embedding_model_name
+        )
+        vectorstore_resumen_edaes = store_in_chromadb(
+            chunk_resumen_edaes,
+            persist_directory,
+            "resumen_edaes",
+            embedding_model_name,
+        )
+        vectorstore_edaes_seg = store_in_chromadb_seg(
+            chunks_seg, persist_directory, "edaes_seg", embedding_model_name
+        )
+        vectorstore_newMater = store_in_chromadb(
+            chunks, persist_directory, "newMater", embedding_model_name
+        )
+        vectorstore_Historia = store_in_chromadb(
+            chunks_Historia, persist_directory, "Historia", embedding_model_name
+        )
 
-    vectorstore_edaes = store_in_chromadb(
-        chunks_edaes, persist_directory, "edaes", embedding_model_name
-    )
-    vectorstore_pruebas = store_in_chromadb(
-        chunks, persist_directory, "pruebas", embedding_model_name
-    )
-    vectorstore_resumen_edaes = store_in_chromadb(
-        chunk_resumen_edaes, persist_directory, "resumen_edaes", embedding_model_name
-    )
-    vectorstore_edaes_seg = store_in_chromadb_seg(
-        chunks_seg, persist_directory, "edaes_seg", embedding_model_name
-    )
-    vectorstore_newMater = store_in_chromadb(
-        chunks, persist_directory, "newMater", embedding_model_name
-    )
-    vectorstore_Historia = store_in_chromadb(
-        chunks_Historia, persist_directory, "Historia", embedding_model_name
-    )
-
-k = 5
-retriever_edaes = vectorstore_edaes.as_retriever(search_kwargs={"k": k})
-retriever_pruebas = vectorstore_pruebas.as_retriever(search_kwargs={"k": k})
-retriever_resumen_edaes = vectorstore_resumen_edaes.as_retriever(search_kwargs={"k": k})
-retriever_edaes_seg = vectorstore_edaes_seg.as_retriever(search_kwargs={"k": k})
-retriever_newMater = vectorstore_newMater.as_retriever(search_kwargs={"k": k})
-retriever_historia = vectorstore_Historia.as_retriever(search_kwargs={"k": k})
+        k = 5
+        retriever_edaes = vectorstore_edaes.as_retriever(search_kwargs={"k": k})
+        retriever_pruebas = vectorstore_pruebas.as_retriever(search_kwargs={"k": k})
+        retriever_resumen_edaes = vectorstore_resumen_edaes.as_retriever(
+            search_kwargs={"k": k}
+        )
+        retriever_edaes_seg = vectorstore_edaes_seg.as_retriever(search_kwargs={"k": k})
+        retriever_newMater = vectorstore_newMater.as_retriever(search_kwargs={"k": k})
+        retriever_historia = vectorstore_Historia.as_retriever(search_kwargs={"k": k})
 
 
 # vectorstore = store_in_chromadb(chunks, persist_directory, c_name, embedding_model_name)
@@ -1139,9 +1166,15 @@ for temperature in temperatures_to_run:
         f"=================================================================================\n"
     )
 
-    output_filename = f"../results/{sanitized_model_name}_temp_{temperature}.csv"
-    output_summary_filename = (
-        f"../results/{sanitized_model_name}_temp_{temperature}_summary.csv"
+    results_dir = os.path.join(base_dir, "results")
+    if not os.path.exists(results_dir):
+        os.makedirs(results_dir)
+
+    output_filename = os.path.join(
+        results_dir, f"{sanitized_model_name}_temp_{temperature}.csv"
+    )
+    output_summary_filename = os.path.join(
+        results_dir, f"{sanitized_model_name}_temp_{temperature}_summary.csv"
     )
     tiempos_iteraciones = []
     tiempos_globales = []
@@ -1373,15 +1406,18 @@ for temperature in temperatures_to_run:
     if todos_los_tiempos_para_resumen_global:
         print(f"📊 Resumen de rendimiento: '{output_summary_filename}'.")
 
-    with open("config.py", "w", encoding="utf-8") as config_file:
+    config_path = os.path.join(current_dir, "config.py")
+    results_path_abs = os.path.join(base_dir, "results").replace("\\", "/")
+
+    out_csv = f"{results_path_abs}/{sanitized_model_name}_temp_{temperature}.csv"
+    metrics_csv = (
+        f"{results_path_abs}/{sanitized_model_name}_temp_{temperature}_metrics.csv"
+    )
+    summary_csv = f"{results_path_abs}/{sanitized_model_name}_temp_{temperature}_metrics_summary.csv"
+
+    with open(config_path, "w", encoding="utf-8") as config_file:
         config_file.write(f'model_name = "{model_name}"\n')
-        config_file.write(
-            f'output_filename = "../results/{sanitized_model_name}_temp_{temperature}.csv"\n'
-        )
-        config_file.write(
-            f'metrics_output = "../results/{sanitized_model_name}_temp_{temperature}_metrics.csv"\n'
-        )
-        config_file.write(
-            f'metrics_output_summary = "../results/{sanitized_model_name}_temp_{temperature}_metrics_summary.csv"\n'
-        )
+        config_file.write(f'output_filename = "{out_csv}"\n')
+        config_file.write(f'metrics_output = "{metrics_csv}"\n')
+        config_file.write(f'metrics_output_summary = "{summary_csv}"\n')
     print(f"📝 config.py actualizado para T={temperature}.")
