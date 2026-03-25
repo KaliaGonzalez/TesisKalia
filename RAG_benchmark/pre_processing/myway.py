@@ -7,6 +7,7 @@ import argparse
 import unicodedata
 
 from langchain_ollama import OllamaLLM
+from langchain_community.retrievers import BM25Retriever  # Add this import
 
 # from langchain.chains import LLMChain  # Deprecated in newer versions
 # from langchain.chains import RetrievalQA  # Deprecated in newer versions
@@ -95,24 +96,22 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 reranker = CrossEncoder(re_ranker_model)
 
 prompt_template = """
-Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu trabajo es responder preguntas usando únicamente la información proporcionada en los documentos oficiales de la FAC.
+Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu misión es responder preguntas basándote ÚNICAMENTE en la información proporcionada.
 
-INSTRUCCIONES CRÍTICAS:
-1. BUSCA CUIDADOSAMENTE en los documentos la información específica solicitada.
-2. Si encuentras información relevante, responde de manera COMPLETA y DETALLADA usando esa información exacta.
-3. Para preguntas sobre PRINCIPIOS, busca específicamente secciones tituladas "PRINCIPIOS" o que contengan "principios institucionales".
-4. Para preguntas sobre DEFINICIONES, busca secciones que contengan la definición exacta del término.
-5. CITA la fuente específica cuando sea relevante (ej: "Según el documento EDAES...").
-6. Proporciona información completa, incluyendo definiciones, explicaciones y detalles disponibles.
-7. SOLO si realmente NO encuentras información específica relevante, indica que no tienes información suficiente.
-
-IMPORTANTE: Para principios de la Fuerza Aérea, busca específicamente información sobre "INTEGRIDAD" y "SEGURIDAD".
+INSTRUCCIONES DE RESPUESTA:
+1. Responde DIRECTAMENTE a la pregunta. No divagues ni incluyas información no solicitada.
+2. Si la pregunta es "¿Qué es X?", y el documento habla de "Y", NO respondas sobre "Y". DI CLARAMENTE: "No encontré una definición exacta de X en los documentos".
+3. EVITA la frase "Según el documento...". Simplemente da la respuesta. Si es necesario citar, hazlo al final entre paréntesis, ej: (Fuente: Nombre del Documento).
+4. NO repitas el nombre de la fuente múltiples veces. Nombra el documento una sola vez si es estrictamente necesario para dar contexto.
+5. NO inventes definiciones. Si el texto dice "Fase de Peligro", eso NO es lo mismo que "Peligro" por sí solo. Sé preciso.
+6. Si la información no está en el contexto, responde: "No tengo información suficiente en los documentos proporcionados".
+7. IMPORTANTE: No agregues información de términos relacionados no solicitados (ej. si preguntan por "X", no definas "Y" ni "Z").
 
 Pregunta: {pregunta}
 
 Documentos disponibles: {contexto}
 
-Respuesta (específica y detallada basada únicamente en los documentos):
+Respuesta:
 """
 
 PROMPT = PromptTemplate(
@@ -135,7 +134,7 @@ PROMPT_RERANK = PromptTemplate(
 
 
 def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
-    # Aqui estamos creando el modelo en esta caso deberas cambiar el nombre arriba del archivo o aqui mismo.
+    # Aqui estamos creando el modelo en esta case deberas cambiar el nombre arriba del archivo o aqui mismo.
     llm = OllamaLLM(model=model_name, temperature=temperature)
     # Se crea el pipeline (reemplaza LLMChain que está deprecado)
     llm_chain = prompt | llm
@@ -890,6 +889,9 @@ def inicializar_retriever_vectorstore(k=5):
             collection_name="fac_documents_complete",
             embedding_function=embedding_model,
         )
+        vectorstore_complete = (
+            vectorstore_edaes  # Definir variable unificada en este scope
+        )
         vectorstore_pruebas = vectorstore_edaes  # Misma colección para todos
         vectorstore_resumen_edaes = vectorstore_edaes
         vectorstore_edaes_seg = vectorstore_edaes
@@ -1023,34 +1025,43 @@ def inicializar_retriever_vectorstore(k=5):
         if vs is None:
             raise ValueError(f"Error: {name} no se pudo crear correctamente")
 
-    retriever_edaes = vectorstore_edaes.as_retriever(search_kwargs={"k": k})
-    retriever_pruebas = vectorstore_pruebas.as_retriever(search_kwargs={"k": k})
-    retriever_newMater = vectorstore_newMater.as_retriever(search_kwargs={"k": k})
-    retriever_historia = vectorstore_historia.as_retriever(search_kwargs={"k": k})
-    retriever_resumen_edaes = vectorstore_resumen_edaes.as_retriever(
-        search_kwargs={"k": k}
-    )
-    retriever_edaes_seg = vectorstore_edaes_seg.as_retriever(search_kwargs={"k": k})
+    # ---------------------------------------------------------
+    # MODIFICACIÓN: IMPLEMENTACIÓN EXCLUSIVA DE BM25
+    # ---------------------------------------------------------
+    print("🔄 Generando índice BM25 desde ChromaDB (Modo Solo Texto)...")
 
-    # Validar que todos los retrievers se crearon correctamente
-    retrievers = [
-        ("retriever_edaes", retriever_edaes),
-        ("retriever_pruebas", retriever_pruebas),
-        ("retriever_newMater", retriever_newMater),
-        ("retriever_resumen_edaes", retriever_resumen_edaes),
-        ("retriever_edaes_seg", retriever_edaes_seg),
-        ("retriever_historia", retriever_historia),
+    # Extraer todos los documentos de la base de datos vectorial para crear el índice invertido
+    all_data = vectorstore_complete.get()
+    all_docs_bm25 = [
+        Document(page_content=txt, metadata=meta)
+        for txt, meta in zip(all_data["documents"], all_data["metadatas"])
     ]
 
-    for name, ret in retrievers:
-        if ret is None:
-            raise ValueError(f"Error: {name} no se pudo crear correctamente")
+    if not all_docs_bm25:
+        raise ValueError(
+            "Error: No se encontraron documentos en ChromaDB para construir BM25."
+        )
+
+    # Crear el Retriever BM25
+    bm25_retriever = BM25Retriever.from_documents(all_docs_bm25)
+    bm25_retriever.k = k  # Establecer número de documentos a recuperar
+
+    print(f"✅ BM25 Inicializado con {len(all_docs_bm25)} documentos.")
+
+    # Asignar el MISMO retriever BM25 a todas las variables
+    # (Ya que ahora buscamos en todo el corpus unificado)
+    retriever_edaes = bm25_retriever
+    retriever_pruebas = bm25_retriever
+    retriever_newMater = bm25_retriever
+    retriever_historia = bm25_retriever
+    retriever_resumen_edaes = bm25_retriever
+    retriever_edaes_seg = bm25_retriever
 
     return (
         retriever_edaes,  # 1
         retriever_pruebas,  # 2
         retriever_newMater,  # 3
-        vectorstore_edaes,  # 4
+        vectorstore_edaes,  # 4 (Se mantiene por compatibilidad, aunque no se use para búsqueda)
         retriever_resumen_edaes,  # 5
         retriever_edaes_seg,  # 6
         retriever_historia,  # 7
@@ -1122,161 +1133,33 @@ def chatbot_response(
     )
 
     # BÚSQUEDA UNIVERSAL: Sin restricciones de dominio, buscar en TODOS los documentos
-    print(f"🔍 Búsqueda universal para: '{query}'")
+    print(f"🔍 Búsqueda universal con BM25 para: '{query}'")
 
-    # MEJORAR: Búsqueda híbrida universal - SIN restricciones de dominio
-    hybrid_docs = []
+    # -------------------------------------------------------------
+    # SIMPLIFICACIÓN A SOLO BM25 (SOLICITUD DE USUARIO)
+    # -------------------------------------------------------------
+    # Como todos los retrievers ahora apuntan al mismo índice BM25 global,
+    # invocamos uno solo para obtener los resultados de todo el corpus.
 
-    try:
-        # Búsqueda directa en ChromaDB con estrategias múltiples
-        collection = vectorstore._collection
-        all_results = []
+    # Aumentamos k aquí para asegurar que el re-ranking tenga suficientes candidatos
+    # Recuperamos documentos con BM25
+    original_k = retriever_edaes.k
+    retriever_edaes.k = (
+        40  # Aumentar recall para asegurar encontrar la definición exacta
+    )
 
-        # Estrategia 1: Búsqueda semántica básica
-        semantic_results = collection.query(
-            query_texts=[query],
-            n_results=25,  # Aumentar para más diversidad
-            include=["documents", "metadatas", "distances"],
-        )
+    docs = retriever_edaes.invoke(query_limpia)
 
-        # Estrategia 2: Búsqueda con query expandido
-        expanded_query = f"{query} Fuerza Aérea Colombiana FAC"
-        expanded_results = collection.query(
-            query_texts=[expanded_query],
-            n_results=15,
-            include=["documents", "metadatas", "distances"],
-        )
+    retriever_edaes.k = original_k  # Restaurar k original
 
-        # Combinar y procesar TODOS los resultados sin filtros de dominio
-        if semantic_results["documents"] and len(semantic_results["documents"][0]) > 0:
-            for doc, metadata, distance in zip(
-                semantic_results["documents"][0],
-                semantic_results["metadatas"][0],
-                semantic_results["distances"][0],
-            ):
-                all_results.append(
-                    {
-                        "content": doc,
-                        "metadata": metadata,
-                        "distance": distance,
-                        "source": "semantic",
-                    }
-                )
+    print(f"📄 Documentos recuperados por BM25: {len(docs)}")
 
-        if expanded_results["documents"] and len(expanded_results["documents"][0]) > 0:
-            for doc, metadata, distance in zip(
-                expanded_results["documents"][0],
-                expanded_results["metadatas"][0],
-                expanded_results["distances"][0],
-            ):
-                all_results.append(
-                    {
-                        "content": doc,
-                        "metadata": metadata,
-                        "distance": distance,
-                        "source": "expanded",
-                    }
-                )
+    # Pasamos directamente al re-ranking sin lógica vectorial/híbrida compleja
+    final_docs = docs
 
-        # Extraer términos clave de la consulta para búsqueda adicional
-        key_terms = [
-            word
-            for word in query_keywords
-            if word
-            not in [
-                "que",
-                "es",
-                "un",
-                "una",
-                "el",
-                "la",
-                "los",
-                "las",
-                "de",
-                "del",
-                "en",
-                "para",
-                "por",
-                "con",
-                "como",
-            ]
-            and len(word) > 2
-        ]
-
-        # Estrategia 3: Búsqueda exacta por palabras clave en texto
-        for keyword in key_terms:
-            try:
-                keyword_results = collection.get(
-                    where_document={"$contains": keyword},
-                    include=["documents", "metadatas"],
-                    limit=5,
-                )
-
-                if keyword_results["documents"]:
-                    for doc, metadata in zip(
-                        keyword_results["documents"], keyword_results["metadatas"]
-                    ):
-                        # Verificar relevancia real
-                        if any(term.lower() in doc.lower() for term in key_terms):
-                            all_results.append(
-                                {
-                                    "content": doc,
-                                    "metadata": metadata,
-                                    "distance": 1.0,  # Distancia fija para búsqueda exacta
-                                    "source": "keyword_exact",
-                                }
-                            )
-            except:
-                continue
-
-        # Eliminar duplicados y ordenar por relevancia
-        seen_content = set()
-        unique_results = []
-
-        for result in all_results:
-            content_key = result["content"][
-                :100
-            ]  # Usar primeros 100 chars como clave única
-            if content_key not in seen_content:
-                seen_content.add(content_key)
-
-                # Calcular score de relevancia basado solo en distancia
-                relevance_score = result["distance"]
-
-                # BONUS por contener palabras clave exactas
-                content_lower = result["content"].lower()
-                keyword_matches = sum(1 for term in key_terms if term in content_lower)
-                if keyword_matches > 0:
-                    relevance_score *= 0.8**keyword_matches  # Más matches = mejor score
-
-                result["final_score"] = relevance_score
-                unique_results.append(result)
-
-        # Ordenar por score final (menor = mejor)
-        unique_results.sort(key=lambda x: x["final_score"])
-
-        print(f"📊 Resultados únicos procesados: {len(unique_results)}")
-
-        # Convertir a formato Document
-        from langchain_core.documents import Document
-
-        for result in unique_results[:20]:  # Top 20 resultados
-            hybrid_docs.append(
-                Document(page_content=result["content"], metadata=result["metadata"])
-            )
-
-    except Exception as e:
-        print(f"❌ Error en búsqueda híbrida mejorada: {e}")
-        hybrid_docs = []
-
-    # Usar documentos híbridos si están disponibles, sino usar los originales
-    final_docs = hybrid_docs if hybrid_docs else docs
-
-    print(f"📄 Documentos finales para re-ranking: {len(final_docs)}")
-
-    # Re-ranking con mejor algoritmo
+    # Re-ranking con CrossEncoder (esencial para filtrar resultados de BM25)
     re_ranked_docs = re_rank_docs(
-        query_limpia, final_docs[:30], reranker
+        query_limpia, final_docs[:15], reranker
     )  # Limitar a top 30 para eficiencia
 
     # Mostrar información de debug
@@ -1291,26 +1174,21 @@ def chatbot_response(
     # Construir contexto final
     fc = ""
     referencias_set = set()
+    # Lista necesaria para la función get_full_reference si se usa
     registro = []
 
     for doc in re_ranked_docs:
         origin = doc.metadata.get("origin", "Búsqueda híbrida")
-        title = doc.metadata.get("title", "Sin título")
 
-        # Crear referencia única
-        if title and title != "Sin título":
-            referencia = f"{origin} - {title}"
-        else:
-            referencia = origin
+        # MODIFICACIÓN: SOLO MENCIONAR EL DOCUMENTO DE ORIGEN (NO EL TÍTULO DEL CHUNK)
+        referencias_set.add(origin)
 
         if usar_full_context and origin == "EDAES":
             try:
                 fc += get_full_context(vectorstore, doc) + "\n\n"
-                referencias_set.add(referencia)
             except Exception as e:
                 # Fallback: usar contenido directo si falla el contexto completo
                 fc += doc.page_content + "\n\n"
-                referencias_set.add(referencia)
         elif (
             usar_full_context
             and origin == "EDAES Segmentado"
@@ -1319,25 +1197,20 @@ def chatbot_response(
             try:
                 text, ref = get_full_chunk(vectorstore, doc)
                 fc += text + "\n\n"
-                referencias_set.add(ref.strip())
             except Exception as e:
                 # Fallback: usar contenido directo
                 fc += doc.page_content + "\n\n"
-                referencias_set.add(referencia)
         elif (
             usar_full_context and origin == "Resumen EDAES" and "parent" in doc.metadata
         ):
             try:
                 text, ref = get_full_reference(vectorstore, doc, registro)
                 fc += text + "\n\n"
-                referencias_set.add(ref.strip())
             except Exception as e:
                 # Fallback: usar contenido directo
                 fc += doc.page_content + "\n\n"
-                referencias_set.add(referencia)
         else:
             fc += doc.page_content + "\n\n"
-            referencias_set.add(referencia)
 
     # Convertir set a string sin duplicados
     referencias = "\n".join(referencias_set)
