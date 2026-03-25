@@ -1120,24 +1120,8 @@ print(sanitized_model_name)
 # Configuración para la automatización:
 num_iterations = 10
 usar_full_context = False
-output_filename = "../results/" + str(sanitized_model_name) + ".csv"
-output_summary_filename = "../results/" + str(sanitized_model_name) + "_summary.csv"
-tiempos_iteraciones = []
-tiempos_globales = []
-
-csv_headers = [
-    "Pregunta_ID",
-    "Iteracion_Num",
-    "Pregunta",
-    "Respuesta_Esperada",
-    "Respuesta_Limpia",
-    "Num_Chunks",
-    "Tiempo_Segundos",
-]
-
-# Listas para almacenar datos para los resúmenes
-todos_los_tiempos_para_resumen_global = []
-datos_resumen_por_pregunta_lista = []
+# Definición de temperaturas a iterar (automatización)
+temperatures_to_run = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
 
 
 def eliminar_chain_of_thought(texto_respuesta):
@@ -1146,212 +1130,258 @@ def eliminar_chain_of_thought(texto_respuesta):
     ).strip()
 
 
-with open(output_filename, "w", encoding="utf-8", newline="") as csvfile:
-    writer = csv.DictWriter(csvfile, fieldnames=csv_headers)
-    writer.writeheader()  # Escribir la fila de encabezados
+for temperature in temperatures_to_run:
+    print(
+        f"\n================================================================================="
+    )
+    print(f"⚡ INICIANDO CICLO CON TEMPERATURA: {temperature}")
+    print(
+        f"=================================================================================\n"
+    )
 
-    for idx, item in enumerate(preguntas_respuestas, start=1):
-        pregunta = item["pregunta"]
-        respuesta_esperada = item["respuesta"]
-        tiempos_iteraciones_pregunta_actual = (
-            []
-        )  # Almacena tiempos para la pregunta actual
+    output_filename = f"../results/{sanitized_model_name}_temp_{temperature}.csv"
+    output_summary_filename = (
+        f"../results/{sanitized_model_name}_temp_{temperature}_summary.csv"
+    )
+    tiempos_iteraciones = []
+    tiempos_globales = []
 
-        print(f"\n🟦 Procesando pregunta {idx} de {len(preguntas_respuestas)}")
-        print(f"➡️  {pregunta}\n")
+    csv_headers = [
+        "Pregunta_ID",
+        "Iteracion_Num",
+        "Pregunta",
+        "Respuesta_Esperada",
+        "Respuesta_Limpia",
+        "Num_Chunks",
+        "Tiempo_Segundos",
+    ]
 
-        for iter_num_actual in range(1, num_iterations + 1):  #
+    # Listas para almacenar datos para los resúmenes
+    todos_los_tiempos_para_resumen_global = []
+    datos_resumen_por_pregunta_lista = []
+
+    with open(output_filename, "w", encoding="utf-8", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=csv_headers)
+        writer.writeheader()  # Escribir la fila de encabezados
+
+        for idx, item in enumerate(preguntas_respuestas, start=1):
+            pregunta = item["pregunta"]
+            respuesta_esperada = item["respuesta"]
+            tiempos_iteraciones_pregunta_actual = (
+                []
+            )  # Almacena tiempos para la pregunta actual
+
             print(
-                f"Ejecutando iteración {iter_num_actual} de {num_iterations} para pregunta {idx}"
-            )  #
+                f"\n🟦 Procesando pregunta {idx} de {len(preguntas_respuestas)} (Temp: {temperature})"
+            )
+            print(f"➡️  {pregunta}\n")
 
-            query_limpia = limpiar_string(pregunta)
-            docs_resumen_edaes = retriever_resumen_edaes.invoke(query_limpia)
-            docs_pruebas = retriever_pruebas.invoke(query_limpia)
-            docs_seg = retriever_edaes_seg.invoke(
-                query_limpia
-            )  # ESTO ES EL EDAES SEGMENTADO SI QUIERE USARLO DESCOMENTALO Y COMENTA docs_resumen_edaes
-            docs_edaes = retriever_edaes.invoke(query_limpia)
-            docs_historia = retriever_historia.invoke(query_limpia)
-            # docs = docs_resumen_edaes + docs_pruebas #+ docs_seg
-            if False:
-                docs = docs_resumen_edaes + docs_pruebas
-            elif False:
-                docs = docs_pruebas + docs_seg
-            else:
-                docs = docs_pruebas + docs_edaes + docs_historia
+            for iter_num_actual in range(1, num_iterations + 1):  #
+                print(
+                    f"Ejecutando iteración {iter_num_actual} de {num_iterations} para pregunta {idx}"
+                )  #
 
-            re_ranked_docs = re_rank_docs(query_limpia, docs, reranker)
-
-            retrieved_doc_ids_for_question = [
-                doc.metadata.get("id", "id_desconocido") for doc in re_ranked_docs
-            ]
-            num_chunks_retrieved = len(retrieved_doc_ids_for_question)
-
-            fc = ""
-            referencias_str = ""
-            registro = []
-            for doc in re_ranked_docs:
-                if usar_full_context and doc.metadata["origin"] == "EDAES":
-                    fc += get_full_context(vectorstore_edaes, doc) + "\n\n"
-                    referencias_str += (
-                        doc.metadata["origin"] + " - " + doc.metadata["title"] + "\n\n"
-                    )
-                elif usar_full_context and doc.metadata["origin"] == "EDAES Segmentado":
-                    text, ref = get_full_chunk(vectorstore_edaes, doc)
-                    fc += text + "\n\n"
-                    referencias_str += ref
-                elif usar_full_context and doc.metadata["origin"] == "Resumen EDAES":
-                    text, ref = get_full_reference(vectorstore_edaes, doc, registro)
-                    fc += text + "\n\n"
-                    referencias_str += ref
+                query_limpia = limpiar_string(pregunta)
+                docs_resumen_edaes = retriever_resumen_edaes.invoke(query_limpia)
+                docs_pruebas = retriever_pruebas.invoke(query_limpia)
+                docs_seg = retriever_edaes_seg.invoke(
+                    query_limpia
+                )  # ESTO ES EL EDAES SEGMENTADO SI QUIERE USARLO DESCOMENTALO Y COMENTA docs_resumen_edaes
+                docs_edaes = retriever_edaes.invoke(query_limpia)
+                docs_historia = retriever_historia.invoke(query_limpia)
+                # docs = docs_resumen_edaes + docs_pruebas #+ docs_seg
+                if False:
+                    docs = docs_resumen_edaes + docs_pruebas
+                elif False:
+                    docs = docs_pruebas + docs_seg
                 else:
-                    fc += doc.page_content + "\n\n"
-                    referencias_str += (
-                        doc.metadata["origin"] + " - " + doc.metadata["title"] + "\n\n"
-                    )
+                    docs = docs_pruebas + docs_edaes + docs_historia
 
-            final_prompt = PROMPT.format(contexto=fc, pregunta=pregunta)
+                re_ranked_docs = re_rank_docs(query_limpia, docs, reranker)
 
-            start_time = time.time()
-            output = ollama.generate(
-                model=model_name,
-                prompt=final_prompt,
-                options={"temperature": temperature},
+                retrieved_doc_ids_for_question = [
+                    doc.metadata.get("id", "id_desconocido") for doc in re_ranked_docs
+                ]
+                num_chunks_retrieved = len(retrieved_doc_ids_for_question)
+
+                fc = ""
+                referencias_str = ""
+                registro = []
+                for doc in re_ranked_docs:
+                    if usar_full_context and doc.metadata["origin"] == "EDAES":
+                        fc += get_full_context(vectorstore_edaes, doc) + "\n\n"
+                        referencias_str += (
+                            doc.metadata["origin"]
+                            + " - "
+                            + doc.metadata["title"]
+                            + "\n\n"
+                        )
+                    elif (
+                        usar_full_context
+                        and doc.metadata["origin"] == "EDAES Segmentado"
+                    ):
+                        text, ref = get_full_chunk(vectorstore_edaes, doc)
+                        fc += text + "\n\n"
+                        referencias_str += ref
+                    elif (
+                        usar_full_context and doc.metadata["origin"] == "Resumen EDAES"
+                    ):
+                        text, ref = get_full_reference(vectorstore_edaes, doc, registro)
+                        fc += text + "\n\n"
+                        referencias_str += ref
+                    else:
+                        fc += doc.page_content + "\n\n"
+                        referencias_str += (
+                            doc.metadata["origin"]
+                            + " - "
+                            + doc.metadata["title"]
+                            + "\n\n"
+                        )
+
+                final_prompt = PROMPT.format(contexto=fc, pregunta=pregunta)
+
+                start_time = time.time()
+                output = ollama.generate(
+                    model=model_name,
+                    prompt=final_prompt,
+                    options={"temperature": temperature},
+                )
+                end_time = time.time()
+                tiempo_segundos = end_time - start_time
+
+                respuesta_bruta = output.get("response", "No se obtuvo respuesta.")
+                respuesta_limpia_final = eliminar_chain_of_thought(respuesta_bruta)
+
+                # Guardar tiempos para resúmenes
+                tiempos_iteraciones_pregunta_actual.append(tiempo_segundos)
+                todos_los_tiempos_para_resumen_global.append(tiempo_segundos)
+
+                writer.writerow(
+                    {
+                        "Pregunta_ID": idx,
+                        "Iteracion_Num": iter_num_actual,
+                        "Pregunta": pregunta,
+                        "Respuesta_Esperada": respuesta_esperada,
+                        "Respuesta_Limpia": respuesta_limpia_final,
+                        "Num_Chunks": num_chunks_retrieved,
+                        "Tiempo_Segundos": round(tiempo_segundos, 2),
+                    }
+                )
+
+            # --- Resumen por pregunta (después de todas sus iteraciones) ---
+            if tiempos_iteraciones_pregunta_actual:
+                promedio_q = sum(tiempos_iteraciones_pregunta_actual) / len(
+                    tiempos_iteraciones_pregunta_actual
+                )
+                tiempo_max_q = max(tiempos_iteraciones_pregunta_actual)
+                tiempo_min_q = min(tiempos_iteraciones_pregunta_actual)
+                # +1 porque index() es base 0 y las iteraciones son base 1
+                iteracion_max_q_num = (
+                    tiempos_iteraciones_pregunta_actual.index(tiempo_max_q) + 1
+                )
+                iteracion_min_q_num = (
+                    tiempos_iteraciones_pregunta_actual.index(tiempo_min_q) + 1
+                )
+
+                datos_resumen_por_pregunta_lista.append(
+                    {
+                        "Tipo_Resumen": "Pregunta",
+                        "Pregunta_ID": idx,
+                        "Num_Iteraciones": len(tiempos_iteraciones_pregunta_actual),
+                        "Tiempo_Promedio_s": round(promedio_q, 2),
+                        "Tiempo_Max_s": round(tiempo_max_q, 2),
+                        "Iteracion_Mas_Lenta": iteracion_max_q_num,
+                        "Tiempo_Min_s": round(tiempo_min_q, 2),
+                        "Iteracion_Mas_Rapida": iteracion_min_q_num,
+                    }
+                )
+                print(
+                    f"Resumen para pregunta {idx}: Promedio={promedio_q:.2f}s, Max={tiempo_max_q:.2f}s (Iter {iteracion_max_q_num}), Min={tiempo_min_q:.2f}s (Iter {iteracion_min_q_num})"
+                )
+
+    # --- Escritura del archivo CSV de Resúmenes (después de procesar todas las preguntas) ---
+    summary_csv_headers = [
+        "Tipo_Resumen",
+        "Pregunta_ID",
+        "Num_Iteraciones",
+        "Tiempo_Promedio_s",
+        "Tiempo_Max_s",
+        "Iteracion_Mas_Lenta",
+        "Tiempo_Min_s",
+        "Iteracion_Mas_Rapida",
+    ]
+
+    with open(
+        output_summary_filename, "w", encoding="utf-8", newline=""
+    ) as csvfile_summary:
+        writer_summary = csv.DictWriter(csvfile_summary, fieldnames=summary_csv_headers)
+        writer_summary.writeheader()
+
+        # Escribir resúmenes por pregunta
+        if datos_resumen_por_pregunta_lista:
+            writer_summary.writerows(datos_resumen_por_pregunta_lista)
+
+        # Calcular y escribir resumen global
+        if todos_los_tiempos_para_resumen_global:
+            promedio_global = sum(todos_los_tiempos_para_resumen_global) / len(
+                todos_los_tiempos_para_resumen_global
             )
-            end_time = time.time()
-            tiempo_segundos = end_time - start_time
-
-            respuesta_bruta = output.get("response", "No se obtuvo respuesta.")
-            respuesta_limpia_final = eliminar_chain_of_thought(respuesta_bruta)
-
-            # Guardar tiempos para resúmenes
-            tiempos_iteraciones_pregunta_actual.append(tiempo_segundos)
-            todos_los_tiempos_para_resumen_global.append(tiempo_segundos)
-
-            writer.writerow(
-                {
-                    "Pregunta_ID": idx,
-                    "Iteracion_Num": iter_num_actual,
-                    "Pregunta": pregunta,
-                    "Respuesta_Esperada": respuesta_esperada,
-                    "Respuesta_Limpia": respuesta_limpia_final,
-                    "Num_Chunks": num_chunks_retrieved,
-                    "Tiempo_Segundos": round(tiempo_segundos, 2),
-                }
+            tiempo_max_global = max(todos_los_tiempos_para_resumen_global)
+            tiempo_min_global = min(todos_los_tiempos_para_resumen_global)
+            # La iteración más lenta/rápida global se refiere al índice en la lista aplanada de todos los tiempos
+            iteracion_max_global_num = (
+                todos_los_tiempos_para_resumen_global.index(tiempo_max_global) + 1
+            )
+            iteracion_min_global_num = (
+                todos_los_tiempos_para_resumen_global.index(tiempo_min_global) + 1
             )
 
-        # --- Resumen por pregunta (después de todas sus iteraciones) ---
-        if tiempos_iteraciones_pregunta_actual:
-            promedio_q = sum(tiempos_iteraciones_pregunta_actual) / len(
-                tiempos_iteraciones_pregunta_actual
+            resumen_global_dict = {
+                "Tipo_Resumen": "Global",
+                "Pregunta_ID": "N/A",  # No aplica para el resumen global
+                "Num_Iteraciones": len(
+                    todos_los_tiempos_para_resumen_global
+                ),  # Total de iteraciones LLM
+                "Tiempo_Promedio_s": round(promedio_global, 2),
+                "Tiempo_Max_s": round(tiempo_max_global, 2),
+                "Iteracion_Mas_Lenta": iteracion_max_global_num,  # Número de iteración global (1 hasta N_total_iteraciones)
+                "Tiempo_Min_s": round(tiempo_min_global, 2),
+                "Iteracion_Mas_Rapida": iteracion_min_global_num,  # Número de iteración global
+            }
+            writer_summary.writerow(resumen_global_dict)
+            print("\n========== RESUMEN GLOBAL ==========")
+            print(
+                f"Total de iteraciones (LLM calls): {len(todos_los_tiempos_para_resumen_global)}"
             )
-            tiempo_max_q = max(tiempos_iteraciones_pregunta_actual)
-            tiempo_min_q = min(tiempos_iteraciones_pregunta_actual)
-            # +1 porque index() es base 0 y las iteraciones son base 1
-            iteracion_max_q_num = (
-                tiempos_iteraciones_pregunta_actual.index(tiempo_max_q) + 1
-            )
-            iteracion_min_q_num = (
-                tiempos_iteraciones_pregunta_actual.index(tiempo_min_q) + 1
-            )
-
-            datos_resumen_por_pregunta_lista.append(
-                {
-                    "Tipo_Resumen": "Pregunta",
-                    "Pregunta_ID": idx,
-                    "Num_Iteraciones": len(tiempos_iteraciones_pregunta_actual),
-                    "Tiempo_Promedio_s": round(promedio_q, 2),
-                    "Tiempo_Max_s": round(tiempo_max_q, 2),
-                    "Iteracion_Mas_Lenta": iteracion_max_q_num,
-                    "Tiempo_Min_s": round(tiempo_min_q, 2),
-                    "Iteracion_Mas_Rapida": iteracion_min_q_num,
-                }
+            print(f"Tiempo promedio global: {promedio_global:.2f} s")
+            print(
+                f"Iteración global más lenta: {iteracion_max_global_num} ({tiempo_max_global:.2f} s)"
             )
             print(
-                f"Resumen para pregunta {idx}: Promedio={promedio_q:.2f}s, Max={tiempo_max_q:.2f}s (Iter {iteracion_max_q_num}), Min={tiempo_min_q:.2f}s (Iter {iteracion_min_q_num})"
+                f"Iteración global más rápida: {iteracion_min_global_num} ({tiempo_min_global:.2f} s)"
+            )
+            print("=" * 60 + "\n")
+
+        else:
+            print(
+                "\n⚠️ No se ejecutaron iteraciones, no se pudo generar el resumen global."
             )
 
-# --- Escritura del archivo CSV de Resúmenes (después de procesar todas las preguntas) ---
-summary_csv_headers = [
-    "Tipo_Resumen",
-    "Pregunta_ID",
-    "Num_Iteraciones",
-    "Tiempo_Promedio_s",
-    "Tiempo_Max_s",
-    "Iteracion_Mas_Lenta",
-    "Tiempo_Min_s",
-    "Iteracion_Mas_Rapida",
-]
-
-with open(
-    output_summary_filename, "w", encoding="utf-8", newline=""
-) as csvfile_summary:
-    writer_summary = csv.DictWriter(csvfile_summary, fieldnames=summary_csv_headers)
-    writer_summary.writeheader()
-
-    # Escribir resúmenes por pregunta
-    if datos_resumen_por_pregunta_lista:
-        writer_summary.writerows(datos_resumen_por_pregunta_lista)
-
-    # Calcular y escribir resumen global
+    print(
+        f"\n✅ Proceso finalizado para Temperatura {temperature}. Resultados: '{output_filename}'."
+    )
     if todos_los_tiempos_para_resumen_global:
-        promedio_global = sum(todos_los_tiempos_para_resumen_global) / len(
-            todos_los_tiempos_para_resumen_global
-        )
-        tiempo_max_global = max(todos_los_tiempos_para_resumen_global)
-        tiempo_min_global = min(todos_los_tiempos_para_resumen_global)
-        # La iteración más lenta/rápida global se refiere al índice en la lista aplanada de todos los tiempos
-        iteracion_max_global_num = (
-            todos_los_tiempos_para_resumen_global.index(tiempo_max_global) + 1
-        )
-        iteracion_min_global_num = (
-            todos_los_tiempos_para_resumen_global.index(tiempo_min_global) + 1
-        )
+        print(f"📊 Resumen de rendimiento: '{output_summary_filename}'.")
 
-        resumen_global_dict = {
-            "Tipo_Resumen": "Global",
-            "Pregunta_ID": "N/A",  # No aplica para el resumen global
-            "Num_Iteraciones": len(
-                todos_los_tiempos_para_resumen_global
-            ),  # Total de iteraciones LLM
-            "Tiempo_Promedio_s": round(promedio_global, 2),
-            "Tiempo_Max_s": round(tiempo_max_global, 2),
-            "Iteracion_Mas_Lenta": iteracion_max_global_num,  # Número de iteración global (1 hasta N_total_iteraciones)
-            "Tiempo_Min_s": round(tiempo_min_global, 2),
-            "Iteracion_Mas_Rapida": iteracion_min_global_num,  # Número de iteración global
-        }
-        writer_summary.writerow(resumen_global_dict)
-        print("\n========== RESUMEN GLOBAL ==========")
-        print(
-            f"Total de iteraciones (LLM calls): {len(todos_los_tiempos_para_resumen_global)}"
+    with open("config.py", "w", encoding="utf-8") as config_file:
+        config_file.write(f'model_name = "{model_name}"\n')
+        config_file.write(
+            f'output_filename = "../results/{sanitized_model_name}_temp_{temperature}.csv"\n'
         )
-        print(f"Tiempo promedio global: {promedio_global:.2f} s")
-        print(
-            f"Iteración global más lenta: {iteracion_max_global_num} ({tiempo_max_global:.2f} s)"
+        config_file.write(
+            f'metrics_output = "../results/{sanitized_model_name}_temp_{temperature}_metrics.csv"\n'
         )
-        print(
-            f"Iteración global más rápida: {iteracion_min_global_num} ({tiempo_min_global:.2f} s)"
+        config_file.write(
+            f'metrics_output_summary = "../results/{sanitized_model_name}_temp_{temperature}_metrics_summary.csv"\n'
         )
-        print("=" * 60 + "\n")
-
-    else:
-        print("\n⚠️ No se ejecutaron iteraciones, no se pudo generar el resumen global.")
-
-print(
-    f"\n✅ Proceso finalizado. Resultados detallados guardados en '{output_filename}'."
-)
-if todos_los_tiempos_para_resumen_global:
-    print(f"📊 Resumen de rendimiento guardado en '{output_summary_filename}'.")
-
-
-with open("config.py", "w", encoding="utf-8") as config_file:
-    config_file.write(f'model_name = "{model_name}"\n')
-    config_file.write(f'output_filename = "../results/{sanitized_model_name}.csv"\n')
-    config_file.write(
-        f'metrics_output = "../results/{sanitized_model_name}_metrics.csv"\n'
-    )
-    config_file.write(
-        f'metrics_output_summary = "../results/{sanitized_model_name}_metrics_summary.csv"\n'
-    )
-print(f"📝 Archivo de configuración 'config.py' actualizado.")
+    print(f"📝 config.py actualizado para T={temperature}.")

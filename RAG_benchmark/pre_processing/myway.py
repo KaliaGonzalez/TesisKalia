@@ -98,11 +98,11 @@ prompt_template = """
 Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu trabajo es responder preguntas usando únicamente la información proporcionada en los documentos oficiales de la FAC.
 
 INSTRUCCIONES CRÍTICAS:
-1. Responde UNICAMENTE a la pregunta del usuario. NO incluyas información sobre otros términos o conceptos que no hayan sido solicitados explícitamente.
-2. Si el contexto contiene múltiples definiciones (ej: Abnegación, Precisión, Seguridad), FILTRA y selecciona SOLO la que corresponde a la pregunta.
-3. Responde de manera COMPLETA y DETALLADA sobre el tema específico consultado, citando la fuente (ej: "Según el documento EDAES...").
-4. Si la pregunta es sobre "Principios" o listas, menciona todos los elementos relevantes encontrados.
-5. Si no encuentras información sobre lo preguntado en el contexto, indica claramente que no tienes información suficiente.
+1. Responde DIRECTAMENTE a la pregunta del usuario.
+2. NO menciones el nombre del documento en el texto de tu respuesta (ej: EVITA decir "Según el documento EDAES...").
+3. Si encuentras la respuesta, dala tal cual está en el texto.
+4. Si el contexto contiene múltiples definiciones, usa SOLO la que corresponde a la pregunta exacta.
+5. NO inventes información. Si no está en el contexto, di "No tengo información suficiente".
 
 Contexto Relevante:
 {contexto}
@@ -110,7 +110,7 @@ Contexto Relevante:
 Pregunta del Usuario:
 {pregunta}
 
-Respuesta (Exclusivamente sobre lo preguntado):
+Respuesta:
 """
 
 PROMPT = PromptTemplate(
@@ -888,6 +888,7 @@ def inicializar_retriever_vectorstore(k=5):
             collection_name="fac_documents_complete",
             embedding_function=embedding_model,
         )
+        vectorstore_complete = vectorstore_edaes
         vectorstore_pruebas = vectorstore_edaes  # Misma colección para todos
         vectorstore_resumen_edaes = vectorstore_edaes
         vectorstore_edaes_seg = vectorstore_edaes
@@ -1289,56 +1290,48 @@ def chatbot_response(
     # Construir contexto final
     fc = ""
     registro = []
-    referencias_dict = {}
 
-    # Usar solo los top 3 documentos más relevantes para evitar ruido en referencias
-    for doc in re_ranked_docs[:3]:
-        origin = doc.metadata.get("origin", "Búsqueda híbrida")
-        title = doc.metadata.get("title", "Sin título")
+    # Set para almacenar SOLO los orígenes únicos
+    referencias_origen_set = set()
 
-        # Agrupar títulos por documento origen
-        if origin not in referencias_dict:
-            referencias_dict[origin] = set()
+    # Usar TODOS los documentos re-rankeados para contexto
+    # pero solo capturar el origen de los Top 5 para mostrar al usuario
+    for i, doc in enumerate(re_ranked_docs):
+        origin = doc.metadata.get("origin", "Documento desconocido")
 
-        if title and title != "Sin título":
-            referencias_dict[origin].add(title)
+        # AGREGAR SOLO EL ORIGEN PARA LA CITA (Solo de los top 5)
+        if i < 5:
+            referencias_origen_set.add(origin)
 
-        if usar_full_context and origin == "EDAES":
-            try:
+        # Lógica de Full Context
+        try:
+            if usar_full_context and origin == "EDAES":
                 fc += get_full_context(vectorstore, doc) + "\n\n"
-            except Exception as e:
-                fc += doc.page_content + "\n\n"
-        elif (
-            usar_full_context
-            and origin == "EDAES Segmentado"
-            and "id_referencia" in doc.metadata
-        ):
-            try:
-                text, ref = get_full_chunk(vectorstore, doc)
+            elif (
+                usar_full_context
+                and origin == "EDAES Segmentado"
+                and "id_referencia" in doc.metadata
+            ):
+                text, _ = get_full_chunk(vectorstore, doc)
                 fc += text + "\n\n"
-            except Exception as e:
-                fc += doc.page_content + "\n\n"
-        elif (
-            usar_full_context and origin == "Resumen EDAES" and "parent" in doc.metadata
-        ):
-            try:
-                text, ref = get_full_reference(vectorstore, doc, registro)
+            elif (
+                usar_full_context
+                and origin == "Resumen EDAES"
+                and "parent" in doc.metadata
+            ):
+                text, _ = get_full_reference(vectorstore, doc, registro)
                 fc += text + "\n\n"
-            except Exception as e:
+            else:
                 fc += doc.page_content + "\n\n"
-        else:
+        except Exception:
+            # Fallback seguro
             fc += doc.page_content + "\n\n"
 
-    # Construir string de referencias formateado
-    referencias_list = []
-    for origin, titles in referencias_dict.items():
-        if titles:
-            titulo_str = ", ".join(sorted(titles))
-            referencias_list.append(f"{origin} - {titulo_str}")
-        else:
-            referencias_list.append(origin)
-
-    referencias = "\n".join(referencias_list)
+    # Construir string de referencias limpio (UNA SOLA MENCIÓN POR DOCUMENTO)
+    if referencias_origen_set:
+        referencias = "\n".join(sorted(referencias_origen_set))
+    else:
+        referencias = "No hay fuentes específicas."
 
     start = time.time()
     try:
@@ -1370,9 +1363,13 @@ def create_specialized_mater_chunks(md_text, sections):
     optimizada para responder preguntas sobre términos aeronáuticos.
     """
     lines = md_text.split("\n")
-    # CORREGIR: Regex para capturar AMBOS formatos: **Término.** y **Término:**
-    term_regex_dot = re.compile(r"^\*\*(.+?)\.\*\*\s*(.*)$")  # **Término.** Definición
-    term_regex_colon = re.compile(r"^\*\*(.+?):\*\*\s*(.*)$")  # **Término:** Definición
+    # CORREGIR: Regex para capturar MÚLTIPLES formatos del NuevoMATER
+    # Formato 1: **Término.** Definición
+    term_regex_dot = re.compile(r"^\*\*(.+?)\.\*\*\s*(.*)$")
+    # Formato 2: **Término:** Definición
+    term_regex_colon = re.compile(r"^\*\*(.+?):\*\*\s*(.*)$")
+    # Formato 3: **Término***.* Definición (Caso especial detectado en NuevoMATER)
+    term_regex_star_dot = re.compile(r"^\*\*(.+?)\*{3}\.\*\s*(.*)$")
 
     current_term = None
     current_definition = []
@@ -1383,8 +1380,12 @@ def create_specialized_mater_chunks(md_text, sections):
         if not line or line.startswith("![]") or line.startswith("Figura"):
             continue
 
-        # Intentar ambos formatos
-        term_match = term_regex_dot.match(line) or term_regex_colon.match(line)
+        # Intentar todos los formatos
+        term_match = (
+            term_regex_dot.match(line)
+            or term_regex_colon.match(line)
+            or term_regex_star_dot.match(line)
+        )
 
         if term_match:
             # Procesar término anterior si existe
