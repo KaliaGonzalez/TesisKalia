@@ -89,7 +89,7 @@ temperature = args.temperature
 # c_name = "pruebas"
 c_name = "DELFOS"
 embedding_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-persist_directory = "../data/chroma_db"
+persist_directory = "../data/chroma_db_v4"
 re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
@@ -99,12 +99,10 @@ Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu
 
 INSTRUCCIONES DE RESPUESTA:
 1. Responde DIRECTAMENTE a la pregunta. No divagues ni incluyas información no solicitada.
-2. Si la pregunta es "¿Qué es X?", y el documento habla de "Y", NO respondas sobre "Y". DI CLARAMENTE: "No encontré una definición exacta de X en los documentos".
-3. EVITA la frase "Según el documento...". Simplemente da la respuesta. Si es necesario citar, hazlo al final entre paréntesis, ej: (Fuente: Nombre del Documento).
-4. NO repitas el nombre de la fuente múltiples veces. Nombra el documento una sola vez si es estrictamente necesario para dar contexto.
-5. NO inventes definiciones. Si el texto dice "Fase de Peligro", eso NO es lo mismo que "Peligro" por sí solo. Sé preciso.
-6. Si la información no está en el contexto, responde: "No tengo información suficiente en los documentos proporcionados".
-7. IMPORTANTE: No agregues información de términos relacionados no solicitados (ej. si preguntan por "X", no definas "Y" ni "Z").
+2. Identifica la respuesta en el texto proporcionado, sin importar si está en mayúsculas, minúsculas o sin acentuación (por ejemplo, "prevac" es lo mismo que "PREVAC").
+3. Si en el texto dice literalmente "X es Y" o "que es X X es Y", extrae esa definición y preséntala bien redactada.
+4. EVITA la frase "Según el documento...". Simplemente da la respuesta de forma clara y directa.
+5. NO inventes definiciones. Si la información no está en el contexto, responde: "No tengo información suficiente en los documentos".
 
 Pregunta: {pregunta}
 
@@ -175,11 +173,36 @@ def sanitize_filename(name):
 
 
 def re_rank_docs(query, docs, reranker):
+    if not docs:
+        return []
+
+    # Extraer posibles términos clave (palabras en mayúscula o más de 4 letras que no sean comunes)
+    import re
+
+    query_upper = query.upper()
+    keywords = [
+        w
+        for w in re.findall(r"\b[A-Za-z0-9]{4,}\b", query_upper)
+        if w not in ["QUE", "COMO", "CUAL", "PARA", "ESTA", "CUALES"]
+    ]
+
     texts = [doc.page_content for doc in docs]
     pairs = [[query, text] for text in texts]
     scores = reranker.predict(pairs)
-    sorted_docs = sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)
-    return [doc[0] for doc in sorted_docs][:5]
+
+    # Calcular nuevos scores combinando el reranker con coincidencia exacta
+    boosted_scores = []
+    for i, (score, text) in enumerate(zip(scores, texts)):
+        text_upper = text.upper()
+        boost = 0.0
+        # Dar un bono masivo si el término exacto aparece (especialmente en acrónimos)
+        for kw in keywords:
+            if kw in text_upper:
+                boost += 20.0  # Bono enorme para que suba al top
+        boosted_scores.append(score + boost)
+
+    sorted_docs = sorted(zip(docs, boosted_scores), key=lambda x: x[1], reverse=True)
+    return [doc[0] for doc in sorted_docs][:20]
 
 
 # def re_rank_docs(query, docs, llm_chain):
@@ -1069,23 +1092,16 @@ def chatbot_response(
     # Se obtienen los documentos relevantes
     query_limpia = limpiar_string(query)
 
-    # MEJORAR: Consultar TODOS los retrievers para obtener información de todos los documentos
-    docs_resumen_edaes = retriever_resumen_edaes.invoke(query_limpia)
-    docs_pruebas = retriever_pruebas.invoke(query_limpia)
-    docs_newMater = retriever_newMater.invoke(query_limpia)
-    docs_seg = retriever_edaes_seg.invoke(query_limpia)
-    docs_edaes = retriever_edaes.invoke(query_limpia)
-    docs_historia = retriever_historia.invoke(query_limpia)
+    # Aumentar la K del retriever para que la búsqueda pura vectorial traiga suficientes documentos
+    # de toda la base de datos, y luego el Reranker escoja los 20 mejores exactos.
+    # Dado que todos los retrievers son iguales según la configuración original de la rama, solo invocamos uno.
+    old_k = retriever_edaes.search_kwargs.get("k", 5)
+    retriever_edaes.search_kwargs["k"] = 600
+    docs_globales = retriever_edaes.invoke(query)
+    retriever_edaes.search_kwargs["k"] = old_k
 
     # Combinar TODOS los documentos
-    docs = (
-        docs_pruebas
-        + docs_resumen_edaes
-        + docs_seg
-        + docs_edaes
-        + docs_newMater
-        + docs_historia
-    )
+    docs = docs_globales
 
     # MEJORAR: Sistema de búsqueda inteligente
     query_keywords = query_limpia.lower().split()
@@ -1112,34 +1128,26 @@ def chatbot_response(
     )
 
     # BÚSQUEDA UNIVERSAL: Sin restricciones de dominio, buscar en TODOS los documentos
-    print(f"🔍 Búsqueda universal con BM25 para: '{query}'")
-
-    # -------------------------------------------------------------
-    # SIMPLIFICACIÓN A SOLO BM25 (SOLICITUD DE USUARIO)
-    # -------------------------------------------------------------
-    # Como todos los retrievers ahora apuntan al mismo índice BM25 global,
-    # invocamos uno solo para obtener los resultados de todo el corpus.
+    print(f"🔍 Búsqueda universal con VectorStore para: '{query}'")
 
     # Aumentamos k aquí para asegurar que el re-ranking tenga suficientes candidatos
-    # Recuperamos documentos con BM25
-    original_k = retriever_edaes.k
-    retriever_edaes.k = (
-        40  # Aumentar recall para asegurar encontrar la definición exacta
-    )
+    # Recuperamos documentos combinados de TODOS los orígenes
+    docs_unique = []
+    seen = set()
 
-    docs = retriever_edaes.invoke(query_limpia)
+    for doc in docs_globales:
+        doc_id = doc.metadata.get("id", doc.page_content[:30])
+        if doc_id not in seen:
+            seen.add(doc_id)
+            docs_unique.append(doc)
 
-    retriever_edaes.k = original_k  # Restaurar k original
-
-    print(f"📄 Documentos recuperados por BM25: {len(docs)}")
+    print(f"📄 Documentos recuperados por VectorStore: {len(docs_unique)}")
 
     # Pasamos directamente al re-ranking sin lógica vectorial/híbrida compleja
-    final_docs = docs
+    final_docs = docs_unique
 
-    # Re-ranking con CrossEncoder (esencial para filtrar resultados de BM25)
-    re_ranked_docs = re_rank_docs(
-        query_limpia, final_docs[:15], reranker
-    )  # Limitar a top 30 para eficiencia
+    # Re-ranking con CrossEncoder
+    re_ranked_docs = re_rank_docs(query, final_docs, reranker)
 
     # Mostrar información de debug
     print(f"🏆 Top 3 documentos después de re-ranking:")
@@ -1156,7 +1164,8 @@ def chatbot_response(
     # Lista necesaria para la función get_full_reference si se usa
     registro = []
 
-    for doc in re_ranked_docs:
+    # Solo enviar los top 5 al LLM para no confundirlo
+    for doc in re_ranked_docs[:5]:
         origin = doc.metadata.get("origin", "Búsqueda híbrida")
 
         # MODIFICACIÓN: SOLO MENCIONAR EL DOCUMENTO DE ORIGEN (NO EL TÍTULO DEL CHUNK)
@@ -1212,9 +1221,8 @@ def create_specialized_mater_chunks(md_text, sections):
     optimizada para responder preguntas sobre términos aeronáuticos.
     """
     lines = md_text.split("\n")
-    # CORREGIR: Regex para capturar AMBOS formatos: **Término.** y **Término:**
-    term_regex_dot = re.compile(r"^\*\*(.+?)\.\*\*\s*(.*)$")  # **Término.** Definición
-    term_regex_colon = re.compile(r"^\*\*(.+?):\*\*\s*(.*)$")  # **Término:** Definición
+    # CORREGIR: Regex generalizado para capturar múltiples variaciones (incluyendo **PREVAC***.*)
+    term_regex_broad = re.compile(r"^\*\*(.+?)\*\*(?:[:.\*]*)\s*(.*)$")
 
     current_term = None
     current_definition = []
@@ -1225,16 +1233,18 @@ def create_specialized_mater_chunks(md_text, sections):
         if not line or line.startswith("![]") or line.startswith("Figura"):
             continue
 
-        # Intentar ambos formatos
-        term_match = term_regex_dot.match(line) or term_regex_colon.match(line)
+        # Intentar match con regex general
+        term_match = term_regex_broad.match(line)
 
         if term_match:
+            raw_term = term_match.group(1).strip()
+
             # Procesar término anterior si existe
             if current_term and current_definition:
                 _process_nuevo_mater_term(current_term, current_definition, sections)
 
-            # Iniciar nuevo término
-            current_term = term_match.group(1).strip()
+            # Iniciar nuevo término (limpiando asteriscos y demás del final)
+            current_term = raw_term.rstrip(".:* ")
             definition_start = term_match.group(2).strip()
             current_definition = [definition_start] if definition_start else []
 
@@ -1292,7 +1302,7 @@ def _process_nuevo_mater_term(term, definition_lines, sections):
             "id": f"chunk_nuevo_mater_{len(sections)}_{idx}",
             "level": 1,
             "title": f"{term} ({chunk_data['tipo']})",
-            "text": limpiar_string(combined_text),
+            "text": combined_text,  # Conservar formato natural para LLM
             "type": "Definición NuevoMATER",
             "parent": "NuevoMATER FAC",
             "children": [],
