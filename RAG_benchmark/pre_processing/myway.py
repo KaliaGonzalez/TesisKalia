@@ -89,24 +89,25 @@ temperature = args.temperature
 # c_name = "pruebas"
 c_name = "DELFOS"
 embedding_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-persist_directory = "../data/chroma_db_v4"
+persist_directory = "../data/chroma_db_v5"
 re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
 
 prompt_template = """
-Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu misión es responder preguntas basándote ÚNICAMENTE en la información proporcionada.
+Eres un asistente virtual de la Fuerza Aérea Colombiana.
+Tu objetivo es responder la pregunta del usuario utilizando ÚNICAMENTE la información del Contexto.
+En el Contexto vienen definiciones y descripciones de términos, extraídas de manuales oficiales.
 
-INSTRUCCIONES DE RESPUESTA:
-1. Responde DIRECTAMENTE a la pregunta. No divagues ni incluyas información no solicitada.
-2. Identifica la respuesta en el texto proporcionado, sin importar si está en mayúsculas, minúsculas o sin acentuación (por ejemplo, "prevac" es lo mismo que "PREVAC").
-3. Si en el texto dice literalmente "X es Y" o "que es X X es Y", extrae esa definición y preséntala bien redactada.
-4. EVITA la frase "Según el documento...". Simplemente da la respuesta de forma clara y directa.
-5. NO inventes definiciones. Si la información no está en el contexto, responde: "No tengo información suficiente en los documentos".
+Contexto:
+{contexto}
 
 Pregunta: {pregunta}
 
-Documentos disponibles: {contexto}
+Instrucciones para generar la respuesta:
+1. Lee el Contexto y busca la respuesta a la Pregunta.
+2. Si la encuentras, dásela al usuario de manera textual y completa (incluyendo cualquier viñeta explicativa del texto).
+3. Si la respuesta a la pregunta NO se encuentra claramente en el Contexto, responde estrictamente: "No tengo información suficiente en los documentos para proporcionar una respuesta."
 
 Respuesta:
 """
@@ -1164,8 +1165,8 @@ def chatbot_response(
     # Lista necesaria para la función get_full_reference si se usa
     registro = []
 
-    # Solo enviar los top 5 al LLM para no confundirlo
-    for doc in re_ranked_docs[:5]:
+    # Solo enviar los top 3 al LLM para concentrarse en la respuesta más exacta
+    for doc in re_ranked_docs[:3]:
         origin = doc.metadata.get("origin", "Búsqueda híbrida")
 
         # MODIFICACIÓN: SOLO MENCIONAR EL DOCUMENTO DE ORIGEN (NO EL TÍTULO DEL CHUNK)
