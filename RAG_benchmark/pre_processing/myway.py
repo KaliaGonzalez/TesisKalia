@@ -90,7 +90,7 @@ temperature = args.temperature
 # c_name = "pruebas"
 c_name = "DELFOS"
 embedding_model_name = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-persist_directory = "../data/chroma_db"
+persist_directory = "../data/chroma_db_v7"
 re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
@@ -99,13 +99,13 @@ prompt_template = """
 Eres un experto asistente especializado en la Fuerza Aérea Colombiana (FAC). Tu misión es responder preguntas basándote ÚNICAMENTE en la información proporcionada.
 
 INSTRUCCIONES DE RESPUESTA:
-1. Responde DIRECTAMENTE a la pregunta. No divagues ni incluyas información no solicitada.
-2. Si la pregunta es "¿Qué es X?", y el documento habla de "Y", NO respondas sobre "Y". DI CLARAMENTE: "No encontré una definición exacta de X en los documentos".
+1. Responde DIRECTAMENTE a la pregunta utilizando la información proporcionada. No divagues.
+2. Si un documento menciona la definición exacta, escríbela claramente tal y como aparece.
 3. EVITA la frase "Según el documento...". Simplemente da la respuesta. Si es necesario citar, hazlo al final entre paréntesis, ej: (Fuente: Nombre del Documento).
 4. NO repitas el nombre de la fuente múltiples veces. Nombra el documento una sola vez si es estrictamente necesario para dar contexto.
-5. NO inventes definiciones. Si el texto dice "Fase de Peligro", eso NO es lo mismo que "Peligro" por sí solo. Sé preciso.
-6. Si la información no está en el contexto, responde: "No tengo información suficiente en los documentos proporcionados".
-7. IMPORTANTE: No agregues información de términos relacionados no solicitados (ej. si preguntan por "X", no definas "Y" ni "Z").
+5. NO inventes definiciones.
+6. Si la información DEFINITIVAMENTE no está en ningún lado del contexto (ni siquiera de forma parcial o mencionada dentro de otro concepto), responde: "No tengo información suficiente en los documentos proporcionados".
+7. IMPORTANTE: Extrae la información útil relevante al término consultado incluso si está dentro de la definición de otro concepto.
 
 Pregunta: {pregunta}
 
@@ -1233,9 +1233,8 @@ def create_specialized_mater_chunks(md_text, sections):
     optimizada para responder preguntas sobre términos aeronáuticos.
     """
     lines = md_text.split("\n")
-    # CORREGIR: Regex para capturar AMBOS formatos: **Término.** y **Término:**
-    term_regex_dot = re.compile(r"^\*\*(.+?)\.\*\*\s*(.*)$")  # **Término.** Definición
-    term_regex_colon = re.compile(r"^\*\*(.+?):\*\*\s*(.*)$")  # **Término:** Definición
+    # CORREGIR: Regex para capturar TODOS los formatos: **Término.**, **Término:**, **Término***.*
+    term_regex = re.compile(r"^[>\s]*\*\*(.+?)\*\*(?:[:.\*]*)\s*(.*)$")
 
     current_term = None
     current_definition = []
@@ -1246,8 +1245,8 @@ def create_specialized_mater_chunks(md_text, sections):
         if not line or line.startswith("![]") or line.startswith("Figura"):
             continue
 
-        # Intentar ambos formatos
-        term_match = term_regex_dot.match(line) or term_regex_colon.match(line)
+        # Intentar el regex general
+        term_match = term_regex.match(line)
 
         if term_match:
             # Procesar término anterior si existe
