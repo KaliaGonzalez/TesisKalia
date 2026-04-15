@@ -95,21 +95,32 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 reranker = CrossEncoder(re_ranker_model)
 
 prompt_template = """
-Eres un asistente virtual de la Fuerza Aérea Colombiana.
-Tu objetivo es responder la pregunta del usuario utilizando ÚNICAMENTE la información del Contexto.
-En el Contexto vienen definiciones y descripciones de términos, extraídas de manuales oficiales.
+INSTRUCCIONES CRÍTICAS - LEE CUIDADOSAMENTE:
+
+Eres un asistente de la Fuerza Aérea Colombiana especializado en definiciones de términos.
+
+Tu ÚNICA FUENTE DE VERDAD es el Contexto proporcionado abajo.
+
+REGLA 1 - SOLO CONTEXTO:
+- DEBES responder ÚNICAMENTE con información que está literalmente en el Contexto.
+- Si algo NO está en el Contexto, DEBES decir "No tengo información suficiente..."
+- NUNCA inventes, adivines o alucinaciones.
+
+REGLA 2 - VALIDACIÓN:
+- Antes de responder, verifica que la información que usarás esté explícitamente en el Contexto.
+- Si no estás 100% seguro de que el Contexto lo dice, usa el fallback.
+
+REGLA 3 - FORMATO:
+- Responde de manera clara y directa.
+- Si encuentras una definición exacta, cítala.
+- Corrige mayúsculas y puntuación si es necesario.
 
 Contexto:
 {contexto}
 
 Pregunta: {pregunta}
 
-Instrucciones para generar la respuesta:
-1. Lee el Contexto y busca la respuesta a la Pregunta.
-2. Si la encuentras, dásela al usuario de manera textual y completa (incluyendo cualquier viñeta explicativa del texto).
-3. Si la respuesta a la pregunta NO se encuentra claramente en el Contexto, responde estrictamente: "No tengo información suficiente en los documentos para proporcionar una respuesta."
-
-Respuesta:
+RESPUESTA (SOLO si está claramente en el Contexto arriba):
 """
 
 PROMPT = PromptTemplate(
@@ -131,7 +142,7 @@ PROMPT_RERANK = PromptTemplate(
 )
 
 
-def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
+def inicializar_modelo(model_name="llama3.2:latest", temperature=0.5, prompt=PROMPT):
     # Aqui estamos creando el modelo en esta case deberas cambiar el nombre arriba del archivo o aqui mismo.
     llm = OllamaLLM(model=model_name, temperature=temperature)
     # Se crea el pipeline (reemplaza LLMChain que está deprecado)
@@ -144,28 +155,15 @@ LLM_CHAIN_RERANK = inicializar_modelo(temperature=0, prompt=PROMPT_RERANK)
 
 def limpiar_string(texto):
     """
-    Limpia un string convirtiéndolo a minúsculas, eliminando tildes y caracteres especiales.
-
-    Args:
-        texto (str): Texto a limpiar
-
-    Returns:
-        str: Texto limpio en minúsculas, sin tildes ni caracteres especiales
+    Limpia un string sin perder la puntuación ni mayúsculas. Solo se ajustan espacios y se eliminan caracteres inválidos extremos.
+    Se utiliza para mantener la estructura y semántica originales (acrónimos, signos) que el LLM necesita.
     """
-    # Convertir a minúsculas
-    texto = texto.lower()
-
-    # Eliminar tildes y diacríticos
-    texto = (
-        unicodedata.normalize("NFKD", texto).encode("ASCII", "ignore").decode("ASCII")
-    )
-
-    # Eliminar caracteres especiales (manteniendo solo letras, números y espacios)
-    texto = re.sub(r"[^a-z0-9\s]", "", texto)
-
+    if not texto:
+        return ""
+    # Quita saltos de línea repetidos de más
+    texto = re.sub(r"[\r\n]{2,}", "\n\n", texto)
     # Reemplazar múltiples espacios por uno solo
-    texto = re.sub(r"\s+", " ", texto).strip()
-
+    texto = re.sub(r"[ \t]+", " ", texto).strip()
     return texto
 
 
@@ -742,39 +740,86 @@ def read_markdown_file(file_path):
 
 
 def store_in_chromadb(sections, persist_directory, c_name, embedding_model_name):
-    """Stores parsed markdown sections into ChromaDB using Langchain and HuggingFaceEmbeddings."""
+    """Stores parsed markdown sections into ChromaDB."""
 
-    # Inicializar el generador de embeddings con un modelo de Hugging Face
+    import shutil
+    from chromadb.config import Settings as ChromaSettings
+
+    # Limpiar BD vieja si existe
+    if os.path.exists(persist_directory):
+        try:
+            shutil.rmtree(persist_directory)
+            print(f"Limpiada BD anterior: {persist_directory}")
+        except Exception as e:
+            print(f"No se pudo limpiar: {e}")
+
+    # Inicializar embeddings
     embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name)
 
-    # Inicializar Chroma usando Langchain (almacenamiento persistente opcional)
-    chroma_db = Chroma(
-        persist_directory=persist_directory,
-        collection_name=c_name,
-        embedding_function=embedding_model,
+    # Inicializar ChromaDB directamente (sin Langchain)
+    client = chromadb.PersistentClient(
+        path=persist_directory, settings=ChromaSettings(anonymized_telemetry=False)
     )
 
-    # Convertir secciones a documentos de Langchain
-    docs = []
-    for section in sections:
-        metadata = {
-            "id": section.get("id", f"chunk_{len(docs)}"),
-            "title": section.get("title", "Sin título"),
-            "level": section.get("level", 0),
-            "parent": section.get("parent", "None"),
-            "children": (
-                ", ".join(section["children"])
-                if isinstance(section.get("children"), list)
-                else section.get("children", "")
-            ),
-            "origin": section.get("origin", section.get("origen", "Desconocido")),
-            "type": section.get("type", "unknown"),
-        }
-        docs.append(Document(page_content=section.get("text", ""), metadata=metadata))
+    # Crear colección
+    collection = client.get_or_create_collection(
+        name=c_name, metadata={"hnsw:space": "cosine"}
+    )
 
-    # Agregar documentos a Chroma
-    chroma_db.add_documents(docs)
-    return chroma_db
+    # Procesar documentos
+    print(f"Procesando {len(sections)} secciones...")
+
+    documents_to_add = []
+    metadatas_to_add = []
+    ids_to_add = []
+    embeddings_to_add = []
+
+    # Contador global para IDs únicos
+    doc_counter = 0
+
+    for idx, section in enumerate(sections):
+        text = section.get("text", "")
+        if not text or text.strip() == "":
+            continue
+
+        # Crear ID único usando contador global
+        doc_id = f"doc_{doc_counter}"
+        doc_counter += 1
+
+        metadata = {
+            "title": section.get("title", "Sin titulo"),
+            "level": str(section.get("level", 0)),
+            "origin": section.get("origin", section.get("origen", "Desconocido")),
+        }
+
+        # Generar embedding
+        embedding = embedding_model.embed_query(text)
+
+        documents_to_add.append(text)
+        metadatas_to_add.append(metadata)
+        ids_to_add.append(doc_id)
+        embeddings_to_add.append(embedding)  # Agregar todo de una vez
+    print(f"Almacenando {len(documents_to_add)} documentos...")
+    collection.add(
+        ids=ids_to_add,
+        documents=documents_to_add,
+        metadatas=metadatas_to_add,
+        embeddings=embeddings_to_add,
+    )
+
+    # Verificar
+    final_count = collection.count()
+    print(f"Verificacion: {final_count} documentos en collection")
+
+    # Retornar un wrapper Langchain para mantener compatibilidad
+    embedding_model_lc = HuggingFaceEmbeddings(model_name=embedding_model_name)
+    vectorstore = Chroma(
+        client=client,
+        collection_name=c_name,
+        embedding_function=embedding_model_lc,
+    )
+
+    return vectorstore
 
 
 def store_in_chromadb_seg(sections, persist_directory, c_name, embedding_model_name):
@@ -802,7 +847,14 @@ def store_in_chromadb_seg(sections, persist_directory, c_name, embedding_model_n
         docs.append(Document(page_content=section["text"], metadata=metadata))
 
     # Agregar documentos a Chroma
+    print(f"📝 Agregando {len(docs)} documentos a ChromaDB (store_in_chromadb_seg)...")
     chroma_db.add_documents(docs)
+
+    # CRÍTICO: Persistir explícitamente
+    print(f"💾 Persistiendo {len(docs)} documentos...")
+    chroma_db.persist()
+
+    print(f"✅ {len(docs)} documentos almacenados exitosamente")
     return chroma_db
 
 
@@ -814,33 +866,55 @@ def get_full_context(vectorstore, doc):
     # Extraer ID hijos y padre del metadata
     metadata = doc.metadata
     id_doc = metadata["id"]
+    origin_doc = metadata["origin"]
     hijos = metadata["children"].split(", ")
     padre = metadata["parent"]
 
     if padre != "None":
         filtro_padre = vectorstore.get(where={"id": padre})
-        ids_hijo_padre = filtro_padre["metadatas"][0]["children"].split(", ")
+        idx_padre = [
+            i
+            for i, m in enumerate(filtro_padre["metadatas"])
+            if m["origin"] == origin_doc
+        ]
+        if idx_padre:
+            idx_p = idx_padre[0]
+            ids_hijo_padre = filtro_padre["metadatas"][idx_p]["children"].split(", ")
 
-        if len(ids_hijo_padre) > 0:
-            for id in ids_hijo_padre:
-                if id != id_doc:
-                    filtro_hijo_padre = vectorstore.get(where={"id": id})
-                    doc_hijo_padre = filtro_hijo_padre["documents"][0]
-                    titulo_hijo_padre = filtro_hijo_padre["metadatas"][0]["title"]
-                    full_context += titulo_hijo_padre + "\n" + doc_hijo_padre + "\n\n"
+            if len(ids_hijo_padre) > 0:
+                for id_ in ids_hijo_padre:
+                    if id_ != id_doc:
+                        filtro_hijo_padre = vectorstore.get(where={"id": id_})
+                        idx_hp = [
+                            i
+                            for i, m in enumerate(filtro_hijo_padre["metadatas"])
+                            if m["origin"] == origin_doc
+                        ]
+                        if idx_hp:
+                            doc_hijo_padre = filtro_hijo_padre["documents"][idx_hp[0]]
+                            titulo_hijo_padre = filtro_hijo_padre["metadatas"][
+                                idx_hp[0]
+                            ]["title"]
+                            full_context += (
+                                titulo_hijo_padre + "\n" + doc_hijo_padre + "\n\n"
+                            )
 
-        doc_padre = filtro_padre["documents"][0]
-        titulo_padre = filtro_padre["metadatas"][0]["title"]
-        full_context += titulo_padre + "\n" + doc_padre + "\n\n"
-    print("metadata: ", metadata)
-    print("hijos: ", hijos)
+            doc_padre = filtro_padre["documents"][idx_p]
+            titulo_padre = filtro_padre["metadatas"][idx_p]["title"]
+            full_context += titulo_padre + "\n" + doc_padre + "\n\n"
+
     if hijos != [""]:
-        for id in hijos:
-            filtro_hijo = vectorstore.get(where={"id": id})
-            print(filtro_hijo)
-            doc_hijo = filtro_hijo["documents"][0]
-            titulo_hijo = filtro_hijo["metadatas"][0]["title"]
-            full_context += titulo_hijo + "\n" + doc_hijo + "\n\n"
+        for id_ in hijos:
+            filtro_hijo = vectorstore.get(where={"id": id_})
+            idx_h = [
+                i
+                for i, m in enumerate(filtro_hijo["metadatas"])
+                if m["origin"] == origin_doc
+            ]
+            if idx_h:
+                doc_hijo = filtro_hijo["documents"][idx_h[0]]
+                titulo_hijo = filtro_hijo["metadatas"][idx_h[0]]["title"]
+                full_context += titulo_hijo + "\n" + doc_hijo + "\n\n"
 
     return full_context
 
@@ -907,8 +981,16 @@ def inicializar_retriever_vectorstore(k=5):
     ):  # Base de datos completa con todos los documentos
         print("Cargando Base de datos completa... ")
         embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name)
+
+        # Crear cliente con los mismos settings que en store_in_chromadb
+        from chromadb.config import Settings as ChromaSettings
+
+        client = chromadb.PersistentClient(
+            path=persist_directory, settings=ChromaSettings(anonymized_telemetry=False)
+        )
+
         vectorstore_edaes = Chroma(
-            persist_directory=persist_directory,
+            client=client,
             collection_name="fac_documents_complete",
             embedding_function=embedding_model,
         )
@@ -1093,13 +1175,48 @@ def chatbot_response(
     # Se obtienen los documentos relevantes
     query_limpia = limpiar_string(query)
 
-    # Aumentar la K del retriever para que la búsqueda pura vectorial traiga suficientes documentos
-    # de toda la base de datos, y luego el Reranker escoja los 20 mejores exactos.
-    # Dado que todos los retrievers son iguales según la configuración original de la rama, solo invocamos uno.
-    old_k = retriever_edaes.search_kwargs.get("k", 5)
-    retriever_edaes.search_kwargs["k"] = 600
-    docs_globales = retriever_edaes.invoke(query)
-    retriever_edaes.search_kwargs["k"] = old_k
+    # Recuperar documentos forzando la búsqueda equitativa en TODOS los documentos/orígenes.
+    docs_globales = []
+    origenes = [
+        "EDAES",
+        "Resumen EDAES",
+        "Reglamento de las PORFAC",
+        "Manual de términos FAC",
+        "Historia",
+        "EDAES Segmentado",
+        "NuevoMATER FAC",
+    ]
+    for origen in origenes:
+        try:
+            docs_origen = vectorstore.similarity_search(
+                query_limpia, k=60, filter={"origin": origen}
+            )
+            docs_globales.extend(docs_origen)
+        except Exception:
+            pass
+
+    # BUSQUEDA LEXICA DE RESPALDO PARA ACRONIMOS
+    try:
+        from langchain.schema import Document
+
+        todos = vectorstore.get()
+        # Usamos query_limpia para que "madba?" se convierta en "madba", y eliminamos stop words
+        palabras_clave = [
+            w
+            for w in query_limpia.split()
+            if len(w) >= 3
+            and w not in ["que", "como", "cual", "cuales", "para", "por", "con", "del"]
+        ]
+
+        for idx in range(len(todos["ids"])):
+            content = todos["documents"][idx]
+            meta = todos["metadatas"][idx]
+            if len(palabras_clave) > 0 and all(
+                p in content.lower() for p in palabras_clave
+            ):
+                docs_globales.append(Document(page_content=content, metadata=meta))
+    except Exception as e:
+        print("Error en busqueda lexica:", e)
 
     # Combinar TODOS los documentos
     docs = docs_globales
@@ -1150,6 +1267,27 @@ def chatbot_response(
     # Re-ranking con CrossEncoder
     re_ranked_docs = re_rank_docs(query, final_docs, reranker)
 
+    # BUMP CHUNKS CON MATCH EXACTO AL TOP
+    try:
+        terminos = [
+            w
+            for w in query_limpia.split()
+            if len(w) > 3
+            and w not in ["que", "como", "cual", "cuales", "para", "por", "con", "del"]
+        ]
+        if len(terminos) > 0:
+            exact_matches = []
+            for d in re_ranked_docs:
+                content_lower = d.page_content.lower()
+                if all(t.lower() in content_lower for t in terminos):
+                    exact_matches.append(d)
+
+            re_ranked_docs = exact_matches + [
+                d for d in re_ranked_docs if d not in exact_matches
+            ]
+    except Exception as e:
+        print("Error en BM25:", e)
+
     # Mostrar información de debug
     print(f"🏆 Top 3 documentos después de re-ranking:")
     for i, doc in enumerate(re_ranked_docs[:3]):
@@ -1172,7 +1310,13 @@ def chatbot_response(
         # MODIFICACIÓN: SOLO MENCIONAR EL DOCUMENTO DE ORIGEN (NO EL TÍTULO DEL CHUNK)
         referencias_set.add(origin)
 
-        if usar_full_context and origin == "EDAES":
+        if usar_full_context and origin in [
+            "EDAES",
+            "Historia",
+            "NuevoMATER FAC",
+            "Reglamento de las PORFAC",
+            "Manual de términos FAC",
+        ]:
             try:
                 fc += get_full_context(vectorstore, doc) + "\n\n"
             except Exception as e:
@@ -1213,7 +1357,32 @@ def chatbot_response(
     stop = time.time()
     tiempo_res = stop - start
 
-    return respuesta, tiempo_res, referencias
+    # VALIDACIÓN ANTI-ALUCINACIÓN: SIMPLIFICADA Y PERMISIVA
+    # Solo rechazar si:
+    # 1. Respuesta está vacía o es "No tengo información"
+    # 2. Respuesta es MUY corta (< 5 palabras) y el contexto es largo
+    fallback_msg = "No tengo información suficiente en los documentos para proporcionar una respuesta."
+    respuesta_texto = (
+        respuesta.get("text", str(respuesta))
+        if isinstance(respuesta, dict)
+        else str(respuesta)
+    )
+
+    # Limpieza básica
+    respuesta_texto = respuesta_texto.strip()
+
+    # Si la respuesta está vacía, usar fallback
+    if not respuesta_texto or respuesta_texto.lower() == "":
+        print("[ALERTA] Respuesta vacía")
+        respuesta_texto = fallback_msg
+    # Si la respuesta es sospechosamente corta (menos de 3 palabras) cuando hay contexto
+    elif len(respuesta_texto.split()) < 3 and len(fc) > 500:
+        print("[ALERTA] Respuesta demasiado corta para el contexto disponible")
+        respuesta_texto = fallback_msg
+    else:
+        print(f"[OK] Respuesta válida ({len(respuesta_texto.split())} palabras)")
+
+    return respuesta_texto, tiempo_res, referencias
 
 
 def create_specialized_mater_chunks(md_text, sections):
@@ -1272,6 +1441,16 @@ def _process_nuevo_mater_term(term, definition_lines, sections):
     full_definition = re.sub(r"\s+", " ", full_definition)
     full_definition = re.sub(r"\*\*(.+?)\*\*", r"\1", full_definition)
 
+    # NUEVO: Extraer acrónimo si existe (ej: "Fase de incertidumbre (INCERFA)" → INCERFA)
+    acronym_match = re.search(r"\(([A-Z][A-Z0-9]+)\)\s*$", term)
+    acronym = None
+    if acronym_match:
+        acronym = acronym_match.group(1)
+        # Remover acrónimo del término principal
+        term_clean = term[: acronym_match.start()].strip()
+    else:
+        term_clean = term
+
     # Crear chunks especializados para mejor recuperación
     specialized_chunks = [
         {
@@ -1296,6 +1475,23 @@ def _process_nuevo_mater_term(term, definition_lines, sections):
         },
     ]
 
+    # Si existe acrónimo, agregar chunks adicionales para búsqueda directa por acrónimo
+    if acronym:
+        specialized_chunks.extend(
+            [
+                {
+                    "pregunta": f"¿Qué es {acronym}?",
+                    "respuesta": f"{acronym} (abreviatura de {term_clean}) es {full_definition}",
+                    "tipo": "acronym_directo",
+                },
+                {
+                    "pregunta": f"¿Qué significa {acronym}?",
+                    "respuesta": f"{acronym} significa: {term}. {full_definition}",
+                    "tipo": "acronym_significado",
+                },
+            ]
+        )
+
     for idx, chunk_data in enumerate(specialized_chunks):
         combined_text = f"{chunk_data['pregunta']} {chunk_data['respuesta']}"
 
@@ -1309,6 +1505,7 @@ def _process_nuevo_mater_term(term, definition_lines, sections):
             "children": [],
             "origin": "NuevoMATER FAC",
             "termino": term,
+            "acronym": acronym,  # Nuevo campo
             "pregunta_tipo": chunk_data["tipo"],
         }
         sections.append(node)

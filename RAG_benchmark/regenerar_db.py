@@ -6,6 +6,12 @@ Regenerar base de datos completa usando myway.py
 import sys
 import os
 
+# FIX: Set encoding for Windows console output
+if sys.stdout.encoding != "utf-8":
+    import io
+
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+
 sys.path.append("pre_processing")
 
 from myway import *
@@ -14,7 +20,7 @@ from myway import *
 def regenerar_base_datos():
     """Regenera la base de datos completa"""
 
-    print("🔄 REGENERANDO BASE DE DATOS COMPLETA")
+    print("[INFO] REGENERANDO BASE DE DATOS COMPLETA")
     print("=" * 50)
 
     try:
@@ -88,9 +94,9 @@ def regenerar_base_datos():
 
         # 3. Almacenar en ChromaDB
         print("💾 Almacenando en ChromaDB...")
-        persist_directory = "./chroma_db"
-        collection_name = "fac_documents"
-        embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
+        persist_directory = "../data/chroma_db_v5"
+        collection_name = "fac_documents_complete"
+        embedding_model = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
         store_in_chromadb(
             all_sections, persist_directory, collection_name, embedding_model
