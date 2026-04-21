@@ -94,18 +94,16 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
 
-prompt_template = """Eres un asistente de documentación de la Fuerza Aérea Colombiana (FAC).
+prompt_template = """Responde la siguiente pregunta usando SOLO el contexto proporcionado. 
 
-Tu tarea es responder preguntas basándote ÚNICAMENTE en los documentos oficiales de la FAC que se proporcionan abajo.
+No rechaces la pregunta. Proporciona la respuesta directa basada en el contexto.
 
-Responde la pregunta de forma directa y concisa usando la información del contexto.
-
-CONTEXTO (Documentos Oficiales de la FAC):
+CONTEXTO:
 {contexto}
 
 PREGUNTA: {pregunta}
 
-RESPUESTA:"""
+RESPUESTA (responde directamente sin rechazos):"""
 
 PROMPT = PromptTemplate(
     template=prompt_template, input_variables=["contexto", "pregunta"]
@@ -126,8 +124,9 @@ PROMPT_RERANK = PromptTemplate(
 )
 
 
-def inicializar_modelo(model_name="llama3.2:latest", temperature=0.5, prompt=PROMPT):
+def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
     # Aqui estamos creando el modelo en esta case deberas cambiar el nombre arriba del archivo o aqui mismo.
+    # mistral es más permisivo que llama3.2:3b
     llm = OllamaLLM(model=model_name, temperature=temperature)
     # Se crea el pipeline (reemplaza LLMChain que está deprecado)
     llm_chain = prompt | llm
@@ -1207,6 +1206,11 @@ def chatbot_response(
     print("-" * 50)
     print(f"CONTEXTO ({len(fc)} caracteres):")
     print(fc[:500] + "..." if len(fc) > 500 else fc)
+    print("-" * 50)
+    print(f"RESPUESTA BRUTA DEL LLM:")
+    print(respuesta)
+    print(f"TIPO DE RESPUESTA: {type(respuesta)}")
+    print("-" * 50)
     stop = time.time()
     tiempo_res = stop - start
 
@@ -1217,6 +1221,9 @@ def chatbot_response(
         else str(respuesta)
     )
     respuesta_texto = respuesta_texto.strip()
+    print(f"RESPUESTA PROCESADA:")
+    print(respuesta_texto)
+    print("-" * 50)
 
     return respuesta_texto, tiempo_res, referencias
 
