@@ -1155,126 +1155,31 @@ def chatbot_response(
     # Se obtienen los documentos relevantes
     query_limpia = limpiar_string(query)
 
-    # Recuperar documentos forzando la búsqueda equitativa en TODOS los documentos/orígenes.
-    docs_globales = []
-    origenes = [
-        "EDAES",
-        "Resumen EDAES",
-        "Reglamento de las PORFAC",
-        "Manual de términos FAC",
-        "Historia",
-        "EDAES Segmentado",
-        "NuevoMATER FAC",
-    ]
-    for origen in origenes:
-        try:
-            docs_origen = vectorstore.similarity_search(
-                query_limpia, k=60, filter={"origin": origen}
-            )
-            docs_globales.extend(docs_origen)
-        except Exception:
-            pass
+    # BÚSQUEDA SIMPLE Y DIRECTA: Sin filtros por origen
+    # Buscar en TODOS los documentos sin restricciones
+    print(f"🔍 Buscando: '{query}'")
+    docs_globales = vectorstore.similarity_search(query_limpia, k=100)
 
-    # BUSQUEDA LEXICA DE RESPALDO PARA ACRONIMOS
-    try:
-        from langchain.schema import Document
+    print(f"📄 Documentos recuperados: {len(docs_globales)}")
 
-        todos = vectorstore.get()
-        # Usamos query_limpia para que "madba?" se convierta en "madba", y eliminamos stop words
-        palabras_clave = [
-            w
-            for w in query_limpia.split()
-            if len(w) >= 3
-            and w not in ["que", "como", "cual", "cuales", "para", "por", "con", "del"]
-        ]
-
-        for idx in range(len(todos["ids"])):
-            content = todos["documents"][idx]
-            meta = todos["metadatas"][idx]
-            if len(palabras_clave) > 0 and all(
-                p in content.lower() for p in palabras_clave
-            ):
-                docs_globales.append(Document(page_content=content, metadata=meta))
-    except Exception as e:
-        print("Error en busqueda lexica:", e)
-
-    # Combinar TODOS los documentos
-    docs = docs_globales
-
-    # MEJORAR: Sistema de búsqueda inteligente
-    query_keywords = query_limpia.lower().split()
-
-    # Detectar tipo de consulta
-    is_definition_query = any(
-        word in query.lower()
-        for word in [
-            "que es",
-            "qué es",
-            "definición",
-            "significa",
-            "concepto",
-            "qué",
-            "que",
-            "cuales son",
-            "cuáles son",
-            "principios",
-            "como se define",
-            "cómo se define",
-            "explicame",
-            "explícame",
-        ]
-    )
-
-    # BÚSQUEDA UNIVERSAL: Sin restricciones de dominio, buscar en TODOS los documentos
-    print(f"🔍 Búsqueda universal con VectorStore para: '{query}'")
-
-    # Aumentamos k aquí para asegurar que el re-ranking tenga suficientes candidatos
-    # Recuperamos documentos combinados de TODOS los orígenes
+    # Eliminar duplicados por ID
     docs_unique = []
     seen = set()
-
     for doc in docs_globales:
         doc_id = doc.metadata.get("id", doc.page_content[:30])
         if doc_id not in seen:
             seen.add(doc_id)
             docs_unique.append(doc)
 
-    print(f"📄 Documentos recuperados por VectorStore: {len(docs_unique)}")
-
-    # Pasamos directamente al re-ranking sin lógica vectorial/híbrida compleja
-    final_docs = docs_unique
-
     # Re-ranking con CrossEncoder
-    re_ranked_docs = re_rank_docs(query, final_docs, reranker)
-
-    # BUMP CHUNKS CON MATCH EXACTO AL TOP
-    try:
-        terminos = [
-            w
-            for w in query_limpia.split()
-            if len(w) > 3
-            and w not in ["que", "como", "cual", "cuales", "para", "por", "con", "del"]
-        ]
-        if len(terminos) > 0:
-            exact_matches = []
-            for d in re_ranked_docs:
-                content_lower = d.page_content.lower()
-                if all(t.lower() in content_lower for t in terminos):
-                    exact_matches.append(d)
-
-            re_ranked_docs = exact_matches + [
-                d for d in re_ranked_docs if d not in exact_matches
-            ]
-    except Exception as e:
-        print("Error en BM25:", e)
+    re_ranked_docs = re_rank_docs(query, docs_unique, reranker)
 
     # Mostrar información de debug
     print(f"🏆 Top 3 documentos después de re-ranking:")
     for i, doc in enumerate(re_ranked_docs[:3]):
         origin = doc.metadata.get("origin", "Desconocido")
-        title = doc.metadata.get("title", "Sin título")
         content_preview = doc.page_content[:100].replace("\n", " ")
-        print(f"   {i+1}. {origin} - {title}")
+        print(f"   {i+1}. {origin} - {content_preview}...")
         print(f"      {content_preview}...")
 
     # Construir contexto final - SIMPLE Y DIRECTO
