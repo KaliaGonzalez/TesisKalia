@@ -94,29 +94,14 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
 
-prompt_template = """
-INSTRUCCIONES - RESPONDE BASÁNDOTE EN EL CONTEXTO:
+prompt_template = """Basándote ÚNICAMENTE en el contexto abajo, responde la pregunta. Si no encuentras la respuesta en el contexto, di "No tengo información suficiente".
 
-Eres un asistente de la Fuerza Aérea Colombiana especializado en definiciones de términos.
-
-El Contexto abajo contiene toda la información disponible.
-
-INSTRUCCIONES PRINCIPALES:
-1. Lee el Contexto cuidadosamente.
-2. Si encuentras la respuesta en el Contexto, RESPONDE con esa información.
-3. Si NO encuentras nada en el Contexto, di: "No tengo información suficiente..."
-4. Responde de manera clara y directa.
-5. Extrae definiciones exactas si están disponibles.
-
-IMPORTANTE: El Contexto es tu única fuente de información. Usa solo lo que está ahí.
-
-Contexto:
+CONTEXTO:
 {contexto}
 
-Pregunta: {pregunta}
+PREGUNTA: {pregunta}
 
-RESPUESTA (SOLO si está claramente en el Contexto arriba):
-"""
+RESPUESTA:"""
 
 PROMPT = PromptTemplate(
     template=prompt_template, input_variables=["contexto", "pregunta"]
@@ -1292,53 +1277,16 @@ def chatbot_response(
         print(f"   {i+1}. {origin} - {title}")
         print(f"      {content_preview}...")
 
-    # Construir contexto final
+    # Construir contexto final - SIMPLE Y DIRECTO
     fc = ""
     referencias_set = set()
-    # Lista necesaria para la función get_full_reference si se usa
-    registro = []
 
-    # Solo enviar los top 3 al LLM para concentrarse en la respuesta más exacta
-    for doc in re_ranked_docs[:3]:
-        origin = doc.metadata.get("origin", "Búsqueda híbrida")
-
-        # MODIFICACIÓN: SOLO MENCIONAR EL DOCUMENTO DE ORIGEN (NO EL TÍTULO DEL CHUNK)
+    # Usar top 5 documentos (más contexto = mejores respuestas)
+    for doc in re_ranked_docs[:5]:
+        origin = doc.metadata.get("origin", "Búsqueda")
         referencias_set.add(origin)
-
-        if usar_full_context and origin in [
-            "EDAES",
-            "Historia",
-            "NuevoMATER FAC",
-            "Reglamento de las PORFAC",
-            "Manual de términos FAC",
-        ]:
-            try:
-                fc += get_full_context(vectorstore, doc) + "\n\n"
-            except Exception as e:
-                # Fallback: usar contenido directo si falla el contexto completo
-                fc += doc.page_content + "\n\n"
-        elif (
-            usar_full_context
-            and origin == "EDAES Segmentado"
-            and "id_referencia" in doc.metadata
-        ):
-            try:
-                text, ref = get_full_chunk(vectorstore, doc)
-                fc += text + "\n\n"
-            except Exception as e:
-                # Fallback: usar contenido directo
-                fc += doc.page_content + "\n\n"
-        elif (
-            usar_full_context and origin == "Resumen EDAES" and "parent" in doc.metadata
-        ):
-            try:
-                text, ref = get_full_reference(vectorstore, doc, registro)
-                fc += text + "\n\n"
-            except Exception as e:
-                # Fallback: usar contenido directo
-                fc += doc.page_content + "\n\n"
-        else:
-            fc += doc.page_content + "\n\n"
+        # SIEMPRE usar page_content directamente - sin complicaciones
+        fc += doc.page_content + "\n\n"
 
     # Convertir set a string sin duplicados
     referencias = "\n".join(referencias_set)
@@ -1348,7 +1296,8 @@ def chatbot_response(
     print("-" * 50)
     print(query)
     print("-" * 50)
-    print(fc)
+    print(f"CONTEXTO ({len(fc)} caracteres):")
+    print(fc[:500] + "..." if len(fc) > 500 else fc)
     stop = time.time()
     tiempo_res = stop - start
 
