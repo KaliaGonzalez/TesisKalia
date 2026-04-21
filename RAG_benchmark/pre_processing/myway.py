@@ -94,9 +94,13 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
 
-prompt_template = """Basándote ÚNICAMENTE en el contexto abajo, responde la pregunta. Si no encuentras la respuesta en el contexto, di "No tengo información suficiente".
+prompt_template = """Eres un asistente de documentación de la Fuerza Aérea Colombiana (FAC).
 
-CONTEXTO:
+Tu tarea es responder preguntas basándote ÚNICAMENTE en los documentos oficiales de la FAC que se proporcionan abajo.
+
+Responde la pregunta de forma directa y concisa usando la información del contexto.
+
+CONTEXTO (Documentos Oficiales de la FAC):
 {contexto}
 
 PREGUNTA: {pregunta}
@@ -1155,12 +1159,12 @@ def chatbot_response(
     # Se obtienen los documentos relevantes
     query_limpia = limpiar_string(query)
 
-    # BÚSQUEDA SIMPLE Y DIRECTA: Sin filtros por origen
+    # BUSQUEDA SIMPLE Y DIRECTA: Sin filtros por origen
     # Buscar en TODOS los documentos sin restricciones
-    print(f"🔍 Buscando: '{query}'")
+    print(f"[SEARCH] Buscando: '{query}'")
     docs_globales = vectorstore.similarity_search(query_limpia, k=100)
 
-    print(f"📄 Documentos recuperados: {len(docs_globales)}")
+    print(f"[DOCS] Documentos recuperados: {len(docs_globales)}")
 
     # Eliminar duplicados por ID
     docs_unique = []
@@ -1174,8 +1178,8 @@ def chatbot_response(
     # Re-ranking con CrossEncoder
     re_ranked_docs = re_rank_docs(query, docs_unique, reranker)
 
-    # Mostrar información de debug
-    print(f"🏆 Top 3 documentos después de re-ranking:")
+    # Mostrar informacion de debug
+    print(f"[RERANK] Top 3 documentos despues de re-ranking:")
     for i, doc in enumerate(re_ranked_docs[:3]):
         origin = doc.metadata.get("origin", "Desconocido")
         content_preview = doc.page_content[:100].replace("\n", " ")
@@ -1186,9 +1190,9 @@ def chatbot_response(
     fc = ""
     referencias_set = set()
 
-    # Usar top 5 documentos (más contexto = mejores respuestas)
+    # Usar top 5 documentos (mas contexto = mejores respuestas)
     for doc in re_ranked_docs[:5]:
-        origin = doc.metadata.get("origin", "Búsqueda")
+        origin = doc.metadata.get("origin", "Busqueda")
         referencias_set.add(origin)
         # SIEMPRE usar page_content directamente - sin complicaciones
         fc += doc.page_content + "\n\n"

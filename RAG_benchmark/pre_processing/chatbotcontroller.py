@@ -25,12 +25,12 @@ except ImportError:
 
 class ChatbotController:
     def __init__(self, model_name="llama3.2:latest", temperature=0.5, k=5):
-        print(f"🚀 Inicializando ChatbotController con k={k}")
+        print(f"[INIT] Inicializando ChatbotController con k={k}")
 
         # Obtener los componentes del RAG
         components = inicializar_retriever_vectorstore(k)
 
-        print(f"📥 RECIBIDO - Tipos en orden:")
+        print(f"[INFO] RECIBIDO - Tipos en orden:")
         for i, comp in enumerate(components, 1):
             print(f"  {i}. {type(comp).__name__}")
 
@@ -60,15 +60,15 @@ class ChatbotController:
                 raise AttributeError(
                     f"ERROR: {name} no tiene método 'invoke'. Tipo: {type(obj)}"
                 )
-            print(f"✅ {name}: {type(obj).__name__}")
+            print(f"[OK] {name}: {type(obj).__name__}")
 
-        print(f"✅ vectorstore: {type(self.vectorstore).__name__}")
+        print(f"[OK] vectorstore: {type(self.vectorstore).__name__}")
 
         self.llm_chain = inicializar_modelo(model_name, temperature)
         self.reranker = CrossEncoder(re_ranker_model)
         self.re_type = "BASE"
 
-        print(f"🎯 ChatbotController inicializado exitosamente")
+        print(f"[OK] ChatbotController inicializado exitosamente")
 
     def obtener_respuesta(self, pregunta, usar_contexto_completo=True):
         respuesta, tiempo, referencias = chatbot_response(
