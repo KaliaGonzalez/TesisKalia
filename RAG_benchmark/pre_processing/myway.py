@@ -95,25 +95,20 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 reranker = CrossEncoder(re_ranker_model)
 
 prompt_template = """
-INSTRUCCIONES CRÍTICAS - LEE CUIDADOSAMENTE:
+INSTRUCCIONES - RESPONDE BASÁNDOTE EN EL CONTEXTO:
 
 Eres un asistente de la Fuerza Aérea Colombiana especializado en definiciones de términos.
 
-Tu ÚNICA FUENTE DE VERDAD es el Contexto proporcionado abajo.
+El Contexto abajo contiene toda la información disponible.
 
-REGLA 1 - SOLO CONTEXTO:
-- DEBES responder ÚNICAMENTE con información que está literalmente en el Contexto.
-- Si algo NO está en el Contexto, DEBES decir "No tengo información suficiente..."
-- NUNCA inventes, adivines o alucinaciones.
+INSTRUCCIONES PRINCIPALES:
+1. Lee el Contexto cuidadosamente.
+2. Si encuentras la respuesta en el Contexto, RESPONDE con esa información.
+3. Si NO encuentras nada en el Contexto, di: "No tengo información suficiente..."
+4. Responde de manera clara y directa.
+5. Extrae definiciones exactas si están disponibles.
 
-REGLA 2 - VALIDACIÓN:
-- Antes de responder, verifica que la información que usarás esté explícitamente en el Contexto.
-- Si no estás 100% seguro de que el Contexto lo dice, usa el fallback.
-
-REGLA 3 - FORMATO:
-- Responde de manera clara y directa.
-- Si encuentras una definición exacta, cítala.
-- Corrige mayúsculas y puntuación si es necesario.
+IMPORTANTE: El Contexto es tu única fuente de información. Usa solo lo que está ahí.
 
 Contexto:
 {contexto}
@@ -1357,30 +1352,13 @@ def chatbot_response(
     stop = time.time()
     tiempo_res = stop - start
 
-    # VALIDACIÓN ANTI-ALUCINACIÓN: SIMPLIFICADA Y PERMISIVA
-    # Solo rechazar si:
-    # 1. Respuesta está vacía o es "No tengo información"
-    # 2. Respuesta es MUY corta (< 5 palabras) y el contexto es largo
-    fallback_msg = "No tengo información suficiente en los documentos para proporcionar una respuesta."
+    # Convertir respuesta a texto
     respuesta_texto = (
         respuesta.get("text", str(respuesta))
         if isinstance(respuesta, dict)
         else str(respuesta)
     )
-
-    # Limpieza básica
     respuesta_texto = respuesta_texto.strip()
-
-    # Si la respuesta está vacía, usar fallback
-    if not respuesta_texto or respuesta_texto.lower() == "":
-        print("[ALERTA] Respuesta vacía")
-        respuesta_texto = fallback_msg
-    # Si la respuesta es sospechosamente corta (menos de 3 palabras) cuando hay contexto
-    elif len(respuesta_texto.split()) < 3 and len(fc) > 500:
-        print("[ALERTA] Respuesta demasiado corta para el contexto disponible")
-        respuesta_texto = fallback_msg
-    else:
-        print(f"[OK] Respuesta válida ({len(respuesta_texto.split())} palabras)")
 
     return respuesta_texto, tiempo_res, referencias
 
