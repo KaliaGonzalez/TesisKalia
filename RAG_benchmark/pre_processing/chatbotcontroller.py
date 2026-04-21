@@ -75,7 +75,8 @@ class ChatbotController:
             pregunta,  # query
             usar_contexto_completo,  # usar_full_context
             self.llm_chain,  # llm_chain
-            self.retriever_pruebas,  # retriever_pruebas (ORDEN CORRECTO PARA myway.py)
+            self.retriever_edaes,  # retriever_edaes (4to arg)
+            self.retriever_pruebas,  # retriever_pruebas (5to arg)
             self.reranker,  # reranker
             self.vectorstore,  # vectorstore
             self.retriever_resumen_edaes,  # retriever_resumen_edaes
