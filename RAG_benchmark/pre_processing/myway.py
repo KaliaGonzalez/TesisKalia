@@ -124,7 +124,7 @@ PROMPT_RERANK = PromptTemplate(
 )
 
 
-def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
+def inicializar_modelo(model_name="olmo-3:7b", temperature=0.1, prompt=PROMPT):
     # Aqui estamos creando el modelo en esta case deberas cambiar el nombre arriba del archivo o aqui mismo.
     # mistral es más permisivo que llama3.2:3b
     llm = OllamaLLM(model=model_name, temperature=temperature)
@@ -1158,12 +1158,9 @@ def chatbot_response(
     # Se obtienen los documentos relevantes
     query_limpia = limpiar_string(query)
 
-    # BUSQUEDA SIMPLE Y DIRECTA: Sin filtros por origen
+    # BUSQUEDA OPTIMIZADA: Reducir k a 20 (mejor balance velocidad/calidad)
     # Buscar en TODOS los documentos sin restricciones
-    print(f"[SEARCH] Buscando: '{query}'")
-    docs_globales = vectorstore.similarity_search(query_limpia, k=100)
-
-    print(f"[DOCS] Documentos recuperados: {len(docs_globales)}")
+    docs_globales = vectorstore.similarity_search(query_limpia, k=6)
 
     # Eliminar duplicados por ID
     docs_unique = []
@@ -1174,16 +1171,8 @@ def chatbot_response(
             seen.add(doc_id)
             docs_unique.append(doc)
 
-    # Re-ranking con CrossEncoder
+    # Re-ranking con CrossEncoder (solo sobre los 20 docs)
     re_ranked_docs = re_rank_docs(query, docs_unique, reranker)
-
-    # Mostrar informacion de debug
-    print(f"[RERANK] Top 3 documentos despues de re-ranking:")
-    for i, doc in enumerate(re_ranked_docs[:3]):
-        origin = doc.metadata.get("origin", "Desconocido")
-        content_preview = doc.page_content[:100].replace("\n", " ")
-        print(f"   {i+1}. {origin} - {content_preview}...")
-        print(f"      {content_preview}...")
 
     # Construir contexto final - SIMPLE Y DIRECTO
     fc = ""
@@ -1201,16 +1190,6 @@ def chatbot_response(
 
     start = time.time()
     respuesta = llm_chain.invoke({"contexto": fc, "pregunta": query})
-    print("-" * 50)
-    print(query)
-    print("-" * 50)
-    print(f"CONTEXTO ({len(fc)} caracteres):")
-    print(fc[:500] + "..." if len(fc) > 500 else fc)
-    print("-" * 50)
-    print(f"RESPUESTA BRUTA DEL LLM:")
-    print(respuesta)
-    print(f"TIPO DE RESPUESTA: {type(respuesta)}")
-    print("-" * 50)
     stop = time.time()
     tiempo_res = stop - start
 
@@ -1221,9 +1200,6 @@ def chatbot_response(
         else str(respuesta)
     )
     respuesta_texto = respuesta_texto.strip()
-    print(f"RESPUESTA PROCESADA:")
-    print(respuesta_texto)
-    print("-" * 50)
 
     return respuesta_texto, tiempo_res, referencias
 
