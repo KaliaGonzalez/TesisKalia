@@ -94,16 +94,20 @@ re_ranker_model = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
 
-prompt_template = """Responde la siguiente pregunta usando SOLO el contexto proporcionado. 
+prompt_template = """Eres un asistente que SIEMPRE responde basandose en el contexto dado.
 
-No rechaces la pregunta. Proporciona la respuesta directa basada en el contexto.
+REGLAS CRITICAS:
+- NUNCA digas "no se menciona", "no hay informacion", o similar
+- SIEMPRE extrae la respuesta DEL CONTEXTO
+- Si el contexto tiene la informacion, RESPONDE SIN DUDAS
+- Responde de forma clara y concisa
 
 CONTEXTO:
 {contexto}
 
 PREGUNTA: {pregunta}
 
-RESPUESTA (responde directamente sin rechazos):"""
+RESPUESTA:"""
 
 PROMPT = PromptTemplate(
     template=prompt_template, input_variables=["contexto", "pregunta"]
