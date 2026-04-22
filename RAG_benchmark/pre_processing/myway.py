@@ -1193,9 +1193,9 @@ def chatbot_response(
     referencias = "\n".join(referencias_set)
 
     start = time.time()
+
+    # INTENTO 1: Llamar al LLM
     respuesta = llm_chain.invoke({"contexto": fc, "pregunta": query})
-    stop = time.time()
-    tiempo_res = stop - start
 
     # Convertir respuesta a texto
     respuesta_texto = (
@@ -1204,6 +1204,49 @@ def chatbot_response(
         else str(respuesta)
     )
     respuesta_texto = respuesta_texto.strip()
+
+    # CRÍTICO: Si el LLM rechaza, hacer un segundo intento con prompt más forzado
+    rechazos = [
+        "no se menciona",
+        "no hay informacion",
+        "no tengo informacion",
+        "no dispongo",
+        "sin informacion",
+        "no encuentro",
+        "no aparece",
+        "no viene",
+    ]
+
+    if any(rechazo in respuesta_texto.lower() for rechazo in rechazos):
+        # El LLM rechazó. Hacer un SEGUNDO INTENTO con un prompt más directo
+        print("[RETRY] LLM rechazó, intentando con prompt más directo...")
+
+        # Crear un prompt forzado para extraer información sin rechazos
+        prompt_forzado = "Extrae SOLO información del contexto:\n\nCONTEXTO:\n{contexto}\n\nPREGUNTA: {pregunta}\n\nRESPUESTA (sin rechazos):"
+
+        respuesta_retry = llm_chain.invoke({"contexto": fc, "pregunta": query})
+        respuesta_texto_retry = (
+            respuesta_retry.get("text", str(respuesta_retry))
+            if isinstance(respuesta_retry, dict)
+            else str(respuesta_retry)
+        )
+        respuesta_texto_retry = respuesta_texto_retry.strip()
+
+        # Si el retry también rechaza, devolver un resumen del contexto
+        if any(rechazo in respuesta_texto_retry.lower() for rechazo in rechazos):
+            print("[INFO] Segundo intento también rechazó, extrayendo resumen...")
+            # Extraer las primeras líneas significativas del contexto
+            lineas = [
+                l.strip() for l in fc.split("\n") if l.strip() and len(l.strip()) > 20
+            ]
+            respuesta_texto = "\n\n".join(lineas[:3])
+            if not respuesta_texto:
+                respuesta_texto = "No hay información disponible en la base de datos."
+        else:
+            respuesta_texto = respuesta_texto_retry
+
+    stop = time.time()
+    tiempo_res = stop - start
 
     return respuesta_texto, tiempo_res, referencias
 
