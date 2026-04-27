@@ -11,8 +11,8 @@ from chromadb.config import Settings
 def verificar_chromadb():
     """Verifica el contenido de las bases de datos vectoriales"""
 
-    # Ruta de la base de datos
-    persist_directory = "./data/chroma_db"
+    # Ruta de la base de datos (ACTUALIZADA A V7)
+    persist_directory = "./data/chroma_db_v7"
 
     # Verificar si existe el directorio
     if not os.path.exists(persist_directory):
@@ -66,10 +66,11 @@ def verificar_chromadb():
 def verificar_documentos_especificos():
     """Verifica documentos específicos por colección"""
 
-    persist_directory = "./data/chroma_db"
+    persist_directory = "./data/chroma_db_v7"
 
     # Nombres de las colecciones esperadas
     colecciones_esperadas = [
+        "DELFOS",
         "edaes",
         "pruebas",
         "newMater",
