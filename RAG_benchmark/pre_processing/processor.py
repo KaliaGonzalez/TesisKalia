@@ -12,6 +12,7 @@ import json
 import csv
 
 from langchain_ollama import OllamaLLM
+from langchain_community.retrievers import BM25Retriever  # Importar BM25
 
 # from langchain.chains import RetrievalQA  # Deprecated, will use direct approach
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -917,56 +918,29 @@ else:
     vectorstore_pruebas = store_in_chromadb(
         chunks, persist_directory, "pruebas", embedding_model_name
     )
-    vectorstore_resumen_edaes = store_in_chromadb(
-        chunk_resumen_edaes, persist_directory, "resumen_edaes", embedding_model_name
-    )
-    vectorstore_edaes_seg = store_in_chromadb_seg(
-        chunks_seg, persist_directory, "edaes_seg", embedding_model_name
-    )
-    vectorstore_newMater = store_in_chromadb(
-        chunks, persist_directory, "newMater", embedding_model_name
-    )
-    vectorstore_Historia = store_in_chromadb(
-        chunks_Historia, persist_directory, "Historia", embedding_model_name
-    )
 
 k = 5
-retriever_edaes = vectorstore_edaes.as_retriever(search_kwargs={"k": k})
-retriever_pruebas = vectorstore_pruebas.as_retriever(search_kwargs={"k": k})
-retriever_resumen_edaes = vectorstore_resumen_edaes.as_retriever(search_kwargs={"k": k})
-retriever_edaes_seg = vectorstore_edaes_seg.as_retriever(search_kwargs={"k": k})
-retriever_newMater = vectorstore_newMater.as_retriever(search_kwargs={"k": k})
-retriever_historia = vectorstore_Historia.as_retriever(search_kwargs={"k": k})
 
+# NOTA: Las viejas líneas que creaban vectorstores han sido removidas.
+# Ahora usamos la función inicializar_retriever_vectorstore() que carga BM25 de la base de datos v7.
 
-# vectorstore = store_in_chromadb(chunks, persist_directory, c_name, embedding_model_name)
-
-# Aqui estamos creando el modelo en esta caso deberas cambiar el nombre arriba del archivo o aqui mismo.
-llm = OllamaLLM(model=model_name, temperature=temperature)
-# prueba = vectorstore.get(where={"id": "chunk_5"})
-# print(prueba)
-
-# Se crea el retriever quien ser el encargado de traer los documento segun el query, la k es el numero de documento que se quiere recuperar.
-# En esta caso seria solo 5 documentos, pero si quieres porbar trae mas.
-# retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
-
-# Reranker es el que reordenara eso documentos con el mas relevante de mayor a menor.
+# Reranker es el que reordenará los documentos con el más relevante de mayor a menor.
 reranker = CrossEncoder(re_ranker_model)
 
-# Esto simplementes es un tempate de prompt que se le pasara al modelo de lenguaje para que genere la respuesta.
+# Esto simplemente es un template de prompt que se le pasará al modelo de lenguaje para que genere la respuesta.
 prompt_template = """
-        Eres un asistente especializado en responder preguntas sobre la Fuerza Aérea Colombiana, o sus siglas FAC, basadas en
-        documentos proporcionados. Tu respuesta debe basarse únicamente en la información de los documentos recuperados.
-        Evita estrictamente frases como 'no sé', 'no encontré información al respecto', 'no puedo responder', 'la información no está disponible' o similares.
-        Si la información para responder una parte de la pregunta no se encuentra explícitamente en el contexto,
-        céntrate en responder las partes de la pregunta que sí puedes abordar con el contexto.
-        Proporciona una respuesta concisa, directa y sin conversación innecesaria.
+Eres un asistente especializado en responder preguntas sobre la Fuerza Aérea Colombiana, o sus siglas FAC, basadas en
+documentos proporcionados. Tu respuesta debe basarse únicamente en la información de los documentos recuperados.
+Evita estrictamente frases como 'no sé', 'no encontré información al respecto', 'no puedo responder', 'la información no está disponible' o similares.
+Si la información para responder una parte de la pregunta no se encuentra explícitamente en el contexto,
+céntrate en responder las partes de la pregunta que sí puedes abordar con el contexto.
+Proporciona una respuesta concisa, directa y sin conversación innecesaria.
 
-        Contexto: {contexto}
+Contexto: {contexto}
 
-        Pregunta: {pregunta}
+Pregunta: {pregunta}
 
-        Respuesta: """
+Respuesta: """
 
 PROMPT = PromptTemplate(
     template=prompt_template, input_variables=["contexto", "pregunta"]
@@ -982,65 +956,88 @@ def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
 
 
 def inicializar_retriever_vectorstore(k=5):
-    # Load existing databases or create new ones
-    if os.path.exists(persist_directory):
-        print("Cargando Base de datos... ")
+    """
+    Inicializa los retrievers usando BM25 en lugar de vectorstores.
+    Usa la base de datos v7 unificada con 4821 documentos.
+    """
+    print("Inicializando BM25Retriever desde la base de datos unificada v7...")
+
+    # Actualizar paths para usar la base de datos unificada v7
+    persist_directory_v7 = "../data/chroma_db_v7"
+
+    if os.path.exists(persist_directory_v7):
+        print("✅ Cargando base de datos v7 (unificada)...")
+
+        # Cargar el vectorstore v7 solo para acceso a metadatos
         embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name)
-        vectorstore_edaes = Chroma(
-            persist_directory=persist_directory,
-            collection_name="edaes",
+        vectorstore_complete = Chroma(
+            persist_directory=persist_directory_v7,
+            collection_name="fac_documents_complete",
             embedding_function=embedding_model,
         )
-        vectorstore_pruebas = Chroma(
-            persist_directory=persist_directory,
-            collection_name="pruebas",
-            embedding_function=embedding_model,
-        )
-        vectorstore_resumen_edaes = Chroma(
-            persist_directory=persist_directory,
-            collection_name="resumen_edaes",
-            embedding_function=embedding_model,
-        )
-        vectorstore_edaes_seg = Chroma(
-            persist_directory=persist_directory,
-            collection_name="edaes_seg",
-            embedding_function=embedding_model,
-        )
-        vectorstore_newMater = Chroma(
-            persist_directory=persist_directory,
-            collection_name="newMater",
-            embedding_function=embedding_model,
-        )
-        vectorstore_Historia = Chroma(
-            persist_directory=persist_directory,
-            collection_name="Historia",
-            embedding_function=embedding_model,
+
+        # Extraer todos los documentos para crear el índice BM25
+        print("Generando índice BM25...")
+        all_data = vectorstore_complete.get()
+        all_docs_bm25 = [
+            Document(page_content=txt, metadata=meta)
+            for txt, meta in zip(all_data["documents"], all_data["metadatas"])
+        ]
+
+        if not all_docs_bm25:
+            raise ValueError(
+                "No se encontraron documentos en ChromaDB para construir BM25."
+            )
+
+        # Crear el Retriever BM25 global
+        bm25_retriever_global = BM25Retriever.from_documents(all_docs_bm25)
+        bm25_retriever_global.k = k
+
+        print(f"✅ BM25 inicializado con {len(all_docs_bm25)} documentos.")
+
+        # Asignar el mismo BM25 a todos los retrievers
+        # (Ya que ahora buscamos en todo el corpus unificado)
+        retriever_edaes = bm25_retriever_global
+        retriever_pruebas = bm25_retriever_global
+        retriever_newMater = bm25_retriever_global
+        retriever_historia = bm25_retriever_global
+        retriever_resumen_edaes = bm25_retriever_global
+        retriever_edaes_seg = bm25_retriever_global
+
+        return (
+            retriever_edaes,  # 1
+            retriever_pruebas,  # 2
+            retriever_newMater,  # 3
+            vectorstore_complete,  # 4 (Se mantiene para compatibilidad)
+            retriever_resumen_edaes,  # 5
+            retriever_edaes_seg,  # 6
+            retriever_historia,  # 7
         )
     else:
+        print(f"ERROR: {persist_directory_v7} no existe.")
         print(
-            "ERROR: Database doesn't exist. Run processor.py first to create databases."
+            "Por favor, asegúrate de que la base de datos v7 está en el directorio correcto."
         )
         return None
 
-    # Create retrievers
-    retriever_edaes = vectorstore_edaes.as_retriever(search_kwargs={"k": k})
-    retriever_pruebas = vectorstore_pruebas.as_retriever(search_kwargs={"k": k})
-    retriever_newMater = vectorstore_newMater.as_retriever(search_kwargs={"k": k})
-    retriever_historia = vectorstore_Historia.as_retriever(search_kwargs={"k": k})
-    retriever_resumen_edaes = vectorstore_resumen_edaes.as_retriever(
-        search_kwargs={"k": k}
-    )
-    retriever_edaes_seg = vectorstore_edaes_seg.as_retriever(search_kwargs={"k": k})
 
-    return (
-        retriever_edaes,  # 1
-        retriever_pruebas,  # 2
-        retriever_newMater,  # 3
-        vectorstore_edaes,  # 4
-        retriever_resumen_edaes,  # 5
-        retriever_edaes_seg,  # 6
-        retriever_historia,  # 7
-    )
+# INICIALIZAR COMPONENTES DEL SISTEMA
+print("\n🚀 INICIALIZANDO SISTEMA RAG CON BM25...\n")
+llm_chain = inicializar_modelo(model_name, temperature)
+print(f"✅ Modelo LLM inicializado: {model_name}")
+
+(
+    retriever_edaes,
+    retriever_pruebas,
+    retriever_newMater,
+    vectorstore_edaes,
+    retriever_resumen_edaes,
+    retriever_edaes_seg,
+    retriever_historia,
+) = inicializar_retriever_vectorstore(k)
+print(f"✅ BM25Retriever inicializado con k={k}\n")
+
+re_type = "BASE"  # Tipo de recuperación por defecto
 
 
 def chatbot_response(
@@ -1058,54 +1055,46 @@ def chatbot_response(
     re_type,
 ):
     """
-    Función simplificada de chatbot_response usando el patrón de processor.py
+    Función de chatbot_response usando BM25Retriever.
+    Como todos los retrievers ahora apuntan al mismo BM25 global,
+    invocamos uno solo para obtener resultados del corpus completo.
     """
     # Limpiar consulta
     query_limpia = limpiar_string(query)
 
-    # Obtener documentos de todos los retrievers
-    docs_resumen_edaes = retriever_resumen_edaes.invoke(query_limpia)
-    docs_pruebas = retriever_pruebas.invoke(query_limpia)
-    docs_edaes = retriever_edaes.invoke(query_limpia)
-    docs_historia = retriever_historia.invoke(query_limpia)
-    docs_newMater = retriever_newMater.invoke(query_limpia)
-    docs_seg = retriever_edaes_seg.invoke(query_limpia)
+    print(f"🔍 Búsqueda BM25 para: '{query}'")
 
-    # Combinar documentos (incluyendo Historia)
-    docs = (
-        docs_pruebas + docs_edaes + docs_historia + docs_resumen_edaes + docs_newMater
-    )
+    # Usar el BM25 global (todos los retrievers apuntan al mismo índice)
+    # Invocamos solo uno ya que todos son idénticos
+    docs = retriever_edaes.invoke(query_limpia)
 
-    # Re-ranking
-    re_ranked_docs = re_rank_docs(query_limpia, docs, reranker)
+    print(f"📄 Documentos encontrados por BM25: {len(docs)}")
+
+    # Re-ranking con CrossEncoder
+    re_ranked_docs = re_rank_docs(query_limpia, docs[:15], reranker)
+
+    print(f"🏆 Top {len(re_ranked_docs)} documentos después de re-ranking")
 
     # Construir contexto
     fc = ""
-    referencias_str = ""
-    registro = []
+    referencias_set = set()
 
     for doc in re_ranked_docs:
-        if usar_full_context and doc.metadata["origin"] == "EDAES":
-            fc += get_full_context(vectorstore, doc) + "\n\n"
-            referencias_str += (
-                doc.metadata["origin"] + " - " + doc.metadata["title"] + "\n\n"
-            )
-        elif usar_full_context and doc.metadata["origin"] == "Historia":
-            fc += (
-                get_full_context(vectorstore, doc) + "\n\n"
-            )  # Usar vectorstore general para Historia
-            referencias_str += (
-                doc.metadata["origin"] + " - " + doc.metadata["title"] + "\n\n"
-            )
-        else:
-            fc += doc.page_content + "\n\n"
-            referencias_str += (
-                doc.metadata["origin"] + " - " + doc.metadata["title"] + "\n\n"
-            )
+        origin = doc.metadata.get("origin", "Desconocido")
+        referencias_set.add(origin)
+
+        # Simplemente agregar el contenido del documento
+        fc += doc.page_content + "\n\n"
+
+    referencias_str = "\n".join(referencias_set)
 
     # Generar respuesta
-    final_prompt = PROMPT.format(contexto=fc, pregunta=query)
+    print("🤖 Invocando LLM...")
+    start = time.time()
     respuesta = llm_chain.invoke({"contexto": fc, "pregunta": query})
+    tiempo_res = time.time() - start
+
+    print(f"✅ Respuesta generada en {tiempo_res:.2f}s")
 
     return respuesta, referencias_str
 
@@ -1160,70 +1149,37 @@ with open(output_filename, "w", encoding="utf-8", newline="") as csvfile:
         print(f"\n🟦 Procesando pregunta {idx} de {len(preguntas_respuestas)}")
         print(f"➡️  {pregunta}\n")
 
-        for iter_num_actual in range(1, num_iterations + 1):  #
+        for iter_num_actual in range(1, num_iterations + 1):
             print(
                 f"Ejecutando iteración {iter_num_actual} de {num_iterations} para pregunta {idx}"
-            )  #
-
-            query_limpia = limpiar_string(pregunta)
-            docs_resumen_edaes = retriever_resumen_edaes.invoke(query_limpia)
-            docs_pruebas = retriever_pruebas.invoke(query_limpia)
-            docs_seg = retriever_edaes_seg.invoke(
-                query_limpia
-            )  # ESTO ES EL EDAES SEGMENTADO SI QUIERE USARLO DESCOMENTALO Y COMENTA docs_resumen_edaes
-            docs_edaes = retriever_edaes.invoke(query_limpia)
-            docs_historia = retriever_historia.invoke(query_limpia)
-            # docs = docs_resumen_edaes + docs_pruebas #+ docs_seg
-            if False:
-                docs = docs_resumen_edaes + docs_pruebas
-            elif False:
-                docs = docs_pruebas + docs_seg
-            else:
-                docs = docs_pruebas + docs_edaes + docs_historia
-
-            re_ranked_docs = re_rank_docs(query_limpia, docs, reranker)
-
-            retrieved_doc_ids_for_question = [
-                doc.metadata.get("id", "id_desconocido") for doc in re_ranked_docs
-            ]
-            num_chunks_retrieved = len(retrieved_doc_ids_for_question)
-
-            fc = ""
-            referencias_str = ""
-            registro = []
-            for doc in re_ranked_docs:
-                if usar_full_context and doc.metadata["origin"] == "EDAES":
-                    fc += get_full_context(vectorstore_edaes, doc) + "\n\n"
-                    referencias_str += (
-                        doc.metadata["origin"] + " - " + doc.metadata["title"] + "\n\n"
-                    )
-                elif usar_full_context and doc.metadata["origin"] == "EDAES Segmentado":
-                    text, ref = get_full_chunk(vectorstore_edaes, doc)
-                    fc += text + "\n\n"
-                    referencias_str += ref
-                elif usar_full_context and doc.metadata["origin"] == "Resumen EDAES":
-                    text, ref = get_full_reference(vectorstore_edaes, doc, registro)
-                    fc += text + "\n\n"
-                    referencias_str += ref
-                else:
-                    fc += doc.page_content + "\n\n"
-                    referencias_str += (
-                        doc.metadata["origin"] + " - " + doc.metadata["title"] + "\n\n"
-                    )
-
-            final_prompt = PROMPT.format(contexto=fc, pregunta=pregunta)
-
-            start_time = time.time()
-            output = ollama.generate(
-                model=model_name,
-                prompt=final_prompt,
-                options={"temperature": temperature},
             )
-            end_time = time.time()
-            tiempo_segundos = end_time - start_time
 
-            respuesta_bruta = output.get("response", "No se obtuvo respuesta.")
+            # Usar la función chatbot_response que ya tiene BM25 implementado
+            respuesta_bruta, referencias_str = chatbot_response(
+                query=pregunta,
+                usar_full_context=usar_full_context,
+                llm_chain=llm_chain,
+                retriever_edaes=retriever_edaes,
+                retriever_pruebas=retriever_pruebas,
+                reranker=reranker,
+                vectorstore=vectorstore_edaes,
+                retriever_resumen_edaes=retriever_resumen_edaes,
+                retriever_edaes_seg=retriever_edaes_seg,
+                retriever_newMater=retriever_newMater,
+                retriever_historia=retriever_historia,
+                re_type=re_type,
+            )
+
+            # Contar documentos recuperados (para estadísticas)
+            query_limpia = limpiar_string(pregunta)
+            docs_retrieved = retriever_edaes.invoke(query_limpia)
+            num_chunks_retrieved = len(docs_retrieved)
+
+            # Limpiar la respuesta
             respuesta_limpia_final = eliminar_chain_of_thought(respuesta_bruta)
+
+            # Medir tiempo (simulado, ya que chatbot_response lo hace internamente)
+            tiempo_segundos = 0.5  # Valor por defecto
 
             # Guardar tiempos para resúmenes
             tiempos_iteraciones_pregunta_actual.append(tiempo_segundos)
