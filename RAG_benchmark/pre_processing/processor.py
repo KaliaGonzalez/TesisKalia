@@ -82,11 +82,8 @@ def load_goalset(ruta_json):
 
 # Solo ejecutar al correr directamente, no al importar
 if __name__ == "__main__":
-    ruta_json = "FAC_Documents/rag_files/GoalSetNewMater.json"
-    preguntas_respuestas = load_goalset(ruta_json)
-
     parser = argparse.ArgumentParser(
-        description="Configura el modelo y la temperatura para Ollama."
+        description="Configura el modelo, temperatura y GoalSet para Ollama."
     )
     parser.add_argument(
         "--model",
@@ -100,9 +97,26 @@ if __name__ == "__main__":
         default=0.5,
         help="Temperatura del modelo (0.0 a 1.0)",
     )
+    parser.add_argument(
+        "--goalset",
+        type=str,
+        default="FAC_Documents/rag_files/GoalSetNewMater.json",
+        help="Ruta al archivo GoalSet JSON",
+    )
+    parser.add_argument(
+        "--doc_name",
+        type=str,
+        default="",
+        help="Nombre del documento (para tracking)",
+    )
     args = parser.parse_args()
     model_name = args.model
     temperature = args.temperature
+    ruta_json = args.goalset
+    doc_name = args.doc_name
+
+    # Cargar GoalSet desde la ruta especificada
+    preguntas_respuestas = load_goalset(ruta_json)
 
 # Variables de configuración (disponibles al importar)
 c_name = "pruebas"
@@ -1111,6 +1125,21 @@ num_iterations = 10
 usar_full_context = False
 output_filename = "../results/" + str(sanitized_model_name) + ".csv"
 output_summary_filename = "../results/" + str(sanitized_model_name) + "_summary.csv"
+
+# ============================================================================
+# ACTUALIZAR config.py CON LOS VALORES USADOS (para que metrics.py los use)
+# ============================================================================
+config_content = f"""model_name = "{model_name}"
+output_filename = "{output_filename}"
+metrics_output = "../results/{sanitized_model_name}_metrics.csv"
+metrics_output_summary = "../results/{sanitized_model_name}_metrics_summary.csv"
+"""
+
+with open("config.py", "w", encoding="utf-8") as config_file:
+    config_file.write(config_content)
+
+print(f"✅ config.py actualizado con modelo={model_name}, temp={temperature}")
+
 tiempos_iteraciones = []
 tiempos_globales = []
 
@@ -1134,6 +1163,13 @@ def eliminar_chain_of_thought(texto_respuesta):
         r"<think>.*?</think>", "", texto_respuesta, flags=re.DOTALL | re.IGNORECASE
     ).strip()
 
+
+# Crear carpeta de resultados si no existe
+import os
+from pathlib import Path
+
+results_dir = Path("../results")
+results_dir.mkdir(parents=True, exist_ok=True)
 
 with open(output_filename, "w", encoding="utf-8", newline="") as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=csv_headers)
@@ -1292,7 +1328,9 @@ with open(
         print("=" * 60 + "\n")
 
     else:
-        print("\n⚠️ No se ejecutaron iteraciones, no se pudo generar el resumen global.")
+        print(
+            "\n⚠️ No se ejecutaron iteraciones, no se pudo generar el resumen global."
+        )
 
 print(
     f"\n✅ Proceso finalizado. Resultados detallados guardados en '{output_filename}'."
