@@ -971,18 +971,36 @@ def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
 
 def inicializar_retriever_vectorstore(k=5):
     """
-    Inicializa los retrievers usando BM25 en lugar de vectorstores.
-    Usa la base de datos v7 unificada con 4821 documentos.
+    Inicializa los retrievers usando BM25.
+    Busca la base de datos en las ubicaciones conocidas.
     """
-    print("Inicializando BM25Retriever desde la base de datos unificada v7...")
+    print("Inicializando BM25Retriever desde la base de datos...")
 
-    # Actualizar paths para usar la base de datos unificada v7
-    persist_directory_v7 = "../data/chroma_db_v7"
+    # Intentar encontrar la base de datos en diferentes ubicaciones
+    possible_paths = [
+        "../../data/chroma_db_v7",  # Ubicación correcta (2 niveles arriba)
+        "../data/chroma_db_v7",  # v7 unificada (1 nivel arriba)
+        "../data/chroma_db",  # Ubicación original
+        "chroma_db_persistente_v3",  # Local en pre_processing
+        "../pre_processing/chroma_db_persistente_v3",  # Relativa desde raíz
+    ]
 
-    if os.path.exists(persist_directory_v7):
-        print("✅ Cargando base de datos v7 (unificada)...")
+    persist_directory_v7 = None
+    for path in possible_paths:
+        if os.path.exists(path):
+            print(f"✅ Base de datos encontrada en: {path}")
+            persist_directory_v7 = path
+            break
 
-        # Cargar el vectorstore v7 solo para acceso a metadatos
+    if persist_directory_v7 is None:
+        print(f"ERROR: No se encontró base de datos en ninguna ubicación.")
+        print(f"Ubicaciones buscadas: {possible_paths}")
+        return None
+
+    try:
+        print("✅ Cargando base de datos...")
+
+        # Cargar el vectorstore
         embedding_model = HuggingFaceEmbeddings(model_name=embedding_model_name)
         vectorstore_complete = Chroma(
             persist_directory=persist_directory_v7,
@@ -1010,7 +1028,6 @@ def inicializar_retriever_vectorstore(k=5):
         print(f"✅ BM25 inicializado con {len(all_docs_bm25)} documentos.")
 
         # Asignar el mismo BM25 a todos los retrievers
-        # (Ya que ahora buscamos en todo el corpus unificado)
         retriever_edaes = bm25_retriever_global
         retriever_pruebas = bm25_retriever_global
         retriever_newMater = bm25_retriever_global
@@ -1027,11 +1044,9 @@ def inicializar_retriever_vectorstore(k=5):
             retriever_edaes_seg,  # 6
             retriever_historia,  # 7
         )
-    else:
-        print(f"ERROR: {persist_directory_v7} no existe.")
-        print(
-            "Por favor, asegúrate de que la base de datos v7 está en el directorio correcto."
-        )
+    except Exception as e:
+        print(f"❌ ERROR inicializando BM25: {str(e)}")
+        print("Por favor, asegúrate de que la base de datos existe.")
         return None
 
 
