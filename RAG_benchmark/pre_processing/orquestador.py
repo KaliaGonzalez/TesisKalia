@@ -10,13 +10,14 @@ MODELOS = ["gemma3:12b", "granite4:3b", "qwen3:14b"]
 TEMPERATURAS = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
 
 DOCUMENTOS = {
-    "MATER": "FAC_Documents/rag_files/Goalset_FAC_MATER.json",
-    "PORFAC": "FAC_Documents/rag_files/Goalset_FAC_PORFAC.json",
-    "EDAES_RESUMIDO": "FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
-    "EDAES_SEGMENTADO": "FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
-    "EDAES_MARKDOWN": "FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
-    "HISTORIA": "FAC_Documents/rag_files/GoalSet_Historia.json",
-    "NUEVO_MATER": "FAC_Documents/rag_files/GoalSet_NuevoMATER.json",
+    "MATER": "../FAC_Documents/rag_files/Goalset_FAC_MATER.json",
+    "PORFAC": "../FAC_Documents/rag_files/Goalset_FAC_PORFAC.json",
+    "EDAES": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
+    "EDAES_SEGMENTADO": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
+    "EDAES_MARKDOWN": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
+    "EDAES_RESUMIDO": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
+    "HISTORIA": "../FAC_Documents/rag_files/GoalSet_Historia.json",
+    "NUEVO_MATER": "../FAC_Documents/rag_files/GoalSet_NuevoMATER.json",
 }
 
 # ============================================================================
