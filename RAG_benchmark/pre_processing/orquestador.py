@@ -55,22 +55,25 @@ contador_exito = 0
 contador_error = 0
 
 try:
-    for doc_name, goalset_path in DOCUMENTOS.items():
-        for modelo in MODELOS:
-            for temp in TEMPERATURAS:
+    # FLUJO V2: Modelo → Temperatura → Documento
+    for modelo in MODELOS:
+        for temp in TEMPERATURAS:
+            print(f"\n{'='*80}")
+            log(f"Procesando: Modelo={modelo} | Temperatura={temp}", "RUNNING")
+            print(f"{'='*80}")
+
+            for doc_name, goalset_path in DOCUMENTOS.items():
                 contador_total += 1
 
-                print(f"\n{'='*80}")
                 log(
-                    f"[{contador_total}] Documento={doc_name} | Modelo={modelo} | Temp={temp}",
+                    f"[{contador_total}] {modelo} | Temp={temp} | Doc={doc_name}",
                     "RUNNING",
                 )
-                print(f"{'='*80}")
 
                 # ============================================================
                 # PASO 1: EJECUTAR PROCESSOR.PY
                 # ============================================================
-                log("Ejecutando processor.py...", "INFO")
+                log(f"  Ejecutando processor.py...", "INFO")
                 try:
                     result = subprocess.run(
                         [
@@ -88,26 +91,26 @@ try:
                         check=True,
                         capture_output=False,
                     )
-                    log(f"✅ processor.py completado", "SUCCESS")
+                    log(f"  ✅ processor.py completado", "SUCCESS")
                 except subprocess.CalledProcessError as e:
-                    log(f"❌ processor.py falló: {e}", "ERROR")
+                    log(f"  ❌ processor.py falló", "ERROR")
                     contador_error += 1
                     continue
 
                 # ============================================================
                 # PASO 2: EJECUTAR METRICS.PY
                 # ============================================================
-                log("Ejecutando metrics.py...", "INFO")
+                log(f"  Ejecutando metrics.py...", "INFO")
                 try:
                     result = subprocess.run(
                         [sys.executable, "metrics.py"],
                         check=True,
                         capture_output=False,
                     )
-                    log(f"✅ metrics.py completado", "SUCCESS")
+                    log(f"  ✅ metrics.py completado", "SUCCESS")
                     contador_exito += 1
                 except subprocess.CalledProcessError as e:
-                    log(f"❌ metrics.py falló: {e}", "ERROR")
+                    log(f"  ❌ metrics.py falló", "ERROR")
                     contador_error += 1
 
 except KeyboardInterrupt:

@@ -1135,25 +1135,38 @@ def sanitize_filename(name):
 sanitized_model_name = sanitize_filename(model_name)
 print(sanitized_model_name)
 
+# Crear nombre del CSV incluyendo modelo, temperatura y documento
+# Formato: granite4_3b_temperatura_0.0_EDAES.csv
+temp_str = str(temperature).replace(".", "_")
+sanitized_doc_name = sanitize_filename(doc_name) if doc_name else "documento"
+
+csv_base_name = f"{sanitized_model_name}_temperatura_{temp_str}_{sanitized_doc_name}"
+
 # Configuración para la automatización:
 num_iterations = 10
 usar_full_context = False
-output_filename = "../results/" + str(sanitized_model_name) + ".csv"
-output_summary_filename = "../results/" + str(sanitized_model_name) + "_summary.csv"
+output_filename = "../results/" + csv_base_name + ".csv"
+output_summary_filename = "../results/" + csv_base_name + "_summary.csv"
 
 # ============================================================================
 # ACTUALIZAR config.py CON LOS VALORES USADOS (para que metrics.py los use)
 # ============================================================================
 config_content = f"""model_name = "{model_name}"
+temperature = {temperature}
+doc_name = "{doc_name}"
 output_filename = "{output_filename}"
-metrics_output = "../results/{sanitized_model_name}_metrics.csv"
-metrics_output_summary = "../results/{sanitized_model_name}_metrics_summary.csv"
+metrics_output = "../results/{csv_base_name}_metrics.csv"
+metrics_output_summary = "../results/{csv_base_name}_metrics_summary.csv"
 """
 
 with open("config.py", "w", encoding="utf-8") as config_file:
     config_file.write(config_content)
 
-print(f"✅ config.py actualizado con modelo={model_name}, temp={temperature}")
+print(f"✅ config.py actualizado")
+print(f"   Modelo: {model_name}")
+print(f"   Temperatura: {temperature}")
+print(f"   Documento: {doc_name}")
+print(f"   CSV: {csv_base_name}.csv")
 
 tiempos_iteraciones = []
 tiempos_globales = []
