@@ -1,5 +1,7 @@
 import sys
 import os
+from datetime import datetime
+from pathlib import Path
 
 # Agregar el directorio padre al path para importaciones
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -24,8 +26,28 @@ except ImportError:
 
 
 class ChatbotController:
-    def __init__(self, model_name="llama3.2:latest", temperature=0.5, k=5):
+    def __init__(self, model_name="llama3.2:latest", temperature=0.0, k=5):
         print(f"🚀 Inicializando ChatbotController con k={k}")
+
+        # Crear carpeta de logs si no existe
+        self.logs_dir = Path("../chat_logs")
+        self.logs_dir.mkdir(parents=True, exist_ok=True)
+
+        # Crear archivo de log con timestamp
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.log_file = self.logs_dir / f"conversacion_{timestamp}.txt"
+
+        # Escribir encabezado del log
+        with open(self.log_file, "w", encoding="utf-8") as f:
+            f.write(f"{'='*80}\n")
+            f.write(f"REGISTRO DE CONVERSACIÓN - CHATBOT RAG\n")
+            f.write(f"{'='*80}\n")
+            f.write(f"Fecha: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            f.write(f"Modelo: {model_name}\n")
+            f.write(f"Temperatura: {temperature}\n")
+            f.write(f"{'='*80}\n\n")
+
+        print(f"📝 Log de conversación: {self.log_file}\n")
 
         # Obtener los componentes del RAG
         components = inicializar_retriever_vectorstore(k)
@@ -85,7 +107,22 @@ class ChatbotController:
             self.retriever_historia,  # retriever_historia
             self.re_type,  # re_type
         )
+
+        # Guardar en el log de conversación
+        self._guardar_en_log(pregunta, respuesta, tiempo)
+
         return respuesta, tiempo, referencias
+
+    def _guardar_en_log(self, pregunta, respuesta, tiempo):
+        """Guarda pregunta, respuesta y tiempo en el archivo de log"""
+        try:
+            with open(self.log_file, "a", encoding="utf-8") as f:
+                f.write(f"Pregunta: {pregunta}\n")
+                f.write(f"Respuesta: {respuesta}\n")
+                f.write(f"Tiempo_respuesta: {tiempo:.2f}s\n")
+                f.write(f"{'-'*80}\n\n")
+        except Exception as e:
+            print(f"⚠️  Error al guardar en log: {e}")
 
     def guardar_ajustes(self, cant_documentos, temperatura, modelo, re_type):
         (
