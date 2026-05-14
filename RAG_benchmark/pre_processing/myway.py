@@ -140,13 +140,23 @@ PROMPT_RERANK = PromptTemplate(
 def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
     # Intentar usar el modelo solicitado, si falla, usar mistral como fallback
     try:
-        llm = OllamaLLM(model=model_name, temperature=temperature)
+        # Pasar temperatura tanto como parámetro como en options
+        llm = OllamaLLM(
+            model=model_name, 
+            temperature=temperature,
+            # Pasar opciones adicionales que Ollama entiende mejor
+            base_url="http://localhost:11434",
+        )
         # Se crea el pipeline
         llm_chain = prompt | llm
         return llm_chain
     except Exception as e:
         print(f"⚠️ Error cargando modelo {model_name}, usando mistral: {e}")
-        llm = OllamaLLM(model="mistral", temperature=temperature)
+        llm = OllamaLLM(
+            model="mistral", 
+            temperature=temperature,
+            base_url="http://localhost:11434",
+        )
         llm_chain = prompt | llm
         return llm_chain
 

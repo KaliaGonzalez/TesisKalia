@@ -963,7 +963,7 @@ PROMPT = PromptTemplate(
 
 def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
     # Aqui estamos creando el modelo en esta caso deberas cambiar el nombre arriba del archivo o aqui mismo.
-    llm = OllamaLLM(model=model_name, temperature=temperature)
+    llm = OllamaLLM(model=model_name, temperature=temperature, base_url="http://localhost:11434")
     # Se crea el pipeline (reemplaza LLMChain que está deprecado)
     llm_chain = prompt | llm
     return llm_chain
@@ -1054,6 +1054,7 @@ def inicializar_retriever_vectorstore(k=5):
 print("\n🚀 INICIALIZANDO SISTEMA RAG CON BM25...\n")
 llm_chain = inicializar_modelo(model_name, temperature)
 print(f"✅ Modelo LLM inicializado: {model_name}")
+print(f"🌡️  Temperatura configurada: {temperature}")
 
 (
     retriever_edaes,
