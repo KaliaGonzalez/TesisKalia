@@ -6,7 +6,7 @@ from pathlib import Path
 # CONFIGURACIÓN
 # ============================================================================
 
-MODELOS = ["gemma3:12b", "granite4:3b", "qwen3:14b"]
+MODELOS = ["granite4:3b", "gemma3:12b", "qwen3:14b"]
 TEMPERATURAS = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
 
 DOCUMENTOS = {

@@ -859,32 +859,32 @@ if __name__ == "__main__":
         vectorstore_edaes = Chroma(
             persist_directory=persist_directory,
             collection_name="edaes",
-            embedding_function=embedding_model,
+            embedding_function=embedding_model_name,
         )
         vectorstore_pruebas = Chroma(
             persist_directory=persist_directory,
             collection_name="pruebas",
-            embedding_function=embedding_model,
+            embedding_function=embedding_model_name,
         )
     vectorstore_resumen_edaes = Chroma(
         persist_directory=persist_directory,
         collection_name="resumen_edaes",
-        embedding_function=embedding_model,
+        embedding_function=embedding_model_name,
     )
     vectorstore_edaes_seg = Chroma(
         persist_directory=persist_directory,
         collection_name="edaes_seg",
-        embedding_function=embedding_model,
+        embedding_function=embedding_model_name,
     )
     vectorstore_newMater = Chroma(
         persist_directory=persist_directory,
         collection_name="newMater",
-        embedding_function=embedding_model,
+        embedding_function=embedding_model_name,
     )
     vectorstore_Historia = Chroma(
         persist_directory=persist_directory,
         collection_name="Historia",
-        embedding_function=embedding_model,
+        embedding_function=embedding_model_name,
     )
 else:
     print("Creando Base de datos... ")
@@ -963,7 +963,9 @@ PROMPT = PromptTemplate(
 
 def inicializar_modelo(model_name="mistral", temperature=0.5, prompt=PROMPT):
     # Aqui estamos creando el modelo en esta caso deberas cambiar el nombre arriba del archivo o aqui mismo.
-    llm = OllamaLLM(model=model_name, temperature=temperature, base_url="http://localhost:11434")
+    llm = OllamaLLM(
+        model=model_name, temperature=temperature, base_url="http://localhost:11434"
+    )
     # Se crea el pipeline (reemplaza LLMChain que está deprecado)
     llm_chain = prompt | llm
     return llm_chain
@@ -1126,7 +1128,7 @@ def chatbot_response(
 
     print(f"✅ Respuesta generada en {tiempo_res:.2f}s")
 
-    return respuesta, referencias_str
+    return respuesta, referencias_str, tiempo_res
 
 
 def sanitize_filename(name):
@@ -1220,7 +1222,7 @@ with open(output_filename, "w", encoding="utf-8", newline="") as csvfile:
             )
 
             # Usar la función chatbot_response que ya tiene BM25 implementado
-            respuesta_bruta, referencias_str = chatbot_response(
+            respuesta_bruta, referencias_str, tiempo_segundos = chatbot_response(
                 query=pregunta,
                 usar_full_context=usar_full_context,
                 llm_chain=llm_chain,
@@ -1242,9 +1244,6 @@ with open(output_filename, "w", encoding="utf-8", newline="") as csvfile:
 
             # Limpiar la respuesta
             respuesta_limpia_final = eliminar_chain_of_thought(respuesta_bruta)
-
-            # Medir tiempo (simulado, ya que chatbot_response lo hace internamente)
-            tiempo_segundos = 0.5  # Valor por defecto
 
             # Guardar tiempos para resúmenes
             tiempos_iteraciones_pregunta_actual.append(tiempo_segundos)
@@ -1366,15 +1365,3 @@ print(
 )
 if todos_los_tiempos_para_resumen_global:
     print(f"📊 Resumen de rendimiento guardado en '{output_summary_filename}'.")
-
-
-with open("config.py", "w", encoding="utf-8") as config_file:
-    config_file.write(f'model_name = "{model_name}"\n')
-    config_file.write(f'output_filename = "../results/{sanitized_model_name}.csv"\n')
-    config_file.write(
-        f'metrics_output = "../results/{sanitized_model_name}_metrics.csv"\n'
-    )
-    config_file.write(
-        f'metrics_output_summary = "../results/{sanitized_model_name}_metrics_summary.csv"\n'
-    )
-print(f"📝 Archivo de configuración 'config.py' actualizado.")
