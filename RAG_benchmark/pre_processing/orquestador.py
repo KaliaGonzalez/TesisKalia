@@ -18,11 +18,11 @@ DOCUMENTOS = {
     "MATER": "../FAC_Documents/rag_files/Goalset_FAC_MATER.json",
     "PORFAC": "../FAC_Documents/rag_files/Goalset_FAC_PORFAC.json",
     "EDAES": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
+    "EDAES_SEGMENTADO": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
+    "EDAES_MARKDOWN": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
+    "EDAES_RESUMIDO": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
     "HISTORIA": "../FAC_Documents/rag_files/GoalSet_Historia.json",
-    "PLANEACION": "../FAC_Documents/rag_files/GoalSet_Planeacion.json",
     "NUEVO_MATER": "../FAC_Documents/rag_files/GoalSetNewMater.json",
-    "MINI": "../FAC_Documents/rag_files/Goalset_FAC_mini.json",
-    "FULL": "../FAC_Documents/rag_files/Goalset_FAC_full.json",
 }
 
 # ============================================================================
