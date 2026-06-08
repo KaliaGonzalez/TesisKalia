@@ -15,7 +15,7 @@ TEMPERATURAS = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
 
 # 📚 GOALSETS COMPLETOS: Todos los documentos relevantes
 DOCUMENTOS = {
-    "MATER": "../FAC_Documents/rag_files/Goalset_FAC_MATER.json",
+    "MINI": "../FAC_Documents/rag_files/Goalset_FAC_mini.json",
     "PORFAC": "../FAC_Documents/rag_files/Goalset_FAC_PORFAC.json",
     "EDAES": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
     "EDAES_SEGMENTADO": "../FAC_Documents/rag_files/Goalset_FAC_EDAES.json",
@@ -201,6 +201,9 @@ for modelo in MODELOS:
                 csv_metricas = Path(
                     f"../results/{modelo_sanitizado}_temperatura_{temp_str}_{doc_name}_metrics.csv"
                 )
+                csv_metricas_summary = Path(
+                    f"../results/{modelo_sanitizado}_temperatura_{temp_str}_{doc_name}_metrics_summary.csv"
+                )
 
                 # Contar archivos generados
                 archivos_generados = sum(
@@ -208,18 +211,19 @@ for modelo in MODELOS:
                         csv_resultado.exists(),
                         csv_resumen.exists(),
                         csv_metricas.exists(),
+                        csv_metricas_summary.exists(),
                     ]
                 )
 
                 if archivos_generados >= 2:  # Al menos resultados y una de las otras
                     log(
-                        f"  ✅ Se generaron {archivos_generados}/3 archivos CSV",
+                        f"  ✅ Se generaron {archivos_generados}/4 archivos CSV",
                         "SUCCESS",
                     )
                     pruebas_exitosas += 1
                 else:
                     log(
-                        f"  ⚠️  Solo {archivos_generados}/3 archivos generados",
+                        f"  ⚠️  Solo {archivos_generados}/4 archivos generados",
                         "WARNING",
                     )
                     pruebas_exitosas += 1  # Contar como exitosa aunque falte una

@@ -1,4 +1,6 @@
-model_name = "qwen3"
-output_filename = "../results/qwen3.csv"
-metrics_output = "../results/qwen3_metrics.csv"
-metrics_output_summary = "../results/qwen3_metrics_summary.csv"
+model_name = "llama3.2:1b"
+temperature = 0.0
+doc_name = "MINI"
+output_filename = "C:/Users/Usuario/Documents/Tesis/TesisKalia/RAG_benchmark/results/llama3_2_1b_temperatura_0_0_MINI.csv"
+metrics_output = "C:/Users/Usuario/Documents/Tesis/TesisKalia/RAG_benchmark/results/llama3_2_1b_temperatura_0_0_MINI_metrics.csv"
+metrics_output_summary = "C:/Users/Usuario/Documents/Tesis/TesisKalia/RAG_benchmark/results/llama3_2_1b_temperatura_0_0_MINI_metrics_summary.csv"
