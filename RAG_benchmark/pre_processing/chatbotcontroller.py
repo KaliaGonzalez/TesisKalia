@@ -26,7 +26,7 @@ except ImportError:
 
 
 class ChatbotController:
-    def __init__(self, model_name="llama3.2:latest", temperature=0.5, k=5):
+    def __init__(self, model_name="mistral", temperature=0.0, k=5):
         print(f"[INIT] Inicializando ChatbotController con k={k}")
 
         # Crear carpeta de logs si no existe
